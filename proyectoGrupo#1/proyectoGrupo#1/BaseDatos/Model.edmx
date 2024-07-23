@@ -1,0 +1,296 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="proyectoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tCategoria">
+          <Key>
+            <PropertyRef Name="idCategoria" />
+          </Key>
+          <Property Name="idCategoria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tProducto">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Precio" Type="int" Nullable="false" />
+          <Property Name="Cantidad" Type="int" Nullable="false" />
+          <Property Name="idCategoria" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tRol">
+          <Key>
+            <PropertyRef Name="idRol" />
+          </Key>
+          <Property Name="idRol" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tUsuario">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cedula" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Correo" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Contrasenna" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
+          <Property Name="idRol" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="fk_idCategoria">
+          <End Role="tCategoria" Type="Self.tCategoria" Multiplicity="1" />
+          <End Role="tProducto" Type="Self.tProducto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tCategoria">
+              <PropertyRef Name="idCategoria" />
+            </Principal>
+            <Dependent Role="tProducto">
+              <PropertyRef Name="idCategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_idRol">
+          <End Role="tRol" Type="Self.tRol" Multiplicity="1" />
+          <End Role="tUsuario" Type="Self.tUsuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tRol">
+              <PropertyRef Name="idRol" />
+            </Principal>
+            <Dependent Role="tUsuario">
+              <PropertyRef Name="idRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="ActualizarUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Cedula" Type="varchar" Mode="In" />
+          <Parameter Name="Nombre" Type="varchar" Mode="In" />
+          <Parameter Name="Correo" Type="varchar" Mode="In" />
+          <Parameter Name="idRol" Type="int" Mode="In" />
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="CambiarEstadoUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="IniciarSesion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Correo" Type="varchar" Mode="In" />
+          <Parameter Name="Contrasenna" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="RegistrarUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Cedula" Type="varchar" Mode="In" />
+          <Parameter Name="Nombre" Type="varchar" Mode="In" />
+          <Parameter Name="Correo" Type="varchar" Mode="In" />
+          <Parameter Name="Contrasenna" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="proyectoModelStoreContainer">
+          <EntitySet Name="tCategoria" EntityType="Self.tCategoria" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tProducto" EntityType="Self.tProducto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tRol" EntityType="Self.tRol" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tUsuario" EntityType="Self.tUsuario" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="fk_idCategoria" Association="Self.fk_idCategoria">
+            <End Role="tCategoria" EntitySet="tCategoria" />
+            <End Role="tProducto" EntitySet="tProducto" />
+          </AssociationSet>
+          <AssociationSet Name="fk_idRol" Association="Self.fk_idRol">
+            <End Role="tRol" EntitySet="tRol" />
+            <End Role="tUsuario" EntitySet="tUsuario" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="proyectoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tCategoria">
+          <Key>
+            <PropertyRef Name="idCategoria" />
+          </Key>
+          <Property Name="idCategoria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tProducto" Relationship="Self.fk_idCategoria" FromRole="tCategoria" ToRole="tProducto" />
+        </EntityType>
+        <EntityType Name="tProducto">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Precio" Type="Int32" Nullable="false" />
+          <Property Name="Cantidad" Type="Int32" Nullable="false" />
+          <Property Name="idCategoria" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tCategoria" Relationship="Self.fk_idCategoria" FromRole="tProducto" ToRole="tCategoria" />
+        </EntityType>
+        <EntityType Name="tRol">
+          <Key>
+            <PropertyRef Name="idRol" />
+          </Key>
+          <Property Name="idRol" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tUsuario" Relationship="Self.fk_idRol" FromRole="tRol" ToRole="tUsuario" />
+        </EntityType>
+        <EntityType Name="tUsuario">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cedula" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Correo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Contrasenna" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+          <Property Name="idRol" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tRol" Relationship="Self.fk_idRol" FromRole="tUsuario" ToRole="tRol" />
+        </EntityType>
+        <Association Name="fk_idCategoria">
+          <End Role="tCategoria" Type="Self.tCategoria" Multiplicity="1" />
+          <End Role="tProducto" Type="Self.tProducto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tCategoria">
+              <PropertyRef Name="idCategoria" />
+            </Principal>
+            <Dependent Role="tProducto">
+              <PropertyRef Name="idCategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_idRol">
+          <End Role="tRol" Type="Self.tRol" Multiplicity="1" />
+          <End Role="tUsuario" Type="Self.tUsuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tRol">
+              <PropertyRef Name="idRol" />
+            </Principal>
+            <Dependent Role="tUsuario">
+              <PropertyRef Name="idRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="proyectoEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tCategoria" EntityType="Self.tCategoria" />
+          <EntitySet Name="tProducto" EntityType="Self.tProducto" />
+          <EntitySet Name="tRol" EntityType="Self.tRol" />
+          <EntitySet Name="tUsuario" EntityType="Self.tUsuario" />
+          <AssociationSet Name="fk_idCategoria" Association="Self.fk_idCategoria">
+            <End Role="tCategoria" EntitySet="tCategoria" />
+            <End Role="tProducto" EntitySet="tProducto" />
+          </AssociationSet>
+          <AssociationSet Name="fk_idRol" Association="Self.fk_idRol">
+            <End Role="tRol" EntitySet="tRol" />
+            <End Role="tUsuario" EntitySet="tUsuario" />
+          </AssociationSet>
+          <FunctionImport Name="IniciarSesion" ReturnType="Collection(proyectoModel.IniciarSesion_Result)">
+            <Parameter Name="Correo" Mode="In" Type="String" />
+            <Parameter Name="Contrasenna" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="RegistrarUsuario">
+            <Parameter Name="Cedula" Mode="In" Type="String" />
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="Correo" Mode="In" Type="String" />
+            <Parameter Name="Contrasenna" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ActualizarUsuario">
+            <Parameter Name="Cedula" Mode="In" Type="String" />
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="Correo" Mode="In" Type="String" />
+            <Parameter Name="idRol" Mode="In" Type="Int32" />
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="CambiarEstadoUsuario">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="IniciarSesion_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="Cedula" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Correo" Nullable="false" MaxLength="100" />
+          <Property Type="Boolean" Name="Estado" Nullable="false" />
+          <Property Type="Int32" Name="IdRol" Nullable="false" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="proyectoModelStoreContainer" CdmEntityContainer="proyectoEntities">
+          <EntitySetMapping Name="tCategoria">
+            <EntityTypeMapping TypeName="proyectoModel.tCategoria">
+              <MappingFragment StoreEntitySet="tCategoria">
+                <ScalarProperty Name="idCategoria" ColumnName="idCategoria" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tProducto">
+            <EntityTypeMapping TypeName="proyectoModel.tProducto">
+              <MappingFragment StoreEntitySet="tProducto">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="idCategoria" ColumnName="idCategoria" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tRol">
+            <EntityTypeMapping TypeName="proyectoModel.tRol">
+              <MappingFragment StoreEntitySet="tRol">
+                <ScalarProperty Name="idRol" ColumnName="idRol" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tUsuario">
+            <EntityTypeMapping TypeName="proyectoModel.tUsuario">
+              <MappingFragment StoreEntitySet="tUsuario">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="Contrasenna" ColumnName="Contrasenna" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="idRol" ColumnName="idRol" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="IniciarSesion" FunctionName="proyectoModel.Store.IniciarSesion">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="proyectoModel.IniciarSesion_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="IdRol" ColumnName="IdRol" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="RegistrarUsuario" FunctionName="proyectoModel.Store.RegistrarUsuario" />
+          <FunctionImportMapping FunctionImportName="ActualizarUsuario" FunctionName="proyectoModel.Store.ActualizarUsuario" />
+          <FunctionImportMapping FunctionImportName="CambiarEstadoUsuario" FunctionName="proyectoModel.Store.CambiarEstadoUsuario" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

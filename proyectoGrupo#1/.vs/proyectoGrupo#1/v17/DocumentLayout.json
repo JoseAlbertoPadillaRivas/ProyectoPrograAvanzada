@@ -1,0 +1,85 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\josep\\OneDrive\\Escritorio\\proyectoGrupo#1\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{692A7136-CCCF-40D3-A498-AB0F4F1E7036}|proyectoGrupo#1\\proyectoGrupo#1.csproj|c:\\users\\josep\\onedrive\\escritorio\\proyectogrupo#1\\proyectogrupo#1\\views\\usuario\\consultarusuarios.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{692A7136-CCCF-40D3-A498-AB0F4F1E7036}|proyectoGrupo#1\\proyectoGrupo#1.csproj|solutionrelative:proyectogrupo#1\\views\\usuario\\consultarusuarios.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{692A7136-CCCF-40D3-A498-AB0F4F1E7036}|proyectoGrupo#1\\proyectoGrupo#1.csproj|C:\\Users\\josep\\OneDrive\\Escritorio\\proyectoGrupo#1\\proyectogrupo#1\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{692A7136-CCCF-40D3-A498-AB0F4F1E7036}|proyectoGrupo#1\\proyectoGrupo#1.csproj|solutionrelative:proyectogrupo#1\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{692A7136-CCCF-40D3-A498-AB0F4F1E7036}|proyectoGrupo#1\\proyectoGrupo#1.csproj|C:\\Users\\josep\\OneDrive\\Escritorio\\proyectoGrupo#1\\proyectogrupo#1\\views\\login\\iniciarsesion.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{692A7136-CCCF-40D3-A498-AB0F4F1E7036}|proyectoGrupo#1\\proyectoGrupo#1.csproj|solutionrelative:proyectogrupo#1\\views\\login\\iniciarsesion.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{692A7136-CCCF-40D3-A498-AB0F4F1E7036}|proyectoGrupo#1\\proyectoGrupo#1.csproj|C:\\Users\\josep\\OneDrive\\Escritorio\\proyectoGrupo#1\\proyectogrupo#1\\models\\usuariomodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{692A7136-CCCF-40D3-A498-AB0F4F1E7036}|proyectoGrupo#1\\proyectoGrupo#1.csproj|solutionrelative:proyectogrupo#1\\models\\usuariomodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "UsuarioModel.cs",
+              "DocumentMoniker": "C:\\Users\\josep\\OneDrive\\Escritorio\\proyectoGrupo#1\\proyectoGrupo#1\\Models\\UsuarioModel.cs",
+              "RelativeDocumentMoniker": "proyectoGrupo#1\\Models\\UsuarioModel.cs",
+              "ToolTip": "C:\\Users\\josep\\OneDrive\\Escritorio\\proyectoGrupo#1\\proyectoGrupo#1\\Models\\UsuarioModel.cs",
+              "RelativeToolTip": "proyectoGrupo#1\\Models\\UsuarioModel.cs",
+              "ViewState": "AQIAACYAAAAAAAAAAAAgwDoAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-23T20:18:37.96Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "IniciarSesion.cshtml",
+              "DocumentMoniker": "C:\\Users\\josep\\OneDrive\\Escritorio\\proyectoGrupo#1\\proyectoGrupo#1\\Views\\Login\\IniciarSesion.cshtml",
+              "RelativeDocumentMoniker": "proyectoGrupo#1\\Views\\Login\\IniciarSesion.cshtml",
+              "ToolTip": "C:\\Users\\josep\\OneDrive\\Escritorio\\proyectoGrupo#1\\proyectoGrupo#1\\Views\\Login\\IniciarSesion.cshtml",
+              "RelativeToolTip": "proyectoGrupo#1\\Views\\Login\\IniciarSesion.cshtml",
+              "ViewState": "AQIAABgAAAAAAAAAAAAAAAsAAAAUAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-07-23T20:12:23.896Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ConsultarUsuarios.cshtml",
+              "DocumentMoniker": "C:\\Users\\josep\\OneDrive\\Escritorio\\proyectoGrupo#1\\proyectoGrupo#1\\Views\\Usuario\\ConsultarUsuarios.cshtml",
+              "RelativeDocumentMoniker": "proyectoGrupo#1\\Views\\Usuario\\ConsultarUsuarios.cshtml",
+              "ToolTip": "C:\\Users\\josep\\OneDrive\\Escritorio\\proyectoGrupo#1\\proyectoGrupo#1\\Views\\Usuario\\ConsultarUsuarios.cshtml",
+              "RelativeToolTip": "proyectoGrupo#1\\Views\\Usuario\\ConsultarUsuarios.cshtml",
+              "ViewState": "AQIAAEUAAAAAAAAAAAAQwGAAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-07-23T20:11:40.09Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UsuarioController.cs",
+              "DocumentMoniker": "C:\\Users\\josep\\OneDrive\\Escritorio\\proyectoGrupo#1\\proyectoGrupo#1\\Controllers\\UsuarioController.cs",
+              "RelativeDocumentMoniker": "proyectoGrupo#1\\Controllers\\UsuarioController.cs",
+              "ToolTip": "C:\\Users\\josep\\OneDrive\\Escritorio\\proyectoGrupo#1\\proyectoGrupo#1\\Controllers\\UsuarioController.cs",
+              "RelativeToolTip": "proyectoGrupo#1\\Controllers\\UsuarioController.cs",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAAABoAAAAWAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-23T20:10:24.426Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

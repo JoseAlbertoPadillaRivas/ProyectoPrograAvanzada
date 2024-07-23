@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="proyectoModelStoreContainer" CdmEntityContainer="proyectoEntities">
+    <EntitySetMapping Name="tCategoria">
+      <EntityTypeMapping TypeName="proyectoModel.tCategoria">
+        <MappingFragment StoreEntitySet="tCategoria">
+          <ScalarProperty Name="idCategoria" ColumnName="idCategoria" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tProducto">
+      <EntityTypeMapping TypeName="proyectoModel.tProducto">
+        <MappingFragment StoreEntitySet="tProducto">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Precio" ColumnName="Precio" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="idCategoria" ColumnName="idCategoria" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tRol">
+      <EntityTypeMapping TypeName="proyectoModel.tRol">
+        <MappingFragment StoreEntitySet="tRol">
+          <ScalarProperty Name="idRol" ColumnName="idRol" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tUsuario">
+      <EntityTypeMapping TypeName="proyectoModel.tUsuario">
+        <MappingFragment StoreEntitySet="tUsuario">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Correo" ColumnName="Correo" />
+          <ScalarProperty Name="Contrasenna" ColumnName="Contrasenna" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="idRol" ColumnName="idRol" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="IniciarSesion" FunctionName="proyectoModel.Store.IniciarSesion">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="proyectoModel.IniciarSesion_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Correo" ColumnName="Correo" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="IdRol" ColumnName="IdRol" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="RegistrarUsuario" FunctionName="proyectoModel.Store.RegistrarUsuario" />
+    <FunctionImportMapping FunctionImportName="ActualizarUsuario" FunctionName="proyectoModel.Store.ActualizarUsuario" />
+    <FunctionImportMapping FunctionImportName="CambiarEstadoUsuario" FunctionName="proyectoModel.Store.CambiarEstadoUsuario" />
+  </EntityContainerMapping>
+</Mapping>
