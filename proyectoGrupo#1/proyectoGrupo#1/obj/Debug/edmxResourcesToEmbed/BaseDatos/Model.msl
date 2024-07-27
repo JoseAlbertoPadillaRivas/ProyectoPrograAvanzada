@@ -56,5 +56,8 @@
     <FunctionImportMapping FunctionImportName="RegistrarUsuario" FunctionName="proyectoModel.Store.RegistrarUsuario" />
     <FunctionImportMapping FunctionImportName="ActualizarUsuario" FunctionName="proyectoModel.Store.ActualizarUsuario" />
     <FunctionImportMapping FunctionImportName="CambiarEstadoUsuario" FunctionName="proyectoModel.Store.CambiarEstadoUsuario" />
+    <FunctionImportMapping FunctionImportName="RegistrarProducto" FunctionName="proyectoModel.Store.RegistrarProducto" />
+    <FunctionImportMapping FunctionImportName="EditarProducto" FunctionName="proyectoModel.Store.EditarProducto" />
+    <FunctionImportMapping FunctionImportName="NuevaCategoria" FunctionName="proyectoModel.Store.NuevaCategoria" />
   </EntityContainerMapping>
 </Mapping>

@@ -1,0 +1,20 @@
+﻿@model List<proyectoGrupo_1.BaseDatos.tProducto>
+@{
+    ViewBag.Title = "VerAccesorios";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Accesorios</h2>
+
+@foreach (var item in Model)
+{
+
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="..." alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">@item.Nombre</h5>
+            <p class="card-text">Precio: ₡ @item.Precio</p>
+        </div>
+    </div>
+}
+

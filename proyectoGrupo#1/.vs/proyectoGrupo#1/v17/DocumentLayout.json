@@ -1,26 +1,34 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\josep\\OneDrive\\Documentos\\GitHub\\ProyectoPrograAvanzada\\proyectoGrupo#1\\",
+  "WorkspaceRootPath": "C:\\Users\\USER\\Desktop\\FIDELITAS\\SEPTIMO CUATRI\\PROGRA AVANZADA\\ProyectoPrograAvanzada\\proyectoGrupo#1\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{692A7136-CCCF-40D3-A498-AB0F4F1E7036}|proyectoGrupo#1\\proyectoGrupo#1.csproj|c:\\users\\josep\\onedrive\\documentos\\github\\proyectoprograavanzada\\proyectogrupo#1\\proyectogrupo#1\\views\\login\\iniciarsesion.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{692A7136-CCCF-40D3-A498-AB0F4F1E7036}|proyectoGrupo#1\\proyectoGrupo#1.csproj|c:\\users\\user\\desktop\\fidelitas\\septimo cuatri\\progra avanzada\\proyectoprograavanzada\\proyectogrupo#1\\proyectogrupo#1\\views\\login\\iniciarsesion.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{692A7136-CCCF-40D3-A498-AB0F4F1E7036}|proyectoGrupo#1\\proyectoGrupo#1.csproj|solutionrelative:proyectogrupo#1\\views\\login\\iniciarsesion.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{692A7136-CCCF-40D3-A498-AB0F4F1E7036}|proyectoGrupo#1\\proyectoGrupo#1.csproj|c:\\users\\josep\\onedrive\\documentos\\github\\proyectoprograavanzada\\proyectogrupo#1\\proyectogrupo#1\\views\\usuario\\consultarusuarios.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{692A7136-CCCF-40D3-A498-AB0F4F1E7036}|proyectoGrupo#1\\proyectoGrupo#1.csproj|solutionrelative:proyectogrupo#1\\views\\usuario\\consultarusuarios.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{692A7136-CCCF-40D3-A498-AB0F4F1E7036}|proyectoGrupo#1\\proyectoGrupo#1.csproj|c:\\users\\user\\desktop\\fidelitas\\septimo cuatri\\progra avanzada\\proyectoprograavanzada\\proyectogrupo#1\\proyectogrupo#1\\views\\producto\\vercomputadoras.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{692A7136-CCCF-40D3-A498-AB0F4F1E7036}|proyectoGrupo#1\\proyectoGrupo#1.csproj|solutionrelative:proyectogrupo#1\\views\\producto\\vercomputadoras.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{692A7136-CCCF-40D3-A498-AB0F4F1E7036}|proyectoGrupo#1\\proyectoGrupo#1.csproj|c:\\users\\josep\\onedrive\\documentos\\github\\proyectoprograavanzada\\proyectogrupo#1\\proyectogrupo#1\\entidades\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{692A7136-CCCF-40D3-A498-AB0F4F1E7036}|proyectoGrupo#1\\proyectoGrupo#1.csproj|solutionrelative:proyectogrupo#1\\entidades\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{692A7136-CCCF-40D3-A498-AB0F4F1E7036}|proyectoGrupo#1\\proyectoGrupo#1.csproj|c:\\users\\user\\desktop\\fidelitas\\septimo cuatri\\progra avanzada\\proyectoprograavanzada\\proyectogrupo#1\\proyectogrupo#1\\views\\producto\\veraccesorios.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{692A7136-CCCF-40D3-A498-AB0F4F1E7036}|proyectoGrupo#1\\proyectoGrupo#1.csproj|solutionrelative:proyectogrupo#1\\views\\producto\\veraccesorios.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{692A7136-CCCF-40D3-A498-AB0F4F1E7036}|proyectoGrupo#1\\proyectoGrupo#1.csproj|c:\\users\\josep\\onedrive\\documentos\\github\\proyectoprograavanzada\\proyectogrupo#1\\proyectogrupo#1\\models\\usuariomodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{692A7136-CCCF-40D3-A498-AB0F4F1E7036}|proyectoGrupo#1\\proyectoGrupo#1.csproj|solutionrelative:proyectogrupo#1\\models\\usuariomodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{692A7136-CCCF-40D3-A498-AB0F4F1E7036}|proyectoGrupo#1\\proyectoGrupo#1.csproj|c:\\users\\user\\desktop\\fidelitas\\septimo cuatri\\progra avanzada\\proyectoprograavanzada\\proyectogrupo#1\\proyectogrupo#1\\views\\producto\\vercelulares.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{692A7136-CCCF-40D3-A498-AB0F4F1E7036}|proyectoGrupo#1\\proyectoGrupo#1.csproj|solutionrelative:proyectogrupo#1\\views\\producto\\vercelulares.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{692A7136-CCCF-40D3-A498-AB0F4F1E7036}|proyectoGrupo#1\\proyectoGrupo#1.csproj|c:\\users\\josep\\onedrive\\documentos\\github\\proyectoprograavanzada\\proyectogrupo#1\\proyectogrupo#1\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{692A7136-CCCF-40D3-A498-AB0F4F1E7036}|proyectoGrupo#1\\proyectoGrupo#1.csproj|solutionrelative:proyectogrupo#1\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{692A7136-CCCF-40D3-A498-AB0F4F1E7036}|proyectoGrupo#1\\proyectoGrupo#1.csproj|c:\\users\\user\\desktop\\fidelitas\\septimo cuatri\\progra avanzada\\proyectoprograavanzada\\proyectogrupo#1\\proyectogrupo#1\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{692A7136-CCCF-40D3-A498-AB0F4F1E7036}|proyectoGrupo#1\\proyectoGrupo#1.csproj|solutionrelative:proyectogrupo#1\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{692A7136-CCCF-40D3-A498-AB0F4F1E7036}|proyectoGrupo#1\\proyectoGrupo#1.csproj|c:\\users\\user\\desktop\\fidelitas\\septimo cuatri\\progra avanzada\\proyectoprograavanzada\\proyectogrupo#1\\proyectogrupo#1\\views\\producto\\verproductos.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{692A7136-CCCF-40D3-A498-AB0F4F1E7036}|proyectoGrupo#1\\proyectoGrupo#1.csproj|solutionrelative:proyectogrupo#1\\views\\producto\\verproductos.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{692A7136-CCCF-40D3-A498-AB0F4F1E7036}|proyectoGrupo#1\\proyectoGrupo#1.csproj|c:\\users\\user\\desktop\\fidelitas\\septimo cuatri\\progra avanzada\\proyectoprograavanzada\\proyectogrupo#1\\proyectogrupo#1\\controllers\\productocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{692A7136-CCCF-40D3-A498-AB0F4F1E7036}|proyectoGrupo#1\\proyectoGrupo#1.csproj|solutionrelative:proyectogrupo#1\\controllers\\productocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,67 +42,93 @@
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "VerComputadoras.cshtml",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\FIDELITAS\\SEPTIMO CUATRI\\PROGRA AVANZADA\\ProyectoPrograAvanzada\\proyectoGrupo#1\\proyectoGrupo#1\\Views\\Producto\\VerComputadoras.cshtml",
+              "RelativeDocumentMoniker": "proyectoGrupo#1\\Views\\Producto\\VerComputadoras.cshtml",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\FIDELITAS\\SEPTIMO CUATRI\\PROGRA AVANZADA\\ProyectoPrograAvanzada\\proyectoGrupo#1\\proyectoGrupo#1\\Views\\Producto\\VerComputadoras.cshtml",
+              "RelativeToolTip": "proyectoGrupo#1\\Views\\Producto\\VerComputadoras.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-07-27T00:03:07.156Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Usuario.cs",
-              "DocumentMoniker": "C:\\Users\\josep\\OneDrive\\Documentos\\GitHub\\ProyectoPrograAvanzada\\proyectoGrupo#1\\proyectoGrupo#1\\Entidades\\Usuario.cs",
-              "RelativeDocumentMoniker": "proyectoGrupo#1\\Entidades\\Usuario.cs",
-              "ToolTip": "C:\\Users\\josep\\OneDrive\\Documentos\\GitHub\\ProyectoPrograAvanzada\\proyectoGrupo#1\\proyectoGrupo#1\\Entidades\\Usuario.cs",
-              "RelativeToolTip": "proyectoGrupo#1\\Entidades\\Usuario.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAFAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-26T14:10:09.466Z",
+              "Title": "VerAccesorios.cshtml",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\FIDELITAS\\SEPTIMO CUATRI\\PROGRA AVANZADA\\ProyectoPrograAvanzada\\proyectoGrupo#1\\proyectoGrupo#1\\Views\\Producto\\VerAccesorios.cshtml",
+              "RelativeDocumentMoniker": "proyectoGrupo#1\\Views\\Producto\\VerAccesorios.cshtml",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\FIDELITAS\\SEPTIMO CUATRI\\PROGRA AVANZADA\\ProyectoPrograAvanzada\\proyectoGrupo#1\\proyectoGrupo#1\\Views\\Producto\\VerAccesorios.cshtml",
+              "RelativeToolTip": "proyectoGrupo#1\\Views\\Producto\\VerAccesorios.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-07-27T00:02:10.606Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "UsuarioController.cs",
-              "DocumentMoniker": "C:\\Users\\josep\\OneDrive\\Documentos\\GitHub\\ProyectoPrograAvanzada\\proyectoGrupo#1\\proyectoGrupo#1\\Controllers\\UsuarioController.cs",
-              "RelativeDocumentMoniker": "proyectoGrupo#1\\Controllers\\UsuarioController.cs",
-              "ToolTip": "C:\\Users\\josep\\OneDrive\\Documentos\\GitHub\\ProyectoPrograAvanzada\\proyectoGrupo#1\\proyectoGrupo#1\\Controllers\\UsuarioController.cs",
-              "RelativeToolTip": "proyectoGrupo#1\\Controllers\\UsuarioController.cs",
-              "ViewState": "AQIAABEAAAAAAAAAAAAAwAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-26T14:07:49.343Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ConsultarUsuarios.cshtml",
-              "DocumentMoniker": "C:\\Users\\josep\\OneDrive\\Documentos\\GitHub\\ProyectoPrograAvanzada\\proyectoGrupo#1\\proyectoGrupo#1\\Views\\Usuario\\ConsultarUsuarios.cshtml",
-              "RelativeDocumentMoniker": "proyectoGrupo#1\\Views\\Usuario\\ConsultarUsuarios.cshtml",
-              "ToolTip": "C:\\Users\\josep\\OneDrive\\Documentos\\GitHub\\ProyectoPrograAvanzada\\proyectoGrupo#1\\proyectoGrupo#1\\Views\\Usuario\\ConsultarUsuarios.cshtml",
-              "RelativeToolTip": "proyectoGrupo#1\\Views\\Usuario\\ConsultarUsuarios.cshtml",
-              "ViewState": "AQIAABsAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\FIDELITAS\\SEPTIMO CUATRI\\PROGRA AVANZADA\\ProyectoPrograAvanzada\\proyectoGrupo#1\\proyectoGrupo#1\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "proyectoGrupo#1\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\FIDELITAS\\SEPTIMO CUATRI\\PROGRA AVANZADA\\ProyectoPrograAvanzada\\proyectoGrupo#1\\proyectoGrupo#1\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "proyectoGrupo#1\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAAACQAAABJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-07-26T14:05:53.615Z",
+              "WhenOpened": "2024-07-26T23:56:54.787Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "IniciarSesion.cshtml",
-              "DocumentMoniker": "C:\\Users\\josep\\OneDrive\\Documentos\\GitHub\\ProyectoPrograAvanzada\\proyectoGrupo#1\\proyectoGrupo#1\\Views\\Login\\IniciarSesion.cshtml",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\FIDELITAS\\SEPTIMO CUATRI\\PROGRA AVANZADA\\ProyectoPrograAvanzada\\proyectoGrupo#1\\proyectoGrupo#1\\Views\\Login\\IniciarSesion.cshtml",
               "RelativeDocumentMoniker": "proyectoGrupo#1\\Views\\Login\\IniciarSesion.cshtml",
-              "ToolTip": "C:\\Users\\josep\\OneDrive\\Documentos\\GitHub\\ProyectoPrograAvanzada\\proyectoGrupo#1\\proyectoGrupo#1\\Views\\Login\\IniciarSesion.cshtml",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\FIDELITAS\\SEPTIMO CUATRI\\PROGRA AVANZADA\\ProyectoPrograAvanzada\\proyectoGrupo#1\\proyectoGrupo#1\\Views\\Login\\IniciarSesion.cshtml",
               "RelativeToolTip": "proyectoGrupo#1\\Views\\Login\\IniciarSesion.cshtml",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-07-26T14:02:45.029Z",
+              "WhenOpened": "2024-07-26T23:56:30.259Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "VerProductos.cshtml",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\FIDELITAS\\SEPTIMO CUATRI\\PROGRA AVANZADA\\ProyectoPrograAvanzada\\proyectoGrupo#1\\proyectoGrupo#1\\Views\\Producto\\VerProductos.cshtml",
+              "RelativeDocumentMoniker": "proyectoGrupo#1\\Views\\Producto\\VerProductos.cshtml",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\FIDELITAS\\SEPTIMO CUATRI\\PROGRA AVANZADA\\ProyectoPrograAvanzada\\proyectoGrupo#1\\proyectoGrupo#1\\Views\\Producto\\VerProductos.cshtml",
+              "RelativeToolTip": "proyectoGrupo#1\\Views\\Producto\\VerProductos.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-07-26T23:52:01.183Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "UsuarioModel.cs",
-              "DocumentMoniker": "C:\\Users\\josep\\OneDrive\\Documentos\\GitHub\\ProyectoPrograAvanzada\\proyectoGrupo#1\\proyectoGrupo#1\\Models\\UsuarioModel.cs",
-              "RelativeDocumentMoniker": "proyectoGrupo#1\\Models\\UsuarioModel.cs",
-              "ToolTip": "C:\\Users\\josep\\OneDrive\\Documentos\\GitHub\\ProyectoPrograAvanzada\\proyectoGrupo#1\\proyectoGrupo#1\\Models\\UsuarioModel.cs",
-              "RelativeToolTip": "proyectoGrupo#1\\Models\\UsuarioModel.cs",
-              "ViewState": "AQIAACwAAAAAAAAAAAAgwAAAAAAAAAAA",
+              "Title": "VerCelulares.cshtml",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\FIDELITAS\\SEPTIMO CUATRI\\PROGRA AVANZADA\\ProyectoPrograAvanzada\\proyectoGrupo#1\\proyectoGrupo#1\\Views\\Producto\\VerCelulares.cshtml",
+              "RelativeDocumentMoniker": "proyectoGrupo#1\\Views\\Producto\\VerCelulares.cshtml",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\FIDELITAS\\SEPTIMO CUATRI\\PROGRA AVANZADA\\ProyectoPrograAvanzada\\proyectoGrupo#1\\proyectoGrupo#1\\Views\\Producto\\VerCelulares.cshtml",
+              "RelativeToolTip": "proyectoGrupo#1\\Views\\Producto\\VerCelulares.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-07-26T23:51:54.418Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ProductoController.cs",
+              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\FIDELITAS\\SEPTIMO CUATRI\\PROGRA AVANZADA\\ProyectoPrograAvanzada\\proyectoGrupo#1\\proyectoGrupo#1\\Controllers\\ProductoController.cs",
+              "RelativeDocumentMoniker": "proyectoGrupo#1\\Controllers\\ProductoController.cs",
+              "ToolTip": "C:\\Users\\USER\\Desktop\\FIDELITAS\\SEPTIMO CUATRI\\PROGRA AVANZADA\\ProyectoPrograAvanzada\\proyectoGrupo#1\\proyectoGrupo#1\\Controllers\\ProductoController.cs",
+              "RelativeToolTip": "proyectoGrupo#1\\Controllers\\ProductoController.cs",
+              "ViewState": "AQIAACkAAAAAAAAAAAAwwDwAAAArAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-26T14:01:10.236Z",
+              "WhenOpened": "2024-07-26T23:37:39.577Z",
               "EditorCaption": ""
             }
           ]

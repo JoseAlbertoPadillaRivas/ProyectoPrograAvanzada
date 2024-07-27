@@ -97,6 +97,22 @@
     <FunctionImport Name="CambiarEstadoUsuario">
       <Parameter Name="id" Mode="In" Type="Int32" />
     </FunctionImport>
+    <FunctionImport Name="RegistrarProducto">
+      <Parameter Name="Nombre" Mode="In" Type="String" />
+      <Parameter Name="Precio" Mode="In" Type="Int32" />
+      <Parameter Name="Cantidad" Mode="In" Type="Int32" />
+      <Parameter Name="Categoria" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="EditarProducto">
+      <Parameter Name="idProducto" Mode="In" Type="Int32" />
+      <Parameter Name="Nombre" Mode="In" Type="String" />
+      <Parameter Name="Precio" Mode="In" Type="Int32" />
+      <Parameter Name="Cantidad" Mode="In" Type="Int32" />
+      <Parameter Name="Categoria" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="NuevaCategoria">
+      <Parameter Name="Nombre" Mode="In" Type="String" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="IniciarSesion_Result">
     <Property Type="Int32" Name="id" Nullable="false" />

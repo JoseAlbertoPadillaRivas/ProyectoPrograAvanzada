@@ -1,0 +1,49 @@
+﻿@model proyectoGrupo_1.Entidades.Producto
+@{
+    ViewBag.Title = "RegistrarProducto";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="card">
+    <div class="card-body register-card-body">
+        <p class="login-box-msg">RegistrarProducto</p>
+
+        @if (ViewBag.msj != null)
+        {
+            <div class="alert alert-info" role="alert" style="text-align:center">
+                @ViewBag.msj
+            </div>
+        }
+
+        @using (Html.BeginForm("RegistrarProducto", "Producto"))
+        {
+            <div class="input-group mb-3">
+                @Html.TextBoxFor(m => m.Nombre, new { @type = "text", @class = "form-control", @placeholder = "Nombre"})
+                <br />
+            </div>
+            <div class="input-group mb-3">
+                @Html.TextBoxFor(m => m.Nombre, new { @type = "number", @class = "form-control", @placeholder = "Cantidad"})   
+                <br />
+            </div>
+            <div class="input-group mb-3">
+                @Html.TextBoxFor(m => m.Precio, new { @type = "number", @class = "form-control", @placeholder = "Precio" })                
+            </div>
+            <div class="input-group mb-3">
+                @Html.TextBoxFor(m => m.idCategoria, new { @type = "number", @class = "form-control", @placeholder = "Categoria" })                
+            </div>
+            <div class="row">
+                <div class="col-8">
+                </div>
+                <div class="col-4">
+                    <button type="submit" class="btn btn-primary btn-block">Procesar</button>
+                </div>
+            </div>
+        }
+
+        <a href="@Url.Action("VerProductos","Producto")" class="text-center">Atras</a>
+    </div>
+</div>
+
+
+

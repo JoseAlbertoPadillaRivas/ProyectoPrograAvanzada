@@ -33,9 +33,10 @@
                             <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                         </li>
                         <li><a href="@Url.Action("Home","Login")">Home</a></li>
-                        <li><a href="@Url.Action("","")">Celulares</a></li>
-                        <li><a href="@Url.Action("","")">Accesorios</a></li>
-                        <li><a href="@Url.Action("","")">Computadoras</a></li>
+                        <li><a href="@Url.Action("VerProductos","Producto")">Productos</a></li>
+                        <li><a href="@Url.Action("VerCelulares","Producto")">Celulares</a></li>
+                        <li><a href="@Url.Action("VerAccesorios","Producto")">Accesorios</a></li>
+                        <li><a href="@Url.Action("VerComputadoras","Producto")">Computadoras</a></li>
                         <li class="nav-item dropdown">
                             <a class="nav-link" data-toggle="dropdown" href="#">
                                 @Session["NombreUsuario"].ToString()

@@ -1,0 +1,62 @@
+﻿@model proyectoGrupo_1.BaseDatos.tProducto
+@{
+    ViewBag.Title = "EditarProducto";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>EditarProducto</h2>
+
+<div class="row">
+    <div class="col-3">
+    </div>
+    <div class="col-6">
+
+        @if (ViewBag.msj != null)
+        {
+            <div class="alert alert-info" role="alert" style="text-align:center">
+                @ViewBag.msj
+            </div>
+        }
+
+        @using (Html.BeginForm("EditarProducto", "Producto"))
+        {
+            @Html.HiddenFor(m => m.id)
+
+            @Html.Label("Nombre")
+            <div class="input-group mb-3">
+                @Html.TextBoxFor(m => m.Nombre, new { @type = "text", @class = "form-control", @placeholder = "Nombre" })
+            </div>
+            <br />
+
+            @Html.Label("Precio")
+            <div class="input-group mb-3">
+                @Html.TextBoxFor(m => m.Precio, new { @type = "number", @class = "form-control", @placeholder = "Precio" })
+            </div>
+            <br />
+
+            @Html.Label("Cantidad")
+            <div class="input-group mb-3">
+                @Html.TextBoxFor(m => m.Cantidad, new { @type = "number", @class = "form-control", @placeholder = "Cantidad" })
+            </div>
+            <br />
+
+            @Html.Label("Categoria")
+            <div class="input-group mb-3">
+                @Html.DropDownListFor(m => m.idCategoria, ViewBag.categoria as List<SelectListItem>, new { @class = "form-control" })
+            </div>
+            <br />
+
+            
+            <div class="row">
+                <div class="col-sm-6 col-md-4 col-lg-4">
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    <button type="submit" class="btn btn-primary btn-block" style="width:100%">Procesar</button>
+                </div>
+            </div>
+
+        } 
+    </div>
+    <div class="col-3">
+    </div>
+</div> 
