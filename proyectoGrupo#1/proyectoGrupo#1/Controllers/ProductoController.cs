@@ -94,6 +94,20 @@ namespace proyectoGrupo_1.Controllers
             }
         }
 
+        [HttpPost]
+        public ActionResult EliminarProducto(Producto prod)
+        {
+            var respuesta = prodM.EliminarProducto(prod);
+
+            if (respuesta)
+                return RedirectToAction("VerProductos", "Producto");
+            else
+            {
+                ViewBag.msj = "No se ha eliminado el producto";
+                return View();
+            }
+        }
+
 
 
     }

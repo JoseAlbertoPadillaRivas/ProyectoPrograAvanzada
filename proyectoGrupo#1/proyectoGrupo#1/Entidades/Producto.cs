@@ -12,6 +12,7 @@ namespace proyectoGrupo_1.Entidades
         public int Cantidad { get; set; }
         public int Precio{ get; set; }
         public int idCategoria { get; set; }
+        public string Imagen { get; set; }
 
 
 

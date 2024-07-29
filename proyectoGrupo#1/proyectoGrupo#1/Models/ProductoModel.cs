@@ -15,7 +15,7 @@ namespace proyectoGrupo_1.Models
 
             using (var context = new proyectoEntities())
             {
-                rowsAffected = context.RegistrarProducto(prod.Nombre, prod.Precio, prod.Cantidad, prod.idCategoria);
+                rowsAffected = context.RegistrarProducto(prod.Nombre, prod.Precio, prod.Cantidad, prod.idCategoria, prod.Imagen);
             }
 
             return (rowsAffected > 0 ? true : false);
@@ -79,7 +79,19 @@ namespace proyectoGrupo_1.Models
 
             using (var context = new proyectoEntities())
             {
-                rowsAffected = context.EditarProducto(prod.id, prod.Nombre, prod.Precio, prod.Cantidad, prod.idCategoria);
+                rowsAffected = context.EditarProducto(prod.id, prod.Nombre, prod.Precio, prod.Cantidad, prod.idCategoria,prod.Imagen);
+            }
+
+            return (rowsAffected > 0 ? true : false);
+        }
+
+        public bool EliminarProducto(Producto prod)
+        {
+            var rowsAffected = 0;
+
+            using (var context = new proyectoEntities())
+            {
+                rowsAffected = context.EliminarProducto(prod.id);
             }
 
             return (rowsAffected > 0 ? true : false);

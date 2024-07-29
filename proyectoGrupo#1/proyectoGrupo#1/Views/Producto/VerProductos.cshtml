@@ -4,7 +4,11 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>VerProductos</h2>
+<h2>Productos</h2>
+
+<a class="btn btn-primary mb-2" href="@Url.Action("RegistrarProducto","Producto")"> Nuevo Producto    
+</a>
+<br />
 
 
 <div class="row">
@@ -23,7 +27,9 @@
                     <th>Nombre</th>
                     <th>Precio</th>
                     <th>Cantidad</th>
-                    <th>Editar Producto</th>                    
+                    <th>Editar Producto</th>
+                    <th>Eliminar Producto</th>
+
                 </tr>
             </thead>
             <tbody>
@@ -32,20 +38,57 @@
                     <tr>
                         <td>@item.Nombre</td>
                         <td>@item.Precio</td>
-                        <td>@item.Cantidad</td>                        
-                        
+                        <td>@item.Cantidad</td>
+
                         <td style="text-align:center">
                             <a class="btn btn-primary" href="@Url.Action("EditarProducto","Producto", new { id = item.id })">
-                                <i class="fa fa-pencil"></i>
+                               Editar
                             </a>
                         </td>
+                        <td style="text-align:center">
+                            <button type="button" class="btn btn-primary AbrirModal" data-toggle="modal" data-target="#ModalProductos"
+                                    data-id="@item.id" data-name="@item.Nombre">
+                               Eliminar
+                            </button>
+                        </td>
                     </tr>
-                }
+}
             </tbody>
         </table>
 
     </div>
 </div>
+
+<div class="modal fade" id="ModalProductos" data-backdrop="static" data-keyboard="false" tabindex="-1"
+     aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Eliminar Producto</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            @using (Html.BeginForm("EliminarProducto", "Producto"))
+            {
+                <div class="modal-body">
+                    @Html.Hidden("id", "")
+                    ¿Desea eliminar:  <label id="Nombre"></label>?
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Procesar</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<script src="~/root/plugins/jquery/jquery.min.js"></script>
+<script>
+$(document).on("click", ".AbrirModal", function () {
+    $("#id").val($(this).attr('data-id'));
+    $("#Nombre").text($(this).attr('data-name'));
+});</script>
 
 
 

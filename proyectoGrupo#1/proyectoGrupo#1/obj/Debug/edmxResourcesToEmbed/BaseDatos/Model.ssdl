@@ -16,6 +16,7 @@
     <Property Name="Precio" Type="int" Nullable="false" />
     <Property Name="Cantidad" Type="int" Nullable="false" />
     <Property Name="idCategoria" Type="int" Nullable="false" />
+    <Property Name="Imagen" Type="varchar" MaxLength="500" />
   </EntityType>
   <EntityType Name="tRol">
     <Key>
@@ -76,6 +77,10 @@
     <Parameter Name="Precio" Type="int" Mode="In" />
     <Parameter Name="Cantidad" Type="int" Mode="In" />
     <Parameter Name="Categoria" Type="int" Mode="In" />
+    <Parameter Name="Imagen" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="EliminarProducto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idProducto" Type="int" Mode="In" />
   </Function>
   <Function Name="IniciarSesion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Correo" Type="varchar" Mode="In" />
@@ -89,6 +94,7 @@
     <Parameter Name="Precio" Type="int" Mode="In" />
     <Parameter Name="Cantidad" Type="int" Mode="In" />
     <Parameter Name="Categoria" Type="int" Mode="In" />
+    <Parameter Name="Imagen" Type="varchar" Mode="In" />
   </Function>
   <Function Name="RegistrarUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Cedula" Type="varchar" Mode="In" />

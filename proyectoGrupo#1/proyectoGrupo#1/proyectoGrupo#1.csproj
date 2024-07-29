@@ -213,6 +213,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="root\dist\css\adminlte.min.css" />
     <Content Include="root\dist\css\alt\adminlte.components.css" />
     <Content Include="root\dist\css\alt\adminlte.components.css.map" />
     <Content Include="root\dist\css\alt\adminlte.components.min.css" />

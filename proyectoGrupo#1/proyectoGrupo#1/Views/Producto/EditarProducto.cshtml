@@ -42,11 +42,16 @@
 
             @Html.Label("Categoria")
             <div class="input-group mb-3">
-                @Html.DropDownListFor(m => m.idCategoria, ViewBag.categoria as List<SelectListItem>, new { @class = "form-control" })
+                @Html.TextBoxFor(m => m.idCategoria, new { @type = "number", @class = "form-control", @placeholder = "Categoria" })
+            </div>
+            <br />
+            @Html.Label("Imagen")
+            <div class="input-group mb-3">
+                @Html.TextBoxFor(m => m.Imagen, new { @type = "text", @class = "form-control", @placeholder = "Imagen" })
             </div>
             <br />
 
-            
+
             <div class="row">
                 <div class="col-sm-6 col-md-4 col-lg-4">
                 </div>
@@ -55,7 +60,7 @@
                 </div>
             </div>
 
-        } 
+        }
     </div>
     <div class="col-3">
     </div>

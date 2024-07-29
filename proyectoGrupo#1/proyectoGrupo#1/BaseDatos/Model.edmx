@@ -21,6 +21,7 @@
           <Property Name="Precio" Type="int" Nullable="false" />
           <Property Name="Cantidad" Type="int" Nullable="false" />
           <Property Name="idCategoria" Type="int" Nullable="false" />
+          <Property Name="Imagen" Type="varchar" MaxLength="500" />
         </EntityType>
         <EntityType Name="tRol">
           <Key>
@@ -81,6 +82,10 @@
           <Parameter Name="Precio" Type="int" Mode="In" />
           <Parameter Name="Cantidad" Type="int" Mode="In" />
           <Parameter Name="Categoria" Type="int" Mode="In" />
+          <Parameter Name="Imagen" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="EliminarProducto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idProducto" Type="int" Mode="In" />
         </Function>
         <Function Name="IniciarSesion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Correo" Type="varchar" Mode="In" />
@@ -94,6 +99,7 @@
           <Parameter Name="Precio" Type="int" Mode="In" />
           <Parameter Name="Cantidad" Type="int" Mode="In" />
           <Parameter Name="Categoria" Type="int" Mode="In" />
+          <Parameter Name="Imagen" Type="varchar" Mode="In" />
         </Function>
         <Function Name="RegistrarUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Cedula" Type="varchar" Mode="In" />
@@ -137,6 +143,7 @@
           <Property Name="Cantidad" Type="Int32" Nullable="false" />
           <Property Name="idCategoria" Type="Int32" Nullable="false" />
           <NavigationProperty Name="tCategoria" Relationship="Self.fk_idCategoria" FromRole="tProducto" ToRole="tCategoria" />
+          <Property Name="Imagen" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="tRol">
           <Key>
@@ -221,6 +228,7 @@
             <Parameter Name="Precio" Mode="In" Type="Int32" />
             <Parameter Name="Cantidad" Mode="In" Type="Int32" />
             <Parameter Name="Categoria" Mode="In" Type="Int32" />
+            <Parameter Name="Imagen" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="EditarProducto">
             <Parameter Name="idProducto" Mode="In" Type="Int32" />
@@ -228,9 +236,13 @@
             <Parameter Name="Precio" Mode="In" Type="Int32" />
             <Parameter Name="Cantidad" Mode="In" Type="Int32" />
             <Parameter Name="Categoria" Mode="In" Type="Int32" />
+            <Parameter Name="Imagen" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="NuevaCategoria">
-            <Parameter Name="Nombre" Mode="In" Type="String" />
+          <Parameter Name="Nombre" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="EliminarProducto">
+          <Parameter Name="idProducto" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="IniciarSesion_Result">
@@ -258,6 +270,7 @@
           <EntitySetMapping Name="tProducto">
             <EntityTypeMapping TypeName="proyectoModel.tProducto">
               <MappingFragment StoreEntitySet="tProducto">
+                <ScalarProperty Name="Imagen" ColumnName="Imagen" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="Precio" ColumnName="Precio" />
@@ -305,6 +318,7 @@
           <FunctionImportMapping FunctionImportName="RegistrarProducto" FunctionName="proyectoModel.Store.RegistrarProducto" />
           <FunctionImportMapping FunctionImportName="EditarProducto" FunctionName="proyectoModel.Store.EditarProducto" />
           <FunctionImportMapping FunctionImportName="NuevaCategoria" FunctionName="proyectoModel.Store.NuevaCategoria" />
+          <FunctionImportMapping FunctionImportName="EliminarProducto" FunctionName="proyectoModel.Store.EliminarProducto" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

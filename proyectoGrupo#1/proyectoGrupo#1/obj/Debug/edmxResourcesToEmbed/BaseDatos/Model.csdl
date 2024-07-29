@@ -18,6 +18,7 @@
     <Property Name="Cantidad" Type="Int32" Nullable="false" />
     <Property Name="idCategoria" Type="Int32" Nullable="false" />
     <NavigationProperty Name="tCategoria" Relationship="Self.fk_idCategoria" FromRole="tProducto" ToRole="tCategoria" />
+    <Property Name="Imagen" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="tRol">
     <Key>
@@ -102,6 +103,7 @@
       <Parameter Name="Precio" Mode="In" Type="Int32" />
       <Parameter Name="Cantidad" Mode="In" Type="Int32" />
       <Parameter Name="Categoria" Mode="In" Type="Int32" />
+      <Parameter Name="Imagen" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="EditarProducto">
       <Parameter Name="idProducto" Mode="In" Type="Int32" />
@@ -109,9 +111,13 @@
       <Parameter Name="Precio" Mode="In" Type="Int32" />
       <Parameter Name="Cantidad" Mode="In" Type="Int32" />
       <Parameter Name="Categoria" Mode="In" Type="Int32" />
+      <Parameter Name="Imagen" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="NuevaCategoria">
       <Parameter Name="Nombre" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="EliminarProducto">
+      <Parameter Name="idProducto" Mode="In" Type="Int32" />
     </FunctionImport>
   </EntityContainer>
   <ComplexType Name="IniciarSesion_Result">

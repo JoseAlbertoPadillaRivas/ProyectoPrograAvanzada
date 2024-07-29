@@ -100,7 +100,7 @@ namespace proyectoGrupo_1.BaseDatos
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("CambiarEstadoUsuario", idParameter);
         }
     
-        public virtual int RegistrarProducto(string nombre, Nullable<int> precio, Nullable<int> cantidad, Nullable<int> categoria)
+        public virtual int RegistrarProducto(string nombre, Nullable<int> precio, Nullable<int> cantidad, Nullable<int> categoria, string imagen)
         {
             var nombreParameter = nombre != null ?
                 new ObjectParameter("Nombre", nombre) :
@@ -118,10 +118,14 @@ namespace proyectoGrupo_1.BaseDatos
                 new ObjectParameter("Categoria", categoria) :
                 new ObjectParameter("Categoria", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("RegistrarProducto", nombreParameter, precioParameter, cantidadParameter, categoriaParameter);
+            var imagenParameter = imagen != null ?
+                new ObjectParameter("Imagen", imagen) :
+                new ObjectParameter("Imagen", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("RegistrarProducto", nombreParameter, precioParameter, cantidadParameter, categoriaParameter, imagenParameter);
         }
     
-        public virtual int EditarProducto(Nullable<int> idProducto, string nombre, Nullable<int> precio, Nullable<int> cantidad, Nullable<int> categoria)
+        public virtual int EditarProducto(Nullable<int> idProducto, string nombre, Nullable<int> precio, Nullable<int> cantidad, Nullable<int> categoria, string imagen)
         {
             var idProductoParameter = idProducto.HasValue ?
                 new ObjectParameter("idProducto", idProducto) :
@@ -143,7 +147,11 @@ namespace proyectoGrupo_1.BaseDatos
                 new ObjectParameter("Categoria", categoria) :
                 new ObjectParameter("Categoria", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("EditarProducto", idProductoParameter, nombreParameter, precioParameter, cantidadParameter, categoriaParameter);
+            var imagenParameter = imagen != null ?
+                new ObjectParameter("Imagen", imagen) :
+                new ObjectParameter("Imagen", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("EditarProducto", idProductoParameter, nombreParameter, precioParameter, cantidadParameter, categoriaParameter, imagenParameter);
         }
     
         public virtual int NuevaCategoria(string nombre)
@@ -153,6 +161,15 @@ namespace proyectoGrupo_1.BaseDatos
                 new ObjectParameter("Nombre", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("NuevaCategoria", nombreParameter);
+        }
+    
+        public virtual int EliminarProducto(Nullable<int> idProducto)
+        {
+            var idProductoParameter = idProducto.HasValue ?
+                new ObjectParameter("idProducto", idProducto) :
+                new ObjectParameter("idProducto", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("EliminarProducto", idProductoParameter);
         }
     }
 }

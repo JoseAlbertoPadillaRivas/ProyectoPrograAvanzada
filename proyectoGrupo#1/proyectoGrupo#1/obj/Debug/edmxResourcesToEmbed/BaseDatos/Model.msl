@@ -12,6 +12,7 @@
     <EntitySetMapping Name="tProducto">
       <EntityTypeMapping TypeName="proyectoModel.tProducto">
         <MappingFragment StoreEntitySet="tProducto">
+          <ScalarProperty Name="Imagen" ColumnName="Imagen" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
           <ScalarProperty Name="Precio" ColumnName="Precio" />
@@ -59,5 +60,6 @@
     <FunctionImportMapping FunctionImportName="RegistrarProducto" FunctionName="proyectoModel.Store.RegistrarProducto" />
     <FunctionImportMapping FunctionImportName="EditarProducto" FunctionName="proyectoModel.Store.EditarProducto" />
     <FunctionImportMapping FunctionImportName="NuevaCategoria" FunctionName="proyectoModel.Store.NuevaCategoria" />
+    <FunctionImportMapping FunctionImportName="EliminarProducto" FunctionName="proyectoModel.Store.EliminarProducto" />
   </EntityContainerMapping>
 </Mapping>
