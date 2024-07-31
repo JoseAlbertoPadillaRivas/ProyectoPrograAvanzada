@@ -9,24 +9,34 @@ using System.Web.Mvc;
 
 namespace proyectoGrupo_1.Controllers
 {
+    [Filtro]
     public class ProductoController : Controller
     {
         ProductoModel prodM = new ProductoModel();
         CategoriaModel catM = new CategoriaModel();
 
+        [FiltroAdmin]
         [HttpGet]
         public ActionResult RegistrarProducto()
         {
             return View();
         }
-
+        [FiltroAdmin]
         [HttpPost]
         public ActionResult RegistrarProducto(Producto prod)
         {
 
             var respuesta = prodM.RegistrarProducto(prod);
+            //var categoria = catM.ConsultarCategorias();
+
+            //List<SelectListItem> lstCategoria = new List<SelectListItem>();
+            //foreach (var item in categoria)
+            //{
+            //    lstCategoria.Add(new SelectListItem { Value = item.idCategoria.ToString(), Text = item.Nombre });
+            //}
 
             if (respuesta)
+
                 return RedirectToAction("VerProductos", "Producto");
             else
             {
@@ -64,11 +74,12 @@ namespace proyectoGrupo_1.Controllers
             return View(respuesta);
         }
 
+        [FiltroAdmin]
         [HttpGet]
         public ActionResult EditarProducto(int id)
         {
             var respuesta = prodM.ConsultarProducto(id);
-            var categoria = catM.ConsultarCat();
+            var categoria = catM.ConsultarCategorias();
 
             List<SelectListItem> lstCategoria = new List<SelectListItem>();
             foreach (var item in categoria)
@@ -80,6 +91,7 @@ namespace proyectoGrupo_1.Controllers
             return View(respuesta);
         }
 
+        [FiltroAdmin]
         [HttpPost]
         public ActionResult EditarProducto(Producto prod)
         {
@@ -94,6 +106,7 @@ namespace proyectoGrupo_1.Controllers
             }
         }
 
+        [FiltroAdmin]
         [HttpPost]
         public ActionResult EliminarProducto(Producto prod)
         {

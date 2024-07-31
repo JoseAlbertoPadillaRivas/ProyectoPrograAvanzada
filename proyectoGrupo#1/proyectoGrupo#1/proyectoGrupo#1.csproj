@@ -167,10 +167,12 @@
     <Compile Include="BaseDatos\tUsuario.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\CategoriaController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\PerfilController.cs" />
     <Compile Include="Controllers\ProductoController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
+    <Compile Include="Entidades\Categoria.cs" />
     <Compile Include="Entidades\Producto.cs" />
     <Compile Include="Entidades\Usuario.cs" />
     <Compile Include="Global.asax.cs">
@@ -186,8 +188,8 @@
   <ItemGroup>
     <Content Include="BaseDatos\Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Model.Context.cs</LastGenOutput>
       <DependentUpon>Model.edmx</DependentUpon>
+      <LastGenOutput>Model.Context.cs</LastGenOutput>
     </Content>
     <Content Include="BaseDatos\Model.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -357,6 +359,9 @@
     <Content Include="Views\Producto\VerCelulares.cshtml" />
     <Content Include="Views\Producto\VerAccesorios.cshtml" />
     <Content Include="Views\Producto\VerComputadoras.cshtml" />
+    <Content Include="Views\Categoria\ConsultarCategorias.cshtml" />
+    <Content Include="Views\Categoria\RegistrarCategoria.cshtml" />
+    <Content Include="Views\Categoria\EditarCategoria.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

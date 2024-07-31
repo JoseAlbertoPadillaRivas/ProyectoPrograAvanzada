@@ -23,7 +23,7 @@
                 <br />
             </div>
             <div class="input-group mb-3">
-                @Html.TextBoxFor(m => m.Nombre, new { @type = "number", @class = "form-control", @placeholder = "Cantidad" })
+                @Html.TextBoxFor(m => m.Cantidad, new { @type = "number", @class = "form-control", @placeholder = "Cantidad" })
                 <br />
             </div>
             <div class="input-group mb-3">
@@ -38,6 +38,12 @@
                 @Html.TextBoxFor(m => m.Imagen, new { @type = "text", @class = "form-control", @placeholder = "Imagen" })
                 <br />
             </div>
+
+            @*@Html.Label("Categoria")
+            <div class="input-group mb-3">
+                @Html.DropDownListFor(m => m.idCategoria, ViewBag.Categoria as List<SelectListItem>, new { @class = "form-control" })
+            </div>*@
+
             <div class="row">
                 <div class="col-8">
                 </div>

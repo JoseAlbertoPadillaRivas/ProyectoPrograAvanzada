@@ -1,0 +1,42 @@
+﻿@model proyectoGrupo_1.BaseDatos.tCategoria
+@{
+    ViewBag.Title = "EditarCategoria";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>EditarCategoria</h2>
+
+<div class="row">
+    <div class="col-3">
+    </div>
+    <div class="col-6">
+
+        @if (ViewBag.msj != null)
+        {
+            <div class="alert alert-info" role="alert" style="text-align:center">
+                @ViewBag.msj
+            </div>
+        }
+
+        @using (Html.BeginForm("EditarCategoria", "Categoria"))
+        {
+            @Html.HiddenFor(m => m.idCategoria)
+
+            @Html.Label("Nombre")
+            <div class="input-group mb-3">
+                @Html.TextBoxFor(m => m.Nombre, new { @type = "text", @class = "form-control", @placeholder = "Nombre" })
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-sm-6 col-md-4 col-lg-4">
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    <button type="submit" class="btn btn-primary btn-block" style="width:100%">Procesar</button>
+                </div>
+            </div>
+
+        }
+    </div>
+    <div class="col-3">
+    </div>
+</div>

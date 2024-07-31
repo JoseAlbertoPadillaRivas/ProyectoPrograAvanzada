@@ -1,0 +1,37 @@
+﻿@model proyectoGrupo_1.Entidades.Categoria
+@{
+    ViewBag.Title = "RegistrarCategoria";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="card">
+    <div class="card-body register-card-body">
+        <p class="login-box-msg">Registrar Categoria</p>
+
+        @if (ViewBag.msj != null)
+        {
+            <div class="alert alert-info" role="alert" style="text-align:center">
+                @ViewBag.msj
+            </div>
+        }
+
+        @using (Html.BeginForm("RegistrarCategoria", "Categoria"))
+        {
+            <div class="input-group mb-3">
+                @Html.TextBoxFor(m => m.Nombre, new { @type = "text", @class = "form-control", @placeholder = "Nombre" })
+                <br />
+            </div>
+            <div class="row">
+                <div class="col-8">
+                </div>
+                <div class="col-4">
+                    <button type="submit" class="btn btn-primary btn-block">Procesar</button>
+                </div>
+            </div>
+        }
+
+        <a href="@Url.Action("ConsultarCategorias","Categoria")" class="text-center">Atras</a>
+    </div>
+</div>
+

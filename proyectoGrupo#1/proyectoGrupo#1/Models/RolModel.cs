@@ -10,7 +10,7 @@ namespace proyectoGrupo_1.Models
     {
         public List<tRol> ConsultarRoles()
         {
-            using (var context = new proyectoEntities())
+            using (var context = new proyectoEntities1())
             {
                 return (from x in context.tRol
                         select x).ToList();
