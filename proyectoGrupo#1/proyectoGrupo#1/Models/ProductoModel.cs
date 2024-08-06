@@ -47,7 +47,7 @@ namespace proyectoGrupo_1.Models
             {
 
                 return (from x in context.tProducto
-                        where x.idCategoria == 2
+                        where x.idCategoria == 3
                         select x).ToList();
             }
         }
@@ -58,7 +58,7 @@ namespace proyectoGrupo_1.Models
             {
 
                 return (from x in context.tProducto
-                        where x.idCategoria == 3
+                        where x.idCategoria == 4
                         select x).ToList();
             }
         }

@@ -71,10 +71,6 @@
   <Function Name="CambiarEstadoUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="id" Type="int" Mode="In" />
   </Function>
-  <Function Name="EditarCategoria" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="idCategoria" Type="int" Mode="In" />
-    <Parameter Name="Nombre" Type="varchar" Mode="In" />
-  </Function>
   <Function Name="EditarProducto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="idProducto" Type="int" Mode="In" />
     <Parameter Name="Nombre" Type="varchar" Mode="In" />
@@ -82,9 +78,6 @@
     <Parameter Name="Cantidad" Type="int" Mode="In" />
     <Parameter Name="Categoria" Type="int" Mode="In" />
     <Parameter Name="Imagen" Type="varchar" Mode="In" />
-  </Function>
-  <Function Name="EliminarCategoria" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="idCategoria" Type="int" Mode="In" />
   </Function>
   <Function Name="EliminarProducto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="idProducto" Type="int" Mode="In" />

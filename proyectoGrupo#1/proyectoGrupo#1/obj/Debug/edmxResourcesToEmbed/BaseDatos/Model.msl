@@ -61,7 +61,5 @@
     <FunctionImportMapping FunctionImportName="NuevaCategoria" FunctionName="proyectoModel.Store.NuevaCategoria" />
     <FunctionImportMapping FunctionImportName="RegistrarProducto" FunctionName="proyectoModel.Store.RegistrarProducto" />
     <FunctionImportMapping FunctionImportName="RegistrarUsuario" FunctionName="proyectoModel.Store.RegistrarUsuario" />
-    <FunctionImportMapping FunctionImportName="EditarCategoria" FunctionName="proyectoModel.Store.EditarCategoria" />
-    <FunctionImportMapping FunctionImportName="EliminarCategoria" FunctionName="proyectoModel.Store.EliminarCategoria" />
   </EntityContainerMapping>
 </Mapping>

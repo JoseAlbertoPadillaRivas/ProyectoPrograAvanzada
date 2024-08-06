@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="proyectoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="proyectoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="tCategoria">
           <Key>
             <PropertyRef Name="idCategoria" />
@@ -76,10 +76,6 @@
         <Function Name="CambiarEstadoUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id" Type="int" Mode="In" />
         </Function>
-        <Function Name="EditarCategoria" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="idCategoria" Type="int" Mode="In" />
-          <Parameter Name="Nombre" Type="varchar" Mode="In" />
-        </Function>
         <Function Name="EditarProducto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="idProducto" Type="int" Mode="In" />
           <Parameter Name="Nombre" Type="varchar" Mode="In" />
@@ -87,9 +83,6 @@
           <Parameter Name="Cantidad" Type="int" Mode="In" />
           <Parameter Name="Categoria" Type="int" Mode="In" />
           <Parameter Name="Imagen" Type="varchar" Mode="In" />
-        </Function>
-        <Function Name="EliminarCategoria" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="idCategoria" Type="int" Mode="In" />
         </Function>
         <Function Name="EliminarProducto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="idProducto" Type="int" Mode="In" />
@@ -128,7 +121,8 @@
             <End Role="tUsuario" EntitySet="tUsuario" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="proyectoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -218,7 +212,7 @@
             <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="CambiarEstadoUsuario">
-          <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="EditarProducto">
             <Parameter Name="idProducto" Mode="In" Type="Int32" />
@@ -229,14 +223,14 @@
             <Parameter Name="Imagen" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="EliminarProducto">
-          <Parameter Name="idProducto" Mode="In" Type="Int32" />
+            <Parameter Name="idProducto" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="IniciarSesion" ReturnType="Collection(proyectoModel.IniciarSesion_Result)">
             <Parameter Name="Correo" Mode="In" Type="String" />
             <Parameter Name="Contrasenna" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="NuevaCategoria">
-          <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="Nombre" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="RegistrarProducto">
             <Parameter Name="Nombre" Mode="In" Type="String" />
@@ -250,13 +244,6 @@
             <Parameter Name="Nombre" Mode="In" Type="String" />
             <Parameter Name="Correo" Mode="In" Type="String" />
             <Parameter Name="Contrasenna" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="EditarCategoria">
-            <Parameter Name="idCategoria" Mode="In" Type="Int32" />
-            <Parameter Name="Nombre" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="EliminarCategoria">
-            <Parameter Name="idCategoria" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="IniciarSesion_Result">
@@ -333,8 +320,6 @@
           <FunctionImportMapping FunctionImportName="NuevaCategoria" FunctionName="proyectoModel.Store.NuevaCategoria" />
           <FunctionImportMapping FunctionImportName="RegistrarProducto" FunctionName="proyectoModel.Store.RegistrarProducto" />
           <FunctionImportMapping FunctionImportName="RegistrarUsuario" FunctionName="proyectoModel.Store.RegistrarUsuario" />
-          <FunctionImportMapping FunctionImportName="EditarCategoria" FunctionName="proyectoModel.Store.EditarCategoria" />
-          <FunctionImportMapping FunctionImportName="EliminarCategoria" FunctionName="proyectoModel.Store.EliminarCategoria" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

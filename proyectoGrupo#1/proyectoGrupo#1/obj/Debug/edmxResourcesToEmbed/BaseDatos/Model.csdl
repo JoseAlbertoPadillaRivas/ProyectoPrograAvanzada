@@ -119,13 +119,6 @@
       <Parameter Name="Correo" Mode="In" Type="String" />
       <Parameter Name="Contrasenna" Mode="In" Type="String" />
     </FunctionImport>
-    <FunctionImport Name="EditarCategoria">
-      <Parameter Name="idCategoria" Mode="In" Type="Int32" />
-      <Parameter Name="Nombre" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="EliminarCategoria">
-      <Parameter Name="idCategoria" Mode="In" Type="Int32" />
-    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="IniciarSesion_Result">
     <Property Type="Int32" Name="id" Nullable="false" />

@@ -171,27 +171,5 @@ namespace proyectoGrupo_1.BaseDatos
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("RegistrarUsuario", cedulaParameter, nombreParameter, correoParameter, contrasennaParameter);
         }
-    
-        public virtual int EditarCategoria(Nullable<int> idCategoria, string nombre)
-        {
-            var idCategoriaParameter = idCategoria.HasValue ?
-                new ObjectParameter("idCategoria", idCategoria) :
-                new ObjectParameter("idCategoria", typeof(int));
-    
-            var nombreParameter = nombre != null ?
-                new ObjectParameter("Nombre", nombre) :
-                new ObjectParameter("Nombre", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("EditarCategoria", idCategoriaParameter, nombreParameter);
-        }
-    
-        public virtual int EliminarCategoria(Nullable<int> idCategoria)
-        {
-            var idCategoriaParameter = idCategoria.HasValue ?
-                new ObjectParameter("idCategoria", idCategoria) :
-                new ObjectParameter("idCategoria", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("EliminarCategoria", idCategoriaParameter);
-        }
     }
 }
