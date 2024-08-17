@@ -189,6 +189,9 @@
           <Parameter Name="Correo" Type="varchar" Mode="In" />
           <Parameter Name="Contrasenna" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="ValidarCantidadesProdcutos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
         <Function Name="ValidarUsuarioIdentificacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Cedula" Type="varchar" Mode="In" />
         </Function>
@@ -416,6 +419,9 @@
             <Parameter Name="id" Mode="In" Type="Int32" />
             <Parameter Name="idProducto" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="ValidarCantidadesProdcutos" ReturnType="Collection(proyectoModel.ValidarCantidadesProdcutos_Result)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="ConsultarCarrrito_Result">
           <Property Type="Int32" Name="idCarrito" Nullable="false" />
@@ -468,6 +474,11 @@
           <Property Name="Impuesto" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
           <Property Name="Total" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
         </EntityType>
+        <ComplexType Name="ValidarCantidadesProdcutos_Result">
+          <Property Type="Int32" Name="idProducto" Nullable="false" />
+          <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="Cantidades" Nullable="false" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -605,6 +616,15 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="EliminarProductoCarrito" FunctionName="proyectoModel.Store.EliminarProductoCarrito" />
+          <FunctionImportMapping FunctionImportName="ValidarCantidadesProdcutos" FunctionName="proyectoModel.Store.ValidarCantidadesProdcutos">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="proyectoModel.ValidarCantidadesProdcutos_Result">
+                <ScalarProperty Name="idProducto" ColumnName="idProducto" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Cantidades" ColumnName="Cantidades" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

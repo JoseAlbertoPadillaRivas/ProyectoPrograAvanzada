@@ -253,5 +253,14 @@ namespace proyectoGrupo_1.BaseDatos
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("EliminarProductoCarrito", idParameter, idProductoParameter);
         }
+    
+        public virtual ObjectResult<ValidarCantidadesProdcutos_Result> ValidarCantidadesProdcutos(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ValidarCantidadesProdcutos_Result>("ValidarCantidadesProdcutos", idParameter);
+        }
     }
 }

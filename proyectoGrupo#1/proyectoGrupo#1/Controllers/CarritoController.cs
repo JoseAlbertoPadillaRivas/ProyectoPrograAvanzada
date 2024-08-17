@@ -32,8 +32,37 @@ namespace proyectoGrupo_1.Controllers
         [HttpPost]
         public ActionResult PagarCarrito()
         {
-            carritoM.PagarCarrito();
-            return RedirectToAction("ConsultarCarrito", "Carrito");
+            var datos = carritoM.ValidarCantidadesProdcutos();
+
+            //Es porque no hay existencias inclumpliendose
+            if (datos.Count() <= 0)
+            {
+                carritoM.PagarCarrito();
+                return RedirectToAction("ConsultarCarrito", "Carrito");
+            }
+            else
+            {
+                var productosEnCarrito = carritoM.ConsultarCarrito();
+
+                //Se setea el objeto general que tiene el id del producto necesario del modal y la lista actual del carrito
+                Carrito carrito = new Carrito();
+                carrito.DatosCarrito = productosEnCarrito;
+
+                var mensaje = "";
+                var contador = 0;
+                foreach (var item in datos)
+                {
+                    if (contador != datos.Count() - 2)
+                        mensaje += item.Descripcion + ", ";
+                    else
+                        mensaje += item.Descripcion + " y ";
+
+                    contador += 1;
+                }
+
+                ViewBag.msj = "No se puede realizar el pago, los productos " + mensaje + "superan la cantidad en el inventario disponible";
+                return View("ConsultarCarrito", carrito);
+            }
         }
 
         [HttpPost]

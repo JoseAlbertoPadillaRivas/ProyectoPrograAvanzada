@@ -62,5 +62,14 @@ namespace proyectoGrupo_1.Models
             return (rowsAffected > 0 ? true : false);
         }
 
+        public List<ValidarCantidadesProdcutos_Result> ValidarCantidadesProdcutos()
+        {
+            using (var context = new proyectoEntities())
+            {
+                int id = int.Parse(HttpContext.Current.Session["idUsuario"].ToString());
+                return context.ValidarCantidadesProdcutos(id).ToList();
+            }
+        }
+
     }
 }

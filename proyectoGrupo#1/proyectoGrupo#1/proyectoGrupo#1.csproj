@@ -179,6 +179,9 @@
     <Compile Include="BaseDatos\tUsuario.cs">
       <DependentUpon>proyectoEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="BaseDatos\ValidarCantidadesProdcutos_Result.cs">
+      <DependentUpon>proyectoEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="BaseDatos\ValidarUsuarioIdentificacion_Result.cs">
       <DependentUpon>proyectoEntities.tt</DependentUpon>
     </Compile>
