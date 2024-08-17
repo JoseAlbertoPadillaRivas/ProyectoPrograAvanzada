@@ -34,7 +34,7 @@ namespace proyectoGrupo_1.Controllers
         {
             var datos = carritoM.ValidarCantidadesProdcutos();
 
-            //Es porque no hay existencias inclumpliendose
+
             if (datos.Count() <= 0)
             {
                 carritoM.PagarCarrito();
@@ -44,7 +44,7 @@ namespace proyectoGrupo_1.Controllers
             {
                 var productosEnCarrito = carritoM.ConsultarCarrito();
 
-                //Se setea el objeto general que tiene el id del producto necesario del modal y la lista actual del carrito
+
                 Carrito carrito = new Carrito();
                 carrito.DatosCarrito = productosEnCarrito;
 
