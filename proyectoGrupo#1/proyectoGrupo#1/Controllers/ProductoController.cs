@@ -78,9 +78,9 @@ namespace proyectoGrupo_1.Controllers
 
         [FiltroAdmin]
         [HttpGet]
-        public ActionResult EditarProducto(int id)
+        public ActionResult EditarProducto(int idProducto)
         {
-            var respuesta = prodM.ConsultarProducto(id);
+            var respuesta = prodM.ConsultarProducto(idProducto);
             var categoria = catM.ConsultarCategorias();
 
             List<SelectListItem> lstCategoria = new List<SelectListItem>();

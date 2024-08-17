@@ -65,12 +65,12 @@ namespace proyectoGrupo_1.Models
             }
         }
 
-        public tProducto ConsultarProducto(int id)
+        public tProducto ConsultarProducto(int idProducto)
         {
             using (var context = new proyectoEntities())
             {
                 return (from x in context.tProducto
-                        where x.idProducto == id
+                        where x.idProducto == idProducto
                         select x).FirstOrDefault();
             }
         }
@@ -81,7 +81,7 @@ namespace proyectoGrupo_1.Models
 
             using (var context = new proyectoEntities())
             {
-                rowsAffected = context.EditarProducto(prod.id, prod.Descripcion, prod.Precio, prod.Cantidad, prod.idCategoria,prod.Imagen);
+                rowsAffected = context.EditarProducto(prod.idProducto, prod.Descripcion, prod.Precio, prod.Cantidad, prod.idCategoria,prod.Imagen);
             }
 
             return (rowsAffected > 0 ? true : false);
@@ -93,7 +93,7 @@ namespace proyectoGrupo_1.Models
 
             using (var context = new proyectoEntities())
             {
-                rowsAffected = context.EliminarProducto(prod.id);
+                rowsAffected = context.EliminarProducto(prod.idProducto);
             }
 
             return (rowsAffected > 0 ? true : false);

@@ -42,7 +42,7 @@
                         <td>@item.Cantidad</td>
 
                         <td style="text-align:center">
-                            <a class="btn btn-primary" href="@Url.Action("EditarProducto","Producto", new { id = item.idProducto })">
+                            <a class="btn btn-primary" href="@Url.Action("EditarProducto","Producto", new { idProducto = item.idProducto })">
                                 <i class="fas fa-pen"></i>
                             </a>
                         </td>
@@ -73,7 +73,7 @@
             @using (Html.BeginForm("EliminarProducto", "Producto"))
             {
                 <div class="modal-body">
-                    @Html.Hidden("id", "")
+                    @Html.Hidden("idProducto", "")
                     ¿Desea eliminar:  <label id="Descripcion"></label>?
                 </div>
                 <div class="modal-footer">
