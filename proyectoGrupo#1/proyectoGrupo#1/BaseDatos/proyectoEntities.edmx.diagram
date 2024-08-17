@@ -4,8 +4,8 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="2934a6907e71445c8ac53c4c81f91268" Name="Diagram1">
-        <EntityTypeShape EntityType="proyectoModel.tCarrito" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
+      <Diagram DiagramId="39bc6b50389f45ab8a0a6f6966bd7200" Name="Diagram1" ZoomLevel="47">
+        <EntityTypeShape EntityType="proyectoModel.tCarrito" Width="1.5" PointX="6.125" PointY="3.5" IsExpanded="true" />
         <EntityTypeShape EntityType="proyectoModel.tCategoria" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
         <EntityTypeShape EntityType="proyectoModel.tProducto" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
         <EntityTypeShape EntityType="proyectoModel.tRol" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
@@ -14,6 +14,8 @@
         <AssociationConnector Association="proyectoModel.FK_tCarrito_tUsuario" ManuallyRouted="false" />
         <AssociationConnector Association="proyectoModel.fk_idCategoria" ManuallyRouted="false" />
         <AssociationConnector Association="proyectoModel.fk_idRol" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="proyectoModel.tMaestro" Width="1.5" PointX="8.25" PointY="3.5" />
+        <EntityTypeShape EntityType="proyectoModel.tDetalle" Width="1.5" PointX="10.25" PointY="3.5" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

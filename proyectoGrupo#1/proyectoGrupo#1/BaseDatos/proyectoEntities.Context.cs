@@ -32,6 +32,8 @@ namespace proyectoGrupo_1.BaseDatos
         public virtual DbSet<tProducto> tProducto { get; set; }
         public virtual DbSet<tRol> tRol { get; set; }
         public virtual DbSet<tUsuario> tUsuario { get; set; }
+        public virtual DbSet<tMaestro> tMaestro { get; set; }
+        public virtual DbSet<tDetalle> tDetalle { get; set; }
     
         public virtual int ActualizarUsuario(string cedula, string nombre, string correo, Nullable<int> idRol, Nullable<int> id)
         {
@@ -237,6 +239,19 @@ namespace proyectoGrupo_1.BaseDatos
                 new ObjectParameter("Cedula", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ValidarUsuarioIdentificacion_Result>("ValidarUsuarioIdentificacion", cedulaParameter);
+        }
+    
+        public virtual int EliminarProductoCarrito(Nullable<int> id, Nullable<int> idProducto)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            var idProductoParameter = idProducto.HasValue ?
+                new ObjectParameter("idProducto", idProducto) :
+                new ObjectParameter("idProducto", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("EliminarProductoCarrito", idParameter, idProductoParameter);
         }
     }
 }

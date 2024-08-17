@@ -12,9 +12,93 @@
     <div class="card" style="width: 18rem;">
         <img class="card-img-top" src="@item.Imagen" alt="Card image cap">
         <div class="card-body">
-            <h5 class="card-title">@item.Descripcion</h5>
+            <h4 class="card-title">@item.Descripcion</h4>
             <p class="card-text">Precio: ₡ @item.Precio</p>
+            <p class="card-title" style="font-size:10pt">Cantidad: @item.Cantidad</p>
         </div>
+
+        @if (item.Cantidad > 0)
+        {
+            <div class="card-body row">
+                <div class="col-6">
+                    <input id=prd-@item.idProducto type="number" class="form-control" style="text-align:center" value="0" min="1" max="@item.Cantidad"
+                           onkeypress="return ValidarNumeros(this.id)">
+                </div>
+                <div class="col-5">
+                    <a onclick="AgregarProducto(@item.idProducto, @item.Cantidad);" class="card-link btn btn-outline-primary">Añadir</a>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="card-body row">
+                <div class="col-4">
+                </div>
+                <div class="col-4">
+                    <div style="">
+                        <p class="card-link" style="font-size:12pt;color:red;font-weight:bold">Agotado</p>
+                    </div>
+                </div>
+            </div>
+        }
+
     </div>
 }
+
+<script>
+
+    function ValidarNumeros(evt) {
+        var charCode = (evt.which) ? evt.which : event.keyCode;
+
+        if (charCode >= 48 && charCode <= 57) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    function AgregarProducto(idProducto, Cantidad) {
+        let cantidadIngresada = $("#prd-" + idProducto).val();
+
+        if (cantidadIngresada > Cantidad) {
+            MostrarMensaje("Información", "Debe ingresar una cantidad inferior al inventario", "info");
+            return;
+        }
+
+        if (cantidadIngresada <= 0) {
+            MostrarMensaje("Información", "Debe ingresar una cantidad válida", "info");
+            return;
+        }
+        $.ajax({
+            type: 'POST',
+            url: '/Producto/RegistrarCarrito',
+            dataType: 'json',
+            data: {
+                "idProducto": idProducto,
+                "Cantidad": cantidadIngresada
+            },
+            success: function (data) {
+                MostrarMensaje("Información", "Producto añadido correctamente", "success");
+
+            }
+        });
+    }
+
+    function MostrarMensaje(titulo, mensaje, icono) {
+        Swal.fire({
+            title: titulo,
+            showDenyButton: false,
+            showCancelButton: false,
+            confirmButtonText: "Aceptar",
+            text: mensaje,
+            icon: icono
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = '/Producto/VerComputadoras';
+            }
+        });
+    }
+
+</script>
 

@@ -1,4 +1,4 @@
-﻿@model List<proyectoGrupo_1.BaseDatos.ConsultarCarrrito_Result>
+﻿@model proyectoGrupo_1.Entidades.Carrito
 
 @{
     ViewBag.Title = "ConsultarCarrito";
@@ -33,7 +33,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var item in Model)
+                @foreach (var item in Model.DatosCarrito)
                 {
                     <tr>
                         <td>@item.Descripcion</td>
@@ -75,7 +75,7 @@
     </div>
 </div>
 
-@*<div class="modal fade" id="ModalCarrito" data-backdrop="static" data-keyboard="false" tabindex="-1"
+<div class="modal fade" id="ModalCarrito" data-backdrop="static" data-keyboard="false" tabindex="-1"
          aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -85,12 +85,11 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-
                 @using (Html.BeginForm("EliminarProductoCarrito", "Carrito"))
                 {
                     <div class="modal-body">
-                        @Html.Hidden("IdProducto", "")
-                        ¿Desea remover de su carrito el producto <label id="Nombre"></label>?
+                        @Html.Hidden("idProducto", "")
+                        ¿Deseas eliminar el producto <label id="Nombre"></label>?
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary">Procesar</button>
@@ -98,7 +97,7 @@
                 }
             </div>
         </div>
-</div>*@
+</div>
 
 <script src="~/root/plugins/jquery/jquery.min.js"></script>
 <script>
@@ -112,7 +111,7 @@
     })
 
     $(document).on("click", ".AbrirModal", function () {
-        $("#IdProducto").val($(this).attr('data-id'));
+        $("#idProducto").val($(this).attr('data-id'));
         $("#Descripcion").text($(this).attr('data-name'));
     });
 

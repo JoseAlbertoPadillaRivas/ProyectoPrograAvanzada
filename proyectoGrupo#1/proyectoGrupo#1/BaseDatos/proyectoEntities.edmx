@@ -22,6 +22,30 @@
           <Property Name="idCategoria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
         </EntityType>
+        <EntityType Name="tDetalle">
+          <Key>
+            <PropertyRef Name="idDetalle" />
+          </Key>
+          <Property Name="idDetalle" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idMaestro" Type="int" Nullable="false" />
+          <Property Name="idProducto" Type="int" Nullable="false" />
+          <Property Name="cantidades" Type="int" Nullable="false" />
+          <Property Name="PrecioUnitario" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="SubTotal" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Impuesto" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Total" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tMaestro">
+          <Key>
+            <PropertyRef Name="idMaestro" />
+          </Key>
+          <Property Name="idMaestro" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="FechaCompra" Type="datetime" Nullable="false" />
+          <Property Name="SubTotal" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Impuesto" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Total" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+        </EntityType>
         <EntityType Name="tProducto">
           <Key>
             <PropertyRef Name="idProducto" />
@@ -133,6 +157,10 @@
         <Function Name="EliminarProducto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="idProducto" Type="int" Mode="In" />
         </Function>
+        <Function Name="EliminarProductoCarrito" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="idProducto" Type="int" Mode="In" />
+        </Function>
         <Function Name="IniciarSesion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Correo" Type="varchar" Mode="In" />
           <Parameter Name="Contrasenna" Type="varchar" Mode="In" />
@@ -167,6 +195,8 @@
         <EntityContainer Name="proyectoModelStoreContainer">
           <EntitySet Name="tCarrito" EntityType="Self.tCarrito" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tCategoria" EntityType="Self.tCategoria" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tDetalle" EntityType="Self.tDetalle" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tMaestro" EntityType="Self.tMaestro" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tProducto" EntityType="Self.tProducto" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tRol" EntityType="Self.tRol" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tUsuario" EntityType="Self.tUsuario" Schema="dbo" store:Type="Tables" />
@@ -380,6 +410,12 @@
           <FunctionImport Name="ValidarUsuarioIdentificacion" ReturnType="Collection(proyectoModel.ValidarUsuarioIdentificacion_Result)">
           <Parameter Name="Cedula" Mode="In" Type="String" />
           </FunctionImport>
+          <EntitySet Name="tMaestro" EntityType="proyectoModel.tMaestro" />
+          <EntitySet Name="tDetalle" EntityType="proyectoModel.tDetalle" />
+          <FunctionImport Name="EliminarProductoCarrito">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="idProducto" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="ConsultarCarrrito_Result">
           <Property Type="Int32" Name="idCarrito" Nullable="false" />
@@ -408,6 +444,30 @@
           <Property Type="String" Name="Nombre" Nullable="false" MaxLength="20" />
           <Property Type="String" Name="Correo" Nullable="false" MaxLength="100" />
         </ComplexType>
+        <EntityType Name="tMaestro">
+          <Key>
+            <PropertyRef Name="idMaestro" />
+          </Key>
+          <Property Name="idMaestro" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="FechaCompra" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="SubTotal" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Impuesto" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Total" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="tDetalle">
+          <Key>
+            <PropertyRef Name="idDetalle" />
+          </Key>
+          <Property Name="idDetalle" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idMaestro" Type="Int32" Nullable="false" />
+          <Property Name="idProducto" Type="Int32" Nullable="false" />
+          <Property Name="cantidades" Type="Int32" Nullable="false" />
+          <Property Name="PrecioUnitario" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="SubTotal" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Impuesto" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Total" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -518,6 +578,33 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="tMaestro">
+            <EntityTypeMapping TypeName="proyectoModel.tMaestro">
+              <MappingFragment StoreEntitySet="tMaestro">
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Impuesto" ColumnName="Impuesto" />
+                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+                <ScalarProperty Name="FechaCompra" ColumnName="FechaCompra" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idMaestro" ColumnName="idMaestro" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tDetalle">
+            <EntityTypeMapping TypeName="proyectoModel.tDetalle">
+              <MappingFragment StoreEntitySet="tDetalle">
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Impuesto" ColumnName="Impuesto" />
+                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+                <ScalarProperty Name="PrecioUnitario" ColumnName="PrecioUnitario" />
+                <ScalarProperty Name="cantidades" ColumnName="cantidades" />
+                <ScalarProperty Name="idProducto" ColumnName="idProducto" />
+                <ScalarProperty Name="idMaestro" ColumnName="idMaestro" />
+                <ScalarProperty Name="idDetalle" ColumnName="idDetalle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="EliminarProductoCarrito" FunctionName="proyectoModel.Store.EliminarProductoCarrito" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

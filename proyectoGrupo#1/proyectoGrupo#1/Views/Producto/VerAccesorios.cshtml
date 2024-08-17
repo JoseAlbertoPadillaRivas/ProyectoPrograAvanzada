@@ -12,15 +12,16 @@
     <div class="card" style="width: 18rem;">
         <img class="card-img-top" src="@item.Imagen" alt="Card image cap">
         <div class="card-body">
-            <h5 class="card-title">@item.Descripcion</h5>
+            <h4 class="card-title">@item.Descripcion</h4>
             <p class="card-text">Precio: ₡ @item.Precio</p>
+            <p class="card-title" style="font-size:10pt">Cantidad: @item.Cantidad</p>
         </div>
 
         @if (item.Cantidad > 0)
         {
             <div class="card-body row">
                 <div class="col-6">
-                    <input id=prd-@item.idProducto type="number" class="form-control" style="text-align:center" value="1" min="1" max="@item.Cantidad"
+                    <input id=prd-@item.idProducto type="number" class="form-control" style="text-align:center" value="0" min="1" max="@item.Cantidad"
                            onkeypress="return ValidarNumeros(this.id)">
                 </div>
                 <div class="col-5">

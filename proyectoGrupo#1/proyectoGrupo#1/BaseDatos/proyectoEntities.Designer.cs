@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'D:\2024\SegundoCuatri\Programacion Avanzada\P2\ProyectoPrograAvanzada\proyectoGrupo#1\proyectoGrupo#1\BaseDatos\proyectoEntities.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Progra Avanzada\ProyectoPrograAvanzada\proyectoGrupo#1\proyectoGrupo#1\BaseDatos\proyectoEntities.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

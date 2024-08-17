@@ -121,6 +121,7 @@ namespace proyectoGrupo_1.Controllers
                 ViewBag.msj = "No se ha eliminado el producto";
                 return View();
             }
+
         }
 
         [Filtro]
