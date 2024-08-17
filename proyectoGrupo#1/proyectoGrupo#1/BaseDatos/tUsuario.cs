@@ -27,6 +27,8 @@ namespace proyectoGrupo_1.BaseDatos
         public string Contrasenna { get; set; }
         public bool Estado { get; set; }
         public int idRol { get; set; }
+        public Nullable<bool> EsClaveTemporal { get; set; }
+        public Nullable<System.DateTime> ClaveVencimiento { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tCarrito> tCarrito { get; set; }

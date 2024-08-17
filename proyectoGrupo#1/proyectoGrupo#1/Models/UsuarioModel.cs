@@ -51,6 +51,15 @@ namespace proyectoGrupo_1.Models
                         select x).FirstOrDefault();
             }
         }
+
+        public ValidarUsuarioIdentificacion_Result ConsultarUsuarioCedula(string Cedula)
+        {
+            using (var context = new proyectoEntities())
+            {
+                return context.ValidarUsuarioIdentificacion(Cedula).FirstOrDefault();
+            }
+        }
+
         public bool CambiarEstadoUsuario(Usuario user)
         {
             var rowsAffected = 0;
@@ -75,5 +84,23 @@ namespace proyectoGrupo_1.Models
             return (rowsAffected > 0 ? true : false);
         }
 
+        public bool CambiarContrasennaUsuario(int id, string contrasennaTemporal, bool EsClaveTemporal, DateTime ClaveVencimiento)
+        {
+            var rowsAffected = 0;
+
+            using (var context = new proyectoEntities())
+            {
+                var datos = (from x in context.tUsuario
+                             where x.id == id
+                             select x).FirstOrDefault();
+
+                datos.Contrasenna = contrasennaTemporal;
+                datos.EsClaveTemporal = EsClaveTemporal;
+                datos.ClaveVencimiento = ClaveVencimiento;
+                rowsAffected = context.SaveChanges();
+            }
+
+            return (rowsAffected > 0 ? true : false);
+        }
     }
 }

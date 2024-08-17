@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="proyectoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="proyectoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="tCarrito">
           <Key>
             <PropertyRef Name="idCarrito" />
@@ -51,6 +51,8 @@
           <Property Name="Contrasenna" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Estado" Type="bit" Nullable="false" />
           <Property Name="idRol" Type="int" Nullable="false" />
+          <Property Name="EsClaveTemporal" Type="bit" />
+          <Property Name="ClaveVencimiento" Type="datetime" />
         </EntityType>
         <Association Name="fk_idCategoria">
           <End Role="tCategoria" Type="Self.tCategoria" Multiplicity="1" />
@@ -138,6 +140,9 @@
         <Function Name="NuevaCategoria" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Nombre" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="PagarCarrito" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
         <Function Name="RegistrarCarrito" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id" Type="int" Mode="In" />
           <Parameter Name="idProducto" Type="int" Mode="In" />
@@ -155,6 +160,9 @@
           <Parameter Name="Nombre" Type="varchar" Mode="In" />
           <Parameter Name="Correo" Type="varchar" Mode="In" />
           <Parameter Name="Contrasenna" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="ValidarUsuarioIdentificacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Cedula" Type="varchar" Mode="In" />
         </Function>
         <EntityContainer Name="proyectoModelStoreContainer">
           <EntitySet Name="tCarrito" EntityType="Self.tCarrito" Schema="dbo" store:Type="Tables" />
@@ -179,8 +187,7 @@
             <End Role="tCarrito" EntitySet="tCarrito" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="proyectoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -236,6 +243,8 @@
           <Property Name="Contrasenna" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Estado" Type="Boolean" Nullable="false" />
           <Property Name="idRol" Type="Int32" Nullable="false" />
+          <Property Name="EsClaveTemporal" Type="Boolean" />
+          <Property Name="ClaveVencimiento" Type="DateTime" Precision="3" />
           <NavigationProperty Name="tCarrito" Relationship="Self.FK_tCarrito_tUsuario" FromRole="tUsuario" ToRole="tCarrito" />
           <NavigationProperty Name="tRol" Relationship="Self.fk_idRol" FromRole="tUsuario" ToRole="tRol" />
         </EntityType>
@@ -317,10 +326,10 @@
             <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="CambiarEstadoUsuario">
-            <Parameter Name="id" Mode="In" Type="Int32" />
+          <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="ConsultarCarrrito" ReturnType="Collection(proyectoModel.ConsultarCarrrito_Result)">
-            <Parameter Name="id" Mode="In" Type="Int32" />
+          <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="EditarCategoria">
             <Parameter Name="idCategoria" Mode="In" Type="Int32" />
@@ -335,17 +344,20 @@
             <Parameter Name="Imagen" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="EliminarCategoria">
-            <Parameter Name="idCategoria" Mode="In" Type="Int32" />
+          <Parameter Name="idCategoria" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="EliminarProducto">
-            <Parameter Name="idProducto" Mode="In" Type="Int32" />
+          <Parameter Name="idProducto" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="IniciarSesion" ReturnType="Collection(proyectoModel.IniciarSesion_Result)">
             <Parameter Name="Correo" Mode="In" Type="String" />
             <Parameter Name="Contrasenna" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="NuevaCategoria">
-            <Parameter Name="Nombre" Mode="In" Type="String" />
+          <Parameter Name="Nombre" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PagarCarrito" ReturnType="Collection(String)">
+          <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="RegistrarCarrito">
             <Parameter Name="id" Mode="In" Type="Int32" />
@@ -364,6 +376,9 @@
             <Parameter Name="Nombre" Mode="In" Type="String" />
             <Parameter Name="Correo" Mode="In" Type="String" />
             <Parameter Name="Contrasenna" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ValidarUsuarioIdentificacion" ReturnType="Collection(proyectoModel.ValidarUsuarioIdentificacion_Result)">
+          <Parameter Name="Cedula" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="ConsultarCarrrito_Result">
@@ -386,6 +401,12 @@
           <Property Type="String" Name="Correo" Nullable="false" MaxLength="100" />
           <Property Type="Boolean" Name="Estado" Nullable="false" />
           <Property Type="Int32" Name="IdRol" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="ValidarUsuarioIdentificacion_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="Cedula" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Correo" Nullable="false" MaxLength="100" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -442,6 +463,8 @@
                 <ScalarProperty Name="Contrasenna" ColumnName="Contrasenna" />
                 <ScalarProperty Name="Estado" ColumnName="Estado" />
                 <ScalarProperty Name="idRol" ColumnName="idRol" />
+                <ScalarProperty Name="EsClaveTemporal" ColumnName="EsClaveTemporal" />
+                <ScalarProperty Name="ClaveVencimiento" ColumnName="ClaveVencimiento" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -481,9 +504,20 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="NuevaCategoria" FunctionName="proyectoModel.Store.NuevaCategoria" />
+          <FunctionImportMapping FunctionImportName="PagarCarrito" FunctionName="proyectoModel.Store.PagarCarrito" />
           <FunctionImportMapping FunctionImportName="RegistrarCarrito" FunctionName="proyectoModel.Store.RegistrarCarrito" />
           <FunctionImportMapping FunctionImportName="RegistrarProducto" FunctionName="proyectoModel.Store.RegistrarProducto" />
           <FunctionImportMapping FunctionImportName="RegistrarUsuario" FunctionName="proyectoModel.Store.RegistrarUsuario" />
+          <FunctionImportMapping FunctionImportName="ValidarUsuarioIdentificacion" FunctionName="proyectoModel.Store.ValidarUsuarioIdentificacion">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="proyectoModel.ValidarUsuarioIdentificacion_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

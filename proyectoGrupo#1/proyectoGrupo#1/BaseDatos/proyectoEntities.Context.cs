@@ -158,6 +158,15 @@ namespace proyectoGrupo_1.BaseDatos
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("NuevaCategoria", nombreParameter);
         }
     
+        public virtual ObjectResult<string> PagarCarrito(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("PagarCarrito", idParameter);
+        }
+    
         public virtual int RegistrarCarrito(Nullable<int> id, Nullable<int> idProducto, Nullable<int> cantidades)
         {
             var idParameter = id.HasValue ?
@@ -219,6 +228,15 @@ namespace proyectoGrupo_1.BaseDatos
                 new ObjectParameter("Contrasenna", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("RegistrarUsuario", cedulaParameter, nombreParameter, correoParameter, contrasennaParameter);
+        }
+    
+        public virtual ObjectResult<ValidarUsuarioIdentificacion_Result> ValidarUsuarioIdentificacion(string cedula)
+        {
+            var cedulaParameter = cedula != null ?
+                new ObjectParameter("Cedula", cedula) :
+                new ObjectParameter("Cedula", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ValidarUsuarioIdentificacion_Result>("ValidarUsuarioIdentificacion", cedulaParameter);
         }
     }
 }
