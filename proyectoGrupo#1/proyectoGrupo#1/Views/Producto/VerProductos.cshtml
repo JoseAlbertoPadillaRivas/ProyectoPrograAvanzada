@@ -25,7 +25,7 @@
         <table id="tablaUsuarios" class="table table-bordered table-hover">
             <thead>
                 <tr>
-                    <th>Nombre</th>
+                    <th>Descripcion</th>
                     <th>Precio</th>
                     <th>Cantidad</th>
                     <th>Editar Producto</th>
@@ -37,18 +37,18 @@
                 @foreach (var item in Model)
                 {
                     <tr>
-                        <td>@item.Nombre</td>
+                        <td>@item.Descripcion</td>
                         <td>@item.Precio</td>
                         <td>@item.Cantidad</td>
 
                         <td style="text-align:center">
-                            <a class="btn btn-primary" href="@Url.Action("EditarProducto","Producto", new { id = item.id })">
+                            <a class="btn btn-primary" href="@Url.Action("EditarProducto","Producto", new { id = item.idProducto })">
                                 <i class="fas fa-pen"></i>
                             </a>
                         </td>
                         <td style="text-align:center">
                             <button type="button" class="btn btn-primary AbrirModal" data-toggle="modal" data-target="#ModalProductos"
-                                    data-id="@item.id" data-name="@item.Nombre">
+                                    data-id="@item.idProducto" data-name="@item.Descripcion">
                                 <i class="fas fa-trash"></i>
                             </button>
                         </td>
@@ -74,7 +74,7 @@
             {
                 <div class="modal-body">
                     @Html.Hidden("id", "")
-                    ¿Desea eliminar:  <label id="Nombre"></label>?
+                    ¿Desea eliminar:  <label id="Descripcion"></label>?
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-primary">Procesar</button>
@@ -88,7 +88,7 @@
 <script>
     $(document).on("click", ".AbrirModal", function () {
         $("#id").val($(this).attr('data-id'));
-        $("#Nombre").text($(this).attr('data-name'));
+        $("#Descripcion").text($(this).attr('data-name'));
     });
 </script>
 

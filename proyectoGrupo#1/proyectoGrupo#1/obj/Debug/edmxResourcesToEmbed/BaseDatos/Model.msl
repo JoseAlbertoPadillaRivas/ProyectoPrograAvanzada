@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="proyectoModelStoreContainer" CdmEntityContainer="proyectoEntities1">
+  <EntityContainerMapping StorageEntityContainer="proyectoModel1StoreContainer" CdmEntityContainer="proyectoEntities">
     <EntitySetMapping Name="tCategoria">
-      <EntityTypeMapping TypeName="proyectoModel.tCategoria">
+      <EntityTypeMapping TypeName="proyectoModel1.tCategoria">
         <MappingFragment StoreEntitySet="tCategoria">
           <ScalarProperty Name="idCategoria" ColumnName="idCategoria" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -10,7 +10,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="tProducto">
-      <EntityTypeMapping TypeName="proyectoModel.tProducto">
+      <EntityTypeMapping TypeName="proyectoModel1.tProducto">
         <MappingFragment StoreEntitySet="tProducto">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -22,7 +22,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="tRol">
-      <EntityTypeMapping TypeName="proyectoModel.tRol">
+      <EntityTypeMapping TypeName="proyectoModel1.tRol">
         <MappingFragment StoreEntitySet="tRol">
           <ScalarProperty Name="idRol" ColumnName="idRol" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -30,7 +30,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="tUsuario">
-      <EntityTypeMapping TypeName="proyectoModel.tUsuario">
+      <EntityTypeMapping TypeName="proyectoModel1.tUsuario">
         <MappingFragment StoreEntitySet="tUsuario">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="Cedula" ColumnName="Cedula" />
@@ -42,13 +42,15 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <FunctionImportMapping FunctionImportName="ActualizarUsuario" FunctionName="proyectoModel.Store.ActualizarUsuario" />
-    <FunctionImportMapping FunctionImportName="CambiarEstadoUsuario" FunctionName="proyectoModel.Store.CambiarEstadoUsuario" />
-    <FunctionImportMapping FunctionImportName="EditarProducto" FunctionName="proyectoModel.Store.EditarProducto" />
-    <FunctionImportMapping FunctionImportName="EliminarProducto" FunctionName="proyectoModel.Store.EliminarProducto" />
-    <FunctionImportMapping FunctionImportName="IniciarSesion" FunctionName="proyectoModel.Store.IniciarSesion">
+    <FunctionImportMapping FunctionImportName="ActualizarUsuario" FunctionName="proyectoModel1.Store.ActualizarUsuario" />
+    <FunctionImportMapping FunctionImportName="CambiarEstadoUsuario" FunctionName="proyectoModel1.Store.CambiarEstadoUsuario" />
+    <FunctionImportMapping FunctionImportName="EditarCategoria" FunctionName="proyectoModel1.Store.EditarCategoria" />
+    <FunctionImportMapping FunctionImportName="EditarProducto" FunctionName="proyectoModel1.Store.EditarProducto" />
+    <FunctionImportMapping FunctionImportName="EliminarCategoria" FunctionName="proyectoModel1.Store.EliminarCategoria" />
+    <FunctionImportMapping FunctionImportName="EliminarProducto" FunctionName="proyectoModel1.Store.EliminarProducto" />
+    <FunctionImportMapping FunctionImportName="IniciarSesion" FunctionName="proyectoModel1.Store.IniciarSesion">
       <ResultMapping>
-        <ComplexTypeMapping TypeName="proyectoModel.IniciarSesion_Result">
+        <ComplexTypeMapping TypeName="proyectoModel1.IniciarSesion_Result">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="Cedula" ColumnName="Cedula" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -58,8 +60,8 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="NuevaCategoria" FunctionName="proyectoModel.Store.NuevaCategoria" />
-    <FunctionImportMapping FunctionImportName="RegistrarProducto" FunctionName="proyectoModel.Store.RegistrarProducto" />
-    <FunctionImportMapping FunctionImportName="RegistrarUsuario" FunctionName="proyectoModel.Store.RegistrarUsuario" />
+    <FunctionImportMapping FunctionImportName="NuevaCategoria" FunctionName="proyectoModel1.Store.NuevaCategoria" />
+    <FunctionImportMapping FunctionImportName="RegistrarProducto" FunctionName="proyectoModel1.Store.RegistrarProducto" />
+    <FunctionImportMapping FunctionImportName="RegistrarUsuario" FunctionName="proyectoModel1.Store.RegistrarUsuario" />
   </EntityContainerMapping>
 </Mapping>

@@ -14,6 +14,7 @@ namespace proyectoGrupo_1.Controllers
     {
         ProductoModel prodM = new ProductoModel();
         CategoriaModel catM = new CategoriaModel();
+        CarritoModel carritoM = new CarritoModel();
 
         [FiltroAdmin]
         [HttpGet]
@@ -32,7 +33,7 @@ namespace proyectoGrupo_1.Controllers
             //List<SelectListItem> lstCategoria = new List<SelectListItem>();
             //foreach (var item in categoria)
             //{
-            //    lstCategoria.Add(new SelectListItem { Value = item.idCategoria.ToString(), Text = item.Nombre });
+            //    lstCategoria.Add(new SelectListItem { Value = item.idCategoria.ToString(), Text = item.Descripcion });
             //}
 
             if (respuesta)
@@ -49,6 +50,7 @@ namespace proyectoGrupo_1.Controllers
         [HttpGet]
         public ActionResult VerProductos()
         {
+
             var respuesta = prodM.VerProductos();
             return View(respuesta);
         }
@@ -121,7 +123,21 @@ namespace proyectoGrupo_1.Controllers
             }
         }
 
+        [Filtro]
+        [HttpPost]
+        public ActionResult RegistrarCarrito(int idProducto, int Cantidad)
+        {
+            carritoM.RegistrarCarrito(idProducto, Cantidad);
+            CargarVariablesCarrito();
+            return Json("", JsonRequestBehavior.AllowGet);
+        }
 
-
+        private void CargarVariablesCarrito()
+        {
+            var carritoActual = carritoM.ConsultarCarrito();
+            Session["Cantidad"] = carritoActual.Sum(c => c.Cantidades);
+            Session["SubTotal"] = carritoActual.Sum(c => c.SubTotal);
+            Session["Total"] = carritoActual.Sum(c => c.Total);
+        }
     }
-    }
+}

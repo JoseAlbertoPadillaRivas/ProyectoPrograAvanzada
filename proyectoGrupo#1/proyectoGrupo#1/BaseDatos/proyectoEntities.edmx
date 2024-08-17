@@ -5,6 +5,16 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="proyectoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tCarrito">
+          <Key>
+            <PropertyRef Name="idCarrito" />
+          </Key>
+          <Property Name="idCarrito" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="idProducto" Type="int" Nullable="false" />
+          <Property Name="Cantidades" Type="int" Nullable="false" />
+          <Property Name="Fecha" Type="datetime" Nullable="false" />
+        </EntityType>
         <EntityType Name="tCategoria">
           <Key>
             <PropertyRef Name="idCategoria" />
@@ -14,10 +24,10 @@
         </EntityType>
         <EntityType Name="tProducto">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="idProducto" />
           </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="idProducto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Precio" Type="int" Nullable="false" />
           <Property Name="Cantidad" Type="int" Nullable="false" />
           <Property Name="idCategoria" Type="int" Nullable="false" />
@@ -66,6 +76,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_tCarrito_tProducto">
+          <End Role="tProducto" Type="Self.tProducto" Multiplicity="1" />
+          <End Role="tCarrito" Type="Self.tCarrito" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tProducto">
+              <PropertyRef Name="idProducto" />
+            </Principal>
+            <Dependent Role="tCarrito">
+              <PropertyRef Name="idProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tCarrito_tUsuario">
+          <End Role="tUsuario" Type="Self.tUsuario" Multiplicity="1" />
+          <End Role="tCarrito" Type="Self.tCarrito" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tUsuario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tCarrito">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Function Name="ActualizarUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Cedula" Type="varchar" Mode="In" />
           <Parameter Name="Nombre" Type="varchar" Mode="In" />
@@ -76,13 +110,23 @@
         <Function Name="CambiarEstadoUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id" Type="int" Mode="In" />
         </Function>
+        <Function Name="ConsultarCarrrito" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="EditarCategoria" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idCategoria" Type="int" Mode="In" />
+          <Parameter Name="Nombre" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="EditarProducto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="idProducto" Type="int" Mode="In" />
-          <Parameter Name="Nombre" Type="varchar" Mode="In" />
+          <Parameter Name="Descripcion" Type="varchar" Mode="In" />
           <Parameter Name="Precio" Type="int" Mode="In" />
           <Parameter Name="Cantidad" Type="int" Mode="In" />
           <Parameter Name="Categoria" Type="int" Mode="In" />
           <Parameter Name="Imagen" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="EliminarCategoria" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idCategoria" Type="int" Mode="In" />
         </Function>
         <Function Name="EliminarProducto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="idProducto" Type="int" Mode="In" />
@@ -94,8 +138,13 @@
         <Function Name="NuevaCategoria" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Nombre" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="RegistrarCarrito" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="idProducto" Type="int" Mode="In" />
+          <Parameter Name="Cantidades" Type="int" Mode="In" />
+        </Function>
         <Function Name="RegistrarProducto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="Nombre" Type="varchar" Mode="In" />
+          <Parameter Name="Descripcion" Type="varchar" Mode="In" />
           <Parameter Name="Precio" Type="int" Mode="In" />
           <Parameter Name="Cantidad" Type="int" Mode="In" />
           <Parameter Name="Categoria" Type="int" Mode="In" />
@@ -108,6 +157,7 @@
           <Parameter Name="Contrasenna" Type="varchar" Mode="In" />
         </Function>
         <EntityContainer Name="proyectoModelStoreContainer">
+          <EntitySet Name="tCarrito" EntityType="Self.tCarrito" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tCategoria" EntityType="Self.tCategoria" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tProducto" EntityType="Self.tProducto" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tRol" EntityType="Self.tRol" Schema="dbo" store:Type="Tables" />
@@ -120,12 +170,32 @@
             <End Role="tRol" EntitySet="tRol" />
             <End Role="tUsuario" EntitySet="tUsuario" />
           </AssociationSet>
+          <AssociationSet Name="FK_tCarrito_tProducto" Association="Self.FK_tCarrito_tProducto">
+            <End Role="tProducto" EntitySet="tProducto" />
+            <End Role="tCarrito" EntitySet="tCarrito" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tCarrito_tUsuario" Association="Self.FK_tCarrito_tUsuario">
+            <End Role="tUsuario" EntitySet="tUsuario" />
+            <End Role="tCarrito" EntitySet="tCarrito" />
+          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="proyectoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tCarrito">
+          <Key>
+            <PropertyRef Name="idCarrito" />
+          </Key>
+          <Property Name="idCarrito" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="idProducto" Type="Int32" Nullable="false" />
+          <Property Name="Cantidades" Type="Int32" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="tProducto" Relationship="Self.FK_tCarrito_tProducto" FromRole="tCarrito" ToRole="tProducto" />
+          <NavigationProperty Name="tUsuario" Relationship="Self.FK_tCarrito_tUsuario" FromRole="tCarrito" ToRole="tUsuario" />
+        </EntityType>
         <EntityType Name="tCategoria">
           <Key>
             <PropertyRef Name="idCategoria" />
@@ -136,14 +206,15 @@
         </EntityType>
         <EntityType Name="tProducto">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="idProducto" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="idProducto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Precio" Type="Int32" Nullable="false" />
           <Property Name="Cantidad" Type="Int32" Nullable="false" />
           <Property Name="idCategoria" Type="Int32" Nullable="false" />
           <Property Name="Imagen" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tCarrito" Relationship="Self.FK_tCarrito_tProducto" FromRole="tProducto" ToRole="tCarrito" />
           <NavigationProperty Name="tCategoria" Relationship="Self.fk_idCategoria" FromRole="tProducto" ToRole="tCategoria" />
         </EntityType>
         <EntityType Name="tRol">
@@ -165,8 +236,33 @@
           <Property Name="Contrasenna" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Estado" Type="Boolean" Nullable="false" />
           <Property Name="idRol" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tCarrito" Relationship="Self.FK_tCarrito_tUsuario" FromRole="tUsuario" ToRole="tCarrito" />
           <NavigationProperty Name="tRol" Relationship="Self.fk_idRol" FromRole="tUsuario" ToRole="tRol" />
         </EntityType>
+        <Association Name="FK_tCarrito_tProducto">
+          <End Role="tProducto" Type="Self.tProducto" Multiplicity="1" />
+          <End Role="tCarrito" Type="Self.tCarrito" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tProducto">
+              <PropertyRef Name="idProducto" />
+            </Principal>
+            <Dependent Role="tCarrito">
+              <PropertyRef Name="idProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tCarrito_tUsuario">
+          <End Role="tUsuario" Type="Self.tUsuario" Multiplicity="1" />
+          <End Role="tCarrito" Type="Self.tCarrito" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tUsuario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tCarrito">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="fk_idCategoria">
           <End Role="tCategoria" Type="Self.tCategoria" Multiplicity="1" />
           <End Role="tProducto" Type="Self.tProducto" Multiplicity="*" />
@@ -191,11 +287,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="proyectoEntities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="proyectoEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tCarrito" EntityType="Self.tCarrito" />
           <EntitySet Name="tCategoria" EntityType="Self.tCategoria" />
           <EntitySet Name="tProducto" EntityType="Self.tProducto" />
           <EntitySet Name="tRol" EntityType="Self.tRol" />
           <EntitySet Name="tUsuario" EntityType="Self.tUsuario" />
+          <AssociationSet Name="FK_tCarrito_tProducto" Association="Self.FK_tCarrito_tProducto">
+            <End Role="tProducto" EntitySet="tProducto" />
+            <End Role="tCarrito" EntitySet="tCarrito" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tCarrito_tUsuario" Association="Self.FK_tCarrito_tUsuario">
+            <End Role="tUsuario" EntitySet="tUsuario" />
+            <End Role="tCarrito" EntitySet="tCarrito" />
+          </AssociationSet>
           <AssociationSet Name="fk_idCategoria" Association="Self.fk_idCategoria">
             <End Role="tCategoria" EntitySet="tCategoria" />
             <End Role="tProducto" EntitySet="tProducto" />
@@ -214,13 +319,23 @@
           <FunctionImport Name="CambiarEstadoUsuario">
             <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="ConsultarCarrrito" ReturnType="Collection(proyectoModel.ConsultarCarrrito_Result)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="EditarCategoria">
+            <Parameter Name="idCategoria" Mode="In" Type="Int32" />
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+          </FunctionImport>
           <FunctionImport Name="EditarProducto">
             <Parameter Name="idProducto" Mode="In" Type="Int32" />
-            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="Descripcion" Mode="In" Type="String" />
             <Parameter Name="Precio" Mode="In" Type="Int32" />
             <Parameter Name="Cantidad" Mode="In" Type="Int32" />
             <Parameter Name="Categoria" Mode="In" Type="Int32" />
             <Parameter Name="Imagen" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="EliminarCategoria">
+            <Parameter Name="idCategoria" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="EliminarProducto">
             <Parameter Name="idProducto" Mode="In" Type="Int32" />
@@ -232,8 +347,13 @@
           <FunctionImport Name="NuevaCategoria">
             <Parameter Name="Nombre" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="RegistrarCarrito">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="idProducto" Mode="In" Type="Int32" />
+            <Parameter Name="Cantidades" Mode="In" Type="Int32" />
+          </FunctionImport>
           <FunctionImport Name="RegistrarProducto">
-            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="Descripcion" Mode="In" Type="String" />
             <Parameter Name="Precio" Mode="In" Type="Int32" />
             <Parameter Name="Cantidad" Mode="In" Type="Int32" />
             <Parameter Name="Categoria" Mode="In" Type="Int32" />
@@ -246,6 +366,19 @@
             <Parameter Name="Contrasenna" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
+        <ComplexType Name="ConsultarCarrrito_Result">
+          <Property Type="Int32" Name="idCarrito" Nullable="false" />
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="20" />
+          <Property Type="Int32" Name="idProducto" Nullable="false" />
+          <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="Precio" Nullable="false" />
+          <Property Type="Int32" Name="SubTotal" Nullable="true" />
+          <Property Type="Decimal" Name="Impuesto" Nullable="true" Precision="13" Scale="2" />
+          <Property Type="Decimal" Name="Total" Nullable="true" Precision="14" Scale="2" />
+          <Property Type="Int32" Name="Cantidades" Nullable="false" />
+          <Property Type="DateTime" Name="Fecha" Nullable="false" Precision="23" />
+        </ComplexType>
         <ComplexType Name="IniciarSesion_Result">
           <Property Type="Int32" Name="id" Nullable="false" />
           <Property Type="String" Name="Cedula" Nullable="false" MaxLength="20" />
@@ -259,7 +392,18 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="proyectoModelStoreContainer" CdmEntityContainer="proyectoEntities1">
+        <EntityContainerMapping StorageEntityContainer="proyectoModelStoreContainer" CdmEntityContainer="proyectoEntities">
+          <EntitySetMapping Name="tCarrito">
+            <EntityTypeMapping TypeName="proyectoModel.tCarrito">
+              <MappingFragment StoreEntitySet="tCarrito">
+                <ScalarProperty Name="idCarrito" ColumnName="idCarrito" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idProducto" ColumnName="idProducto" />
+                <ScalarProperty Name="Cantidades" ColumnName="Cantidades" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="tCategoria">
             <EntityTypeMapping TypeName="proyectoModel.tCategoria">
               <MappingFragment StoreEntitySet="tCategoria">
@@ -271,8 +415,8 @@
           <EntitySetMapping Name="tProducto">
             <EntityTypeMapping TypeName="proyectoModel.tProducto">
               <MappingFragment StoreEntitySet="tProducto">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="idProducto" ColumnName="idProducto" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
                 <ScalarProperty Name="Precio" ColumnName="Precio" />
                 <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
                 <ScalarProperty Name="idCategoria" ColumnName="idCategoria" />
@@ -303,7 +447,26 @@
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="ActualizarUsuario" FunctionName="proyectoModel.Store.ActualizarUsuario" />
           <FunctionImportMapping FunctionImportName="CambiarEstadoUsuario" FunctionName="proyectoModel.Store.CambiarEstadoUsuario" />
+          <FunctionImportMapping FunctionImportName="ConsultarCarrrito" FunctionName="proyectoModel.Store.ConsultarCarrrito">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="proyectoModel.ConsultarCarrrito_Result">
+                <ScalarProperty Name="idCarrito" ColumnName="idCarrito" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="idProducto" ColumnName="idProducto" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+                <ScalarProperty Name="Impuesto" ColumnName="Impuesto" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Cantidades" ColumnName="Cantidades" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="EditarCategoria" FunctionName="proyectoModel.Store.EditarCategoria" />
           <FunctionImportMapping FunctionImportName="EditarProducto" FunctionName="proyectoModel.Store.EditarProducto" />
+          <FunctionImportMapping FunctionImportName="EliminarCategoria" FunctionName="proyectoModel.Store.EliminarCategoria" />
           <FunctionImportMapping FunctionImportName="EliminarProducto" FunctionName="proyectoModel.Store.EliminarProducto" />
           <FunctionImportMapping FunctionImportName="IniciarSesion" FunctionName="proyectoModel.Store.IniciarSesion">
             <ResultMapping>
@@ -318,6 +481,7 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="NuevaCategoria" FunctionName="proyectoModel.Store.NuevaCategoria" />
+          <FunctionImportMapping FunctionImportName="RegistrarCarrito" FunctionName="proyectoModel.Store.RegistrarCarrito" />
           <FunctionImportMapping FunctionImportName="RegistrarProducto" FunctionName="proyectoModel.Store.RegistrarProducto" />
           <FunctionImportMapping FunctionImportName="RegistrarUsuario" FunctionName="proyectoModel.Store.RegistrarUsuario" />
         </EntityContainerMapping>
@@ -337,7 +501,7 @@
         <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
-        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->

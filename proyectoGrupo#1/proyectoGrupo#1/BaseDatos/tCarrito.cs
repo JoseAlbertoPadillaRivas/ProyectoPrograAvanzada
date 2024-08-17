@@ -12,18 +12,15 @@ namespace proyectoGrupo_1.BaseDatos
     using System;
     using System.Collections.Generic;
     
-    public partial class tRol
+    public partial class tCarrito
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public tRol()
-        {
-            this.tUsuario = new HashSet<tUsuario>();
-        }
+        public int idCarrito { get; set; }
+        public int id { get; set; }
+        public int idProducto { get; set; }
+        public int Cantidades { get; set; }
+        public System.DateTime Fecha { get; set; }
     
-        public int idRol { get; set; }
-        public string Nombre { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tUsuario> tUsuario { get; set; }
+        public virtual tProducto tProducto { get; set; }
+        public virtual tUsuario tUsuario { get; set; }
     }
 }

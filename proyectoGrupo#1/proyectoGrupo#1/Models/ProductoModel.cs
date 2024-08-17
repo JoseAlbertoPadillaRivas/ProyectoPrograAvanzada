@@ -9,13 +9,15 @@ namespace proyectoGrupo_1.Models
 {
     public class ProductoModel
     {
+        CarritoModel carritoM = new CarritoModel();
+
         public bool RegistrarProducto(Producto prod)
         {
             var rowsAffected = 0;
 
-            using (var context = new proyectoEntities1())
+            using (var context = new proyectoEntities())
             {
-                rowsAffected = context.RegistrarProducto(prod.Nombre, prod.Precio, prod.Cantidad, prod.idCategoria, prod.Imagen);
+                rowsAffected = context.RegistrarProducto(prod.Descripcion, prod.Precio, prod.Cantidad, prod.idCategoria, prod.Imagen);
             }
 
             return (rowsAffected > 0 ? true : false);
@@ -23,7 +25,7 @@ namespace proyectoGrupo_1.Models
 
         public List<tProducto> VerProductos()
         {
-            using (var context = new proyectoEntities1())
+            using (var context = new proyectoEntities())
             {
 
                 return (from x in context.tProducto
@@ -33,7 +35,7 @@ namespace proyectoGrupo_1.Models
 
         public List<tProducto> VerCelulares()
         {
-            using (var context = new proyectoEntities1())
+            using (var context = new proyectoEntities())
             {               
 
                 return (from x in context.tProducto
@@ -43,7 +45,18 @@ namespace proyectoGrupo_1.Models
         }
         public List<tProducto> VerAccesorios()
         {
-            using (var context = new proyectoEntities1())
+            using (var context = new proyectoEntities())
+            {
+
+                return (from x in context.tProducto
+                        where x.idCategoria == 2
+                        select x).ToList();
+            }
+        }
+
+        public List<tProducto> VerComputadoras()
+        {
+            using (var context = new proyectoEntities())
             {
 
                 return (from x in context.tProducto
@@ -52,23 +65,12 @@ namespace proyectoGrupo_1.Models
             }
         }
 
-        public List<tProducto> VerComputadoras()
-        {
-            using (var context = new proyectoEntities1())
-            {
-
-                return (from x in context.tProducto
-                        where x.idCategoria == 4
-                        select x).ToList();
-            }
-        }
-
         public tProducto ConsultarProducto(int id)
         {
-            using (var context = new proyectoEntities1())
+            using (var context = new proyectoEntities())
             {
                 return (from x in context.tProducto
-                        where x.id == id
+                        where x.idProducto == id
                         select x).FirstOrDefault();
             }
         }
@@ -77,9 +79,9 @@ namespace proyectoGrupo_1.Models
         {
             var rowsAffected = 0;
 
-            using (var context = new proyectoEntities1())
+            using (var context = new proyectoEntities())
             {
-                rowsAffected = context.EditarProducto(prod.id, prod.Nombre, prod.Precio, prod.Cantidad, prod.idCategoria,prod.Imagen);
+                rowsAffected = context.EditarProducto(prod.id, prod.Descripcion, prod.Precio, prod.Cantidad, prod.idCategoria,prod.Imagen);
             }
 
             return (rowsAffected > 0 ? true : false);
@@ -89,7 +91,7 @@ namespace proyectoGrupo_1.Models
         {
             var rowsAffected = 0;
 
-            using (var context = new proyectoEntities1())
+            using (var context = new proyectoEntities())
             {
                 rowsAffected = context.EliminarProducto(prod.id);
             }

@@ -26,6 +26,7 @@ namespace proyectoGrupo_1.Controllers
 
             if (respuesta != null)
             {
+
                 Session["NombreUsuario"] = respuesta.Nombre;
                 Session["idUsuario"] = respuesta.id;
                 Session["RolUsuario"] = respuesta.IdRol.ToString();
@@ -78,5 +79,6 @@ namespace proyectoGrupo_1.Controllers
         {
             return View();
         }
+
     }
 }

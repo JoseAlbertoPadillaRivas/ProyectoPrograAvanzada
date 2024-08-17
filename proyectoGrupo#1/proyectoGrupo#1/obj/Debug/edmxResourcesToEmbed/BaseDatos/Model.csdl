@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="proyectoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+<Schema Namespace="proyectoModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityType Name="tCategoria">
     <Key>
       <PropertyRef Name="idCategoria" />
@@ -65,7 +65,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="proyectoEntities1" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="proyectoEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="tCategoria" EntityType="Self.tCategoria" />
     <EntitySet Name="tProducto" EntityType="Self.tProducto" />
     <EntitySet Name="tRol" EntityType="Self.tRol" />
@@ -88,6 +88,10 @@
     <FunctionImport Name="CambiarEstadoUsuario">
       <Parameter Name="id" Mode="In" Type="Int32" />
     </FunctionImport>
+    <FunctionImport Name="EditarCategoria">
+      <Parameter Name="idCategoria" Mode="In" Type="Int32" />
+      <Parameter Name="Nombre" Mode="In" Type="String" />
+    </FunctionImport>
     <FunctionImport Name="EditarProducto">
       <Parameter Name="idProducto" Mode="In" Type="Int32" />
       <Parameter Name="Nombre" Mode="In" Type="String" />
@@ -96,10 +100,13 @@
       <Parameter Name="Categoria" Mode="In" Type="Int32" />
       <Parameter Name="Imagen" Mode="In" Type="String" />
     </FunctionImport>
+    <FunctionImport Name="EliminarCategoria">
+      <Parameter Name="idCategoria" Mode="In" Type="Int32" />
+    </FunctionImport>
     <FunctionImport Name="EliminarProducto">
       <Parameter Name="idProducto" Mode="In" Type="Int32" />
     </FunctionImport>
-    <FunctionImport Name="IniciarSesion" ReturnType="Collection(proyectoModel.IniciarSesion_Result)">
+    <FunctionImport Name="IniciarSesion" ReturnType="Collection(proyectoModel1.IniciarSesion_Result)">
       <Parameter Name="Correo" Mode="In" Type="String" />
       <Parameter Name="Contrasenna" Mode="In" Type="String" />
     </FunctionImport>

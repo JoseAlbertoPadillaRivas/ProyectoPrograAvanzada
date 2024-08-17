@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="proyectoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="proyectoModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="tCategoria">
     <Key>
       <PropertyRef Name="idCategoria" />
@@ -71,6 +71,10 @@
   <Function Name="CambiarEstadoUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="id" Type="int" Mode="In" />
   </Function>
+  <Function Name="EditarCategoria" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idCategoria" Type="int" Mode="In" />
+    <Parameter Name="Nombre" Type="varchar" Mode="In" />
+  </Function>
   <Function Name="EditarProducto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="idProducto" Type="int" Mode="In" />
     <Parameter Name="Nombre" Type="varchar" Mode="In" />
@@ -78,6 +82,9 @@
     <Parameter Name="Cantidad" Type="int" Mode="In" />
     <Parameter Name="Categoria" Type="int" Mode="In" />
     <Parameter Name="Imagen" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="EliminarCategoria" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idCategoria" Type="int" Mode="In" />
   </Function>
   <Function Name="EliminarProducto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="idProducto" Type="int" Mode="In" />
@@ -102,7 +109,7 @@
     <Parameter Name="Correo" Type="varchar" Mode="In" />
     <Parameter Name="Contrasenna" Type="varchar" Mode="In" />
   </Function>
-  <EntityContainer Name="proyectoModelStoreContainer">
+  <EntityContainer Name="proyectoModel1StoreContainer">
     <EntitySet Name="tCategoria" EntityType="Self.tCategoria" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tProducto" EntityType="Self.tProducto" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tRol" EntityType="Self.tRol" Schema="dbo" store:Type="Tables" />
