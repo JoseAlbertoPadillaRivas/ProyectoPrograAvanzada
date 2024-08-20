@@ -32,5 +32,32 @@ namespace KN_Web.Controllers
                 return View();
             }
         }
+
+        [HttpGet]
+        public ActionResult ActualizarContrasenna()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult ActualizarContrasenna(Usuario user)
+        {
+            if (user.Contrasenna != user.ConfirmarContrasenna)
+            {
+                ViewBag.msj = "Las contraseñas ingresadas no coinciden";
+                return View();
+            }
+
+            int id = int.Parse(Session["idUsuario"].ToString());
+            var respuesta = usuarioM.CambiarContrasennaUsuario(id, user.Contrasenna, false, DateTime.Now);
+
+            if (respuesta)
+                return RedirectToAction("CerrarSesion", "Login");
+            else
+            {
+                ViewBag.msj = "No se ha podido actualizar su contraseña";
+                return View();
+            }
+        }
     }
 }

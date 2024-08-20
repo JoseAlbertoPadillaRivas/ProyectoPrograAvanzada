@@ -22,6 +22,7 @@ namespace proyectoGrupo_1.Controllers
         {
             return View();
         }
+
         [FiltroAdmin]
         [HttpPost]
         public ActionResult RegistrarProducto(Producto prod)
