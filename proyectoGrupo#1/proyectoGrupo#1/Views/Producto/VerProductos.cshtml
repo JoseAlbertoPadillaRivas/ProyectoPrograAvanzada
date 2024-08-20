@@ -1,83 +1,78 @@
 ﻿@model List<proyectoGrupo_1.BaseDatos.tProducto>
 @{
-    ViewBag.Title = "VerProductos";
+    ViewBag.Title = "Ver Productos";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Productos</h2>
+<div class="container mt-4">
+    <h2 class="mb-4">Productos</h2>
 
-<a class="btn btn-primary mb-2" href="@Url.Action("RegistrarProducto","Producto")">
-    Nuevo Producto
-</a>
-<br />
+    <a class="btn btn-success mb-3" href="@Url.Action("RegistrarProducto", "Producto")">
+        <i class="fas fa-plus-circle"></i> Nuevo Producto
+    </a>
 
+    @if (ViewBag.msj != null)
+    {
+        <div class="alert alert-info text-center" role="alert">
+            @ViewBag.msj
+        </div>
+    }
 
-<div class="row">
-    <div class="col-12">
-
-        @if (ViewBag.msj != null)
-        {
-            <div class="alert alert-info" role="alert" style="text-align:center">
-                @ViewBag.msj
-            </div>
-        }
-
-        <table id="tablaUsuarios" class="table table-bordered table-hover">
-            <thead>
+    <div class="table-responsive">
+        <table id="tablaUsuarios" class="table table-striped table-bordered table-hover">
+            <thead class="thead-dark">
                 <tr>
-                    <th>Descripcion</th>
-                    <th>Precio</th>
-                    <th>Cantidad</th>
-                    <th>Editar Producto</th>
-                    <th>Eliminar Producto</th>
-
+                    <th class="text-center">Descripción</th>
+                    <th class="text-center">Precio</th>
+                    <th class="text-center">Cantidad</th>
+                    <th class="text-center">Editar</th>
+                    <th class="text-center">Eliminar</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach (var item in Model)
                 {
                     <tr>
-                        <td>@item.Descripcion</td>
-                        <td>@item.Precio</td>
-                        <td>@item.Cantidad</td>
-
-                        <td style="text-align:center">
-                            <a class="btn btn-primary" href="@Url.Action("EditarProducto","Producto", new { idProducto = item.idProducto })">
-                                <i class="fas fa-pen"></i>
+                        <td class="text-center">@item.Descripcion</td>
+                        <td class="text-center">@item.Precio</td>
+                        <td class="text-center">@item.Cantidad</td>
+                        <td class="text-center">
+                            <a class="btn btn-warning btn-sm" href="@Url.Action("EditarProducto", "Producto", new { idProducto = item.idProducto })">
+                                <i class="fas fa-pen"></i> Editar
                             </a>
                         </td>
-                        <td style="text-align:center">
-                            <button type="button" class="btn btn-primary AbrirModal" data-toggle="modal" data-target="#ModalProductos"
+                        <td class="text-center">
+                            <button type="button" class="btn btn-danger btn-sm AbrirModal" data-toggle="modal" data-target="#ModalProductos"
                                     data-id="@item.idProducto" data-name="@item.Descripcion">
-                                <i class="fas fa-trash"></i>
+                                <i class="fas fa-trash"></i> Eliminar
                             </button>
                         </td>
                     </tr>
                 }
             </tbody>
-        </table>
 
+        </table>
     </div>
 </div>
 
-<div class="modal fade" id="ModalProductos" data-backdrop="static" data-keyboard="false" tabindex="-1"
-     aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
+<div class="modal fade" id="ModalProductos" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header bg-danger text-white">
                 <h5 class="modal-title" id="exampleModalLabel">Eliminar Producto</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            @using (Html.BeginForm("EliminarProducto", "Producto"))
+            @using (Html.BeginForm("EliminarProducto", "Producto", FormMethod.Post))
             {
                 <div class="modal-body">
                     @Html.Hidden("idProducto", "")
-                    ¿Desea eliminar:  <label id="Descripcion"></label>?
+                    <p>¿Desea eliminar el producto: <strong id="Descripcion"></strong>?</p>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">Procesar</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-danger">Eliminar</button>
                 </div>
             }
         </div>
@@ -87,10 +82,7 @@
 <script src="~/root/plugins/jquery/jquery.min.js"></script>
 <script>
     $(document).on("click", ".AbrirModal", function () {
-        $("#idProducto").val($(this).attr('data-id'));
-        $("#Descripcion").text($(this).attr('data-name'));
+        $("#idProducto").val($(this).data('id'));
+        $("#Descripcion").text($(this).data('name'));
     });
 </script>
-
-
-

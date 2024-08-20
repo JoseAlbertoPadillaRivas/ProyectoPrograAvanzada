@@ -25,17 +25,14 @@
 </head>
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
-        <header id="header" class="header style1 clearfix">
+        <header class="main-header navbar navbar-expand">
             <div class="header-inner">
-                <div id="logo" class="logo">
-                    <img src="~/root/dist/img/FotoPlusLogo.png" alt="image">
-                </div>
                 <div class="nav-wrap">
                     <div class="btn-menu open"></div>
                     <nav id="mainnav" class="mainnav">
                         <ul class="menu">
 
-                            @if (Session["RolUsuario"].ToString() == "2")
+                            @if (Session["RolUsuario"].ToString() == "1")
                             {
                                 <li class="nav-item">
                                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
@@ -64,7 +61,7 @@
                                     </a>
                                     <div class="dropdown-divider"></div>
                                     <a href="@Url.Action("CerrarSesion","Login")" class="dropdown-item">
-                                        <i class="fa fa-door-open mr-2"></i> Cerrar Sesión
+                                        <i class="nav-icon fas fa-door-open"></i> Cerrar Sesión
                                         <span class="float-right text-muted text-sm"></span>
                                     </a>
                                 </div>
@@ -88,24 +85,22 @@
         </div>
 
 
-        @if (Session["RolUsuario"].ToString() == "2")
+        @if (Session["RolUsuario"].ToString() == "1")
         {
-            <aside class="main-sidebar sidebar-dark-primary elevation-4">
-                <a href="@Url.Action("Home", "Login")" class="brand-link">
+            <aside class="main-sidebar sidebar-dark-primary elevation-6">
+                <a href="@Url.Action("Home", "Login")" class="brand-link d-flex align-items-center p-7">
                     <img src="~/root/dist/img/FotoPlusLogo.png"
-                         alt="AdminLTE Logo"
-                         class="brand-image img-circle elevation-3"
-                         style="opacity: .8">
-                    <span class="brand-text font-weight-light">Foto Plus</span>
+                         class="brand-image"
+                         style="width: 50px; height: 50px; object-fit: cover; opacity: .8;">
+                    <span class="brand-text font-weight-light ml-2">Foto Plus</span>
                 </a>
+
                 <div class="sidebar">
                     <nav class="mt-2">
                         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-
-
                             <li class="nav-item has-treeview">
                                 <a href="#" class="nav-link">
-                                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                                    <i class="nav-icon fas fa-tools"></i>
                                     <p>
                                         Mantenimientos
                                         <i class="right fas fa-angle-left"></i>
@@ -114,21 +109,21 @@
                                 <ul class="nav nav-treeview">
                                     <li class="nav-item">
                                         <a href="@Url.Action("ConsultarUsuarios", "Usuario")" class="nav-link">
-                                            <i class="far fa-users nav-icon"></i>
-                                            <p>Usuarios</p>
+                                            <i class="nav-icon fas fa-user"></i>
+                                            <p> Usuarios</p>
                                         </a>
                                     </li>
 
                                     <li class="nav-item">
                                         <a href="@Url.Action("VerProductos", "Producto")" class="nav-link">
-                                            <i class="far fa-users nav-icon"></i>
+                                            <i class="nav-icon fas fa-box"></i>
                                             <p>Productos</p>
                                         </a>
                                     </li>
 
                                     <li class="nav-item">
                                         <a href="@Url.Action("ConsultarCategorias", "Categoria")" class="nav-link">
-                                            <i class="far fa-users nav-icon"></i>
+                                            <i class="nav-icon fas fa-object-group"></i>
                                             <p>Categoria</p>
                                         </a>
                                     </li>
@@ -160,3 +155,20 @@
 
 </body>
 </html>
+
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+    }
+
+    .wrapper {
+        width: 100%;
+        max-width: 2000px; 
+        box-sizing: border-box;
+    }
+
+</style>

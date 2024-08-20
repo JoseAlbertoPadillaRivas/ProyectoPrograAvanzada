@@ -5,98 +5,93 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<br>
-<h4>Carrito</h4>
+<h4 class="text-center my-4">Carrito de Compras</h4>
 <hr>
-<br>
 
-<div class="row">
-    <div class="col-12">
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
 
-        @if (ViewBag.msj != null)
-        {
-            <div class="alert alert-info" role="alert" style="text-align:center">
-                @ViewBag.msj
-            </div>
-        }
-
-        <table id="tablaCarrito" class="table table-bordered table-hover">
-            <thead>
-                <tr>
-                    <th>Producto</th>
-                    <th>Cantidad</th>
-                    <th>Precio Unitario</th>
-                    <th>SubTotal</th>
-                    <th>Impuesto</th>
-                    <th>Total</th>
-                    <th>Eliminar</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model.DatosCarrito)
-                {
-                    <tr>
-                        <td>@item.Descripcion</td>
-                        <td>@item.Cantidades</td>
-                        <td>@item.Precio.ToString("N2")</td>
-                        <td>@item.SubTotal.Value.ToString("N2")</td>
-                        <td>@item.Impuesto.Value.ToString("N2")</td>
-                        <td>@item.Total.Value.ToString("N2")</td>
-
-                        <td style="text-align:center">
-                            <button type="button" class="btn btn-primary AbrirModal" data-toggle="modal" data-target="#ModalCarrito"
-                                    data-id="@item.idProducto" data-name="@item.Descripcion">
-                                <i class="fa fa-share-square"></i>
-                            </button>
-                        </td>
-
-                    </tr>
-                }
-            </tbody>
-        </table>
-
-        <br /><br />
-
-        <div class="row">
-                <div class="col-3">
-                    <p style="font-size:10pt; margin-top:2%">El monto a cancelar es de: ¢<b>@decimal.Parse(Session["Total"].ToString()).ToString("N2")</b></p>
+            @if (ViewBag.msj != null)
+            {
+                <div class="alert alert-info text-center" role="alert">
+                    @ViewBag.msj
                 </div>
-                <div>
+            }
+
+            <table id="tablaCarrito" class="table table-striped table-bordered text-center">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Producto</th>
+                        <th>Cantidad</th>
+                        <th>Precio Unitario</th>
+                        <th>SubTotal</th>
+                        <th>Impuesto</th>
+                        <th>Total</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.DatosCarrito)
+                    {
+                        <tr>
+                            <td>@item.Descripcion</td>
+                            <td>@item.Cantidades</td>
+                            <td>¢@item.Precio.ToString("N2")</td>
+                            <td>¢@item.SubTotal.Value.ToString("N2")</td>
+                            <td>¢@item.Impuesto.Value.ToString("N2")</td>
+                            <td>¢@item.Total.Value.ToString("N2")</td>
+
+                            <td>
+                                <button type="button" class="btn btn-danger btn-sm AbrirModal" data-toggle="modal" data-target="#ModalCarrito"
+                                        data-id="@item.idProducto" data-name="@item.Descripcion">
+                                    <i class="fa fa-trash"></i> Eliminar
+                                </button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            <div class="row justify-content-between align-items-center mt-4">
+                <div class="col-6 text-right">
                     @if (Session["Total"].ToString() != "0")
                     {
                         using (Html.BeginForm("PagarCarrito", "Carrito"))
                         {
-                            <button type="submit" class="btn btn-outline-danger" style="width: 70px; font-size: 8pt;">Pagar</button>
+                            <button type="submit" class="btn btn-success">Pagar</button>
                         }
                     }
                 </div>
-         </div>
+            </div>
 
+        </div>
     </div>
 </div>
 
 <div class="modal fade" id="ModalCarrito" data-backdrop="static" data-keyboard="false" tabindex="-1"
          aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Confirmación</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                @using (Html.BeginForm("EliminarProductoCarrito", "Carrito"))
-                {
-                    <div class="modal-body">
-                        @Html.Hidden("idProducto", "")
-                        ¿Deseas eliminar el producto <label id="Nombre"></label>?
-                    </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">Procesar</button>
-                    </div>
-                }
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Confirmación</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
+            @using (Html.BeginForm("EliminarProductoCarrito", "Carrito"))
+            {
+                <div class="modal-body text-center">
+                    @Html.Hidden("idProducto", "")
+                    <p>¿Deseas eliminar el producto <strong id="Nombre"></strong>?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-danger">Eliminar</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                </div>
+            }
         </div>
+    </div>
 </div>
 
 <script src="~/root/plugins/jquery/jquery.min.js"></script>
@@ -108,11 +103,10 @@
             },
             columnDefs: [{ type: 'string', target: [0, 1, 2, 3, 4, 5] }]
         });
-    })
+    });
 
     $(document).on("click", ".AbrirModal", function () {
         $("#idProducto").val($(this).attr('data-id'));
-        $("#Descripcion").text($(this).attr('data-name'));
+        $("#Nombre").text($(this).attr('data-name'));
     });
-
 </script>

@@ -1,86 +1,75 @@
 ﻿@model proyectoGrupo_1.BaseDatos.tUsuario
 
 @{
-    ViewBag.Title = "ActualizarUsuario";
+    ViewBag.Title = "Actualizar Usuario";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<br>
-<h4>Datos del usuario</h4>
-<hr>
-<br>
+<div class="container mt-4">
+    <h4 class="text-center mb-4" style="font-size: 1.6rem;">Datos del Usuario</h4>
+    <hr>
 
-<div class="row">
-    <div class="col-3">
-    </div>
-    <div class="col-6">
+    @if (ViewBag.msj != null)
+    {
+        <div class="alert alert-info text-center" role="alert">
+            @ViewBag.msj
+        </div>
+    }
 
-        @if (ViewBag.msj != null)
-        {
-            <div class="alert alert-info" role="alert" style="text-align:center">
-                @ViewBag.msj
-            </div>
-        }
+    @using (Html.BeginForm("ActualizarUsuario", "Usuario", FormMethod.Post, new { @class = "needs-validation", novalidate = "novalidate" }))
+    {
+        @Html.HiddenFor(m => m.id)
 
-        @using (Html.BeginForm("ActualizarUsuario", "Usuario"))
-        {
-            @Html.HiddenFor(m => m.id)
-
-            @Html.Label("Cedula")
-            <div class="input-group mb-3">
+        <div class="form-group mb-3">
+            @Html.Label("Cédula", htmlAttributes: new { @class = "form-label" })
+            <div class="input-group">
                 @Html.TextBoxFor(m => m.Cedula, new
                 {
                     @type = "text",
                     @class = "form-control",
-                    @placeholder = "Cedula",
+                    @placeholder = "Cédula",
                     onkeyup = "ConsultarIdentificacion();"
                 })
                 <div class="input-group-append">
-                    <div class="input-group-text">
-                        <span class="fas fa-user"></span>
-                    </div>
+                    <span class="input-group-text"><i class="fas fa-user"></i></span>
                 </div>
             </div>
+        </div>
 
-            @Html.Label("Nombre")
-            <div class="input-group mb-3">
+        <div class="form-group mb-3">
+            @Html.Label("Nombre", htmlAttributes: new { @class = "form-label" })
+            <div class="input-group">
                 @Html.TextBoxFor(m => m.Nombre, new { @type = "text", @class = "form-control", @placeholder = "Nombre", @readOnly = true })
                 <div class="input-group-append">
-                    <div class="input-group-text">
-                        <span class="fas fa-user"></span>
-                    </div>
+                    <span class="input-group-text"><i class="fas fa-user"></i></span>
                 </div>
             </div>
+        </div>
 
-            @Html.Label("Correo")
-            <div class="input-group mb-3">
+        <div class="form-group mb-3">
+            @Html.Label("Correo Electrónico", htmlAttributes: new { @class = "form-label" })
+            <div class="input-group">
                 @Html.TextBoxFor(m => m.Correo, new { @type = "email", @class = "form-control", @placeholder = "Correo Electrónico" })
                 <div class="input-group-append">
-                    <div class="input-group-text">
-                        <span class="fas fa-envelope"></span>
-                    </div>
+                    <span class="input-group-text"><i class="fas fa-envelope"></i></span>
                 </div>
             </div>
+        </div>
 
-            @Html.Label("Perfil")
-            <div class="input-group mb-3">
+        <div class="form-group mb-3">
+            @Html.Label("Perfil", htmlAttributes: new { @class = "form-label" })
+            <div class="input-group">
                 @Html.DropDownListFor(m => m.idRol, ViewBag.Roles as List<SelectListItem>, new { @class = "form-control" })
                 <div class="input-group-append">
-                    <div class="input-group-text">
-                        <span class="fas fa-lock"></span>
-                    </div>
+                    <span class="input-group-text"><i class="fas fa-lock"></i></span>
                 </div>
             </div>
+        </div>
 
-            <div class="row">
-                <div class="col-sm-6 col-md-4 col-lg-4">
-                </div>
-                <div class="col-sm-6 col-md-4 col-lg-3">
-                    <button type="submit" class="btn btn-primary btn-block" style="width:100%">Procesar</button>
-                </div>
-            </div>
-        }
-
-    </div>
+        <div class="form-group text-center mb-4">
+            <button type="submit" class="btn btn-primary btn-lg">Actualizar</button>
+        </div>
+    }
 </div>
+
 <script src="~/root/funciones/Usuario.js"></script>

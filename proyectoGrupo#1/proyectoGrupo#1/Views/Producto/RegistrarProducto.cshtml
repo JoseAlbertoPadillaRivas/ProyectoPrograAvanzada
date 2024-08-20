@@ -1,61 +1,49 @@
 ﻿@model proyectoGrupo_1.Entidades.Producto
 @{
-    ViewBag.Title = "RegistrarProducto";
+    ViewBag.Title = "Registrar Producto";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
-<div class="card">
-    <div class="card-body register-card-body">
-        <p class="login-box-msg">RegistrarProducto</p>
+<div class="card mx-auto mt-5" style="max-width: 700px;">
+    <div class="card-body">
+        <h4 class="card-title text-center mb-4">Registrar Producto</h4>
 
         @if (ViewBag.msj != null)
         {
-            <div class="alert alert-info" role="alert" style="text-align:center">
+            <div class="alert alert-info text-center">
                 @ViewBag.msj
             </div>
         }
 
         @using (Html.BeginForm("RegistrarProducto", "Producto"))
         {
-            <div class="input-group mb-3">
-                @Html.TextBoxFor(m => m.Descripcion, new { @type = "text", @class = "form-control", @placeholder = "Descripcion" })
-                <br />
-            </div>
-            <div class="input-group mb-3">
-                @Html.TextBoxFor(m => m.Cantidad, new { @type = "number", @class = "form-control", @placeholder = "Cantidad" })
-                <br />
-            </div>
-            <div class="input-group mb-3">
-                @Html.TextBoxFor(m => m.Precio, new { @type = "number", @class = "form-control", @placeholder = "Precio" })
-                <br />
-            </div>
-            <div class="input-group mb-3">
-                @Html.TextBoxFor(m => m.idCategoria, new { @type = "number", @class = "form-control", @placeholder = "Categoria" })
-                <br />
-            </div>
-            <div class="input-group mb-3">
-                @Html.TextBoxFor(m => m.Imagen, new { @type = "text", @class = "form-control", @placeholder = "Imagen" })
-                <br />
+            <div class="form-group">
+                @Html.TextBoxFor(m => m.Descripcion, new { @class = "form-control", @placeholder = "Descripción" })
             </div>
 
-            @*@Html.Label("Categoria")
-            <div class="input-group mb-3">
-                @Html.DropDownListFor(m => m.idCategoria, ViewBag.Categoria as List<SelectListItem>, new { @class = "form-control" })
-            </div>*@
+            <div class="form-group">
+                @Html.TextBoxFor(m => m.Cantidad, new { @class = "form-control", @placeholder = "Cantidad", @type = "number" })
+            </div>
 
-            <div class="row">
-                <div class="col-8">
-                </div>
-                <div class="col-4">
-                    <button type="submit" class="btn btn-primary btn-block">Procesar</button>
-                </div>
+            <div class="form-group">
+                @Html.TextBoxFor(m => m.Precio, new { @class = "form-control", @placeholder = "Precio", @type = "number" })
+            </div>
+
+            <div class="form-group">
+                @Html.TextBoxFor(m => m.idCategoria, new { @class = "form-control", @placeholder = "Categoría", @type = "number" })
+            </div>
+
+            <div class="form-group">
+                @Html.TextBoxFor(m => m.Imagen, new { @class = "form-control", @placeholder = "URL de Imagen" })
+            </div>
+
+            <div class="form-group text-center mt-4">
+                <button type="submit" class="btn btn-primary btn-sm">Registrar Producto</button>
             </div>
         }
 
-        <a href="@Url.Action("VerProductos","Producto")" class="text-center">Atras</a>
+        <div class="text-center mt-4">
+            <a href="@Url.Action("VerProductos", "Producto")" class="btn btn-secondary btn-sm">Atrás</a>
+        </div>
     </div>
 </div>
-
-
-

@@ -1,37 +1,41 @@
 ﻿@model proyectoGrupo_1.Entidades.Categoria
+
 @{
-    ViewBag.Title = "RegistrarCategoria";
+    ViewBag.Title = "Registrar Categoría";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<div class="container mt-4">
+    <div class="card mx-auto" style="max-width: 600px;">
+        <br>
+        <h4 class="card-title text-center mb-4">Registrar Categoría</h4>
+        <div class="card-body">
 
-<div class="card">
-    <div class="card-body register-card-body">
-        <p class="login-box-msg">Registrar Categoria</p>
-
-        @if (ViewBag.msj != null)
-        {
-            <div class="alert alert-info" role="alert" style="text-align:center">
-                @ViewBag.msj
-            </div>
-        }
-
-        @using (Html.BeginForm("RegistrarCategoria", "Categoria"))
-        {
-            <div class="input-group mb-3">
-                @Html.TextBoxFor(m => m.Nombre, new { @type = "text", @class = "form-control", @placeholder = "Nombre" })
-                <br />
-            </div>
-            <div class="row">
-                <div class="col-8">
+            @if (ViewBag.msj != null)
+            {
+                <div class="alert alert-info text-center" role="alert">
+                    @ViewBag.msj
                 </div>
-                <div class="col-4">
-                    <button type="submit" class="btn btn-primary btn-block">Procesar</button>
-                </div>
-            </div>
-        }
+            }
 
-        <a href="@Url.Action("ConsultarCategorias","Categoria")" class="text-center">Atras</a>
+            @using (Html.BeginForm("RegistrarCategoria", "Categoria", FormMethod.Post))
+            {
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Nombre, htmlAttributes: new { @class = "form-label" })
+                    @Html.TextBoxFor(m => m.Nombre, new { @class = "form-control", @placeholder = "Nombre de la Categoría" })
+                    @Html.ValidationMessageFor(m => m.Nombre, "", new { @class = "text-danger" })
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block">Registrar</button>
+            }
+
+            <div class="text-center mt-3">
+                <a href="@Url.Action("ConsultarCategorias", "Categoria")" class="btn btn-secondary">Volver</a>
+            </div>
+        </div>
     </div>
 </div>
 
+<!-- Scripts -->
+<script src="~/root/plugins/jquery/jquery.min.js"></script>
+<script src="~/root/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>

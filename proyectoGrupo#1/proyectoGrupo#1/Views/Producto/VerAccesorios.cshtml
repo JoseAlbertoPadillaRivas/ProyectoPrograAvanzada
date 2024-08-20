@@ -1,61 +1,50 @@
 ﻿@model List<proyectoGrupo_1.BaseDatos.tProducto>
 @{
-    ViewBag.Title = "VerAccesorios";
+    ViewBag.Title = "Ver Accesorios";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Accesorios</h2>
+<div class="container mt-5">
+    <h2 class="text-center mb-4" style="font-size: 2rem";>Accesorios</h2>
 
-@foreach (var item in Model)
-{
-
-    <div class="card" style="width: 18rem;">
-        <img class="card-img-top" src="@item.Imagen" alt="Card image cap">
-        <div class="card-body">
-            <h4 class="card-title">@item.Descripcion</h4>
-            <p class="card-text">Precio: ₡ @item.Precio</p>
-            <p class="card-title" style="font-size:10pt">Cantidad: @item.Cantidad</p>
-        </div>
-
-        @if (item.Cantidad > 0)
+    <div class="row">
+        @foreach (var item in Model)
         {
-            <div class="card-body row">
-                <div class="col-6">
-                    <input id=prd-@item.idProducto type="number" class="form-control" style="text-align:center" value="0" min="1" max="@item.Cantidad"
-                           onkeypress="return ValidarNumeros(this.id)">
-                </div>
-                <div class="col-5">
-                    <a onclick="AgregarProducto(@item.idProducto, @item.Cantidad);" class="card-link btn btn-outline-primary">Añadir</a>
-                </div>
-            </div>
-        }
-        else
-        {
-            <div class="card-body row">
-                <div class="col-4">
-                </div>
-                <div class="col-4">
-                    <div style="">
-                        <p class="card-link" style="font-size:12pt;color:red;font-weight:bold">Agotado</p>
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-sm">
+                    <img class="card-img-top" src="@item.Imagen" alt="Imagen del producto">
+                    <div class="card-body">
+                        <h5 class="card-title">@item.Descripcion</h5>
+                        <p class="card-text">Precio: ₡ @item.Precio</p>
+                        <p class="card-text" style="font-size: 0.875rem;">Cantidad: @item.Cantidad</p>
+
+                        @if (item.Cantidad > 0)
+                        {
+                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                <input id="prd-@item.idProducto" type="number" class="form-control" style="width: 60%;" value="0" min="1" max="@item.Cantidad"
+                                       onkeypress="return ValidarNumeros(this.id)">
+                                <button onclick="AgregarProducto(@item.idProducto, @item.Cantidad);" class="btn btn-primary ml-2">
+                                    <i class="fas fa-cart-plus"></i> Añadir
+                                </button>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="text-center mt-3">
+                                <p class="text-danger font-weight-bold">Agotado</p>
+                            </div>
+                        }
                     </div>
                 </div>
             </div>
         }
-
     </div>
-}
+</div>
 
 <script>
-
     function ValidarNumeros(evt) {
         var charCode = (evt.which) ? evt.which : event.keyCode;
-
-        if (charCode >= 48 && charCode <= 57) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return (charCode >= 48 && charCode <= 57);
     }
 
     function AgregarProducto(idProducto, Cantidad) {
@@ -70,6 +59,7 @@
             MostrarMensaje("Información", "Debe ingresar una cantidad válida", "info");
             return;
         }
+
         $.ajax({
             type: 'POST',
             url: '/Producto/RegistrarCarrito',
@@ -80,7 +70,6 @@
             },
             success: function (data) {
                 MostrarMensaje("Información", "Producto añadido correctamente", "success");
-
             }
         });
     }
@@ -88,17 +77,44 @@
     function MostrarMensaje(titulo, mensaje, icono) {
         Swal.fire({
             title: titulo,
-            showDenyButton: false,
-            showCancelButton: false,
-            confirmButtonText: "Aceptar",
             text: mensaje,
-            icon: icono
+            icon: icono,
+            confirmButtonText: "Aceptar",
+            showCancelButton: false
         }).then((result) => {
             if (result.isConfirmed) {
                 window.location.href = '/Producto/VerAccesorios';
             }
         });
     }
-
 </script>
 
+<style>
+    .card {
+        border: none;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    .card-img-top {
+        height: 300px;
+    }
+
+    .card-body {
+        padding: 1.25rem;
+    }
+
+    .card-title {
+        font-size: 1.25rem;
+        font-weight: bold;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border: none;
+    }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+</style>
