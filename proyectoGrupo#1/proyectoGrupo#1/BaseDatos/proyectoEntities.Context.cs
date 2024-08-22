@@ -29,11 +29,11 @@ namespace proyectoGrupo_1.BaseDatos
     
         public virtual DbSet<tCarrito> tCarrito { get; set; }
         public virtual DbSet<tCategoria> tCategoria { get; set; }
+        public virtual DbSet<tDetalle> tDetalle { get; set; }
+        public virtual DbSet<tMaestro> tMaestro { get; set; }
         public virtual DbSet<tProducto> tProducto { get; set; }
         public virtual DbSet<tRol> tRol { get; set; }
         public virtual DbSet<tUsuario> tUsuario { get; set; }
-        public virtual DbSet<tMaestro> tMaestro { get; set; }
-        public virtual DbSet<tDetalle> tDetalle { get; set; }
     
         public virtual int ActualizarUsuario(string cedula, string nombre, string correo, Nullable<int> idRol, Nullable<int> id)
         {
@@ -138,6 +138,19 @@ namespace proyectoGrupo_1.BaseDatos
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("EliminarProducto", idProductoParameter);
         }
     
+        public virtual int EliminarProductoCarrito(Nullable<int> id, Nullable<int> idProducto)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            var idProductoParameter = idProducto.HasValue ?
+                new ObjectParameter("idProducto", idProducto) :
+                new ObjectParameter("idProducto", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("EliminarProductoCarrito", idParameter, idProductoParameter);
+        }
+    
         public virtual ObjectResult<IniciarSesion_Result> IniciarSesion(string correo, string contrasenna)
         {
             var correoParameter = correo != null ?
@@ -160,13 +173,13 @@ namespace proyectoGrupo_1.BaseDatos
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("NuevaCategoria", nombreParameter);
         }
     
-        public virtual ObjectResult<string> PagarCarrito(Nullable<int> id)
+        public virtual int PagarCarrito(Nullable<int> id)
         {
             var idParameter = id.HasValue ?
                 new ObjectParameter("id", id) :
                 new ObjectParameter("id", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("PagarCarrito", idParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PagarCarrito", idParameter);
         }
     
         public virtual int RegistrarCarrito(Nullable<int> id, Nullable<int> idProducto, Nullable<int> cantidades)
@@ -232,28 +245,6 @@ namespace proyectoGrupo_1.BaseDatos
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("RegistrarUsuario", cedulaParameter, nombreParameter, correoParameter, contrasennaParameter);
         }
     
-        public virtual ObjectResult<ValidarUsuarioIdentificacion_Result> ValidarUsuarioIdentificacion(string cedula)
-        {
-            var cedulaParameter = cedula != null ?
-                new ObjectParameter("Cedula", cedula) :
-                new ObjectParameter("Cedula", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ValidarUsuarioIdentificacion_Result>("ValidarUsuarioIdentificacion", cedulaParameter);
-        }
-    
-        public virtual int EliminarProductoCarrito(Nullable<int> id, Nullable<int> idProducto)
-        {
-            var idParameter = id.HasValue ?
-                new ObjectParameter("id", id) :
-                new ObjectParameter("id", typeof(int));
-    
-            var idProductoParameter = idProducto.HasValue ?
-                new ObjectParameter("idProducto", idProducto) :
-                new ObjectParameter("idProducto", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("EliminarProductoCarrito", idParameter, idProductoParameter);
-        }
-    
         public virtual ObjectResult<ValidarCantidadesProdcutos_Result> ValidarCantidadesProdcutos(Nullable<int> id)
         {
             var idParameter = id.HasValue ?
@@ -261,6 +252,15 @@ namespace proyectoGrupo_1.BaseDatos
                 new ObjectParameter("id", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ValidarCantidadesProdcutos_Result>("ValidarCantidadesProdcutos", idParameter);
+        }
+    
+        public virtual ObjectResult<ValidarUsuarioIdentificacion_Result> ValidarUsuarioIdentificacion(string cedula)
+        {
+            var cedulaParameter = cedula != null ?
+                new ObjectParameter("Cedula", cedula) :
+                new ObjectParameter("Cedula", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ValidarUsuarioIdentificacion_Result>("ValidarUsuarioIdentificacion", cedulaParameter);
         }
     }
 }

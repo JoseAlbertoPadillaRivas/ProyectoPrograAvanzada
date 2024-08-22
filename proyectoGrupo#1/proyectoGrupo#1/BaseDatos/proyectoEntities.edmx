@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="proyectoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="proyectoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="tCarrito">
           <Key>
             <PropertyRef Name="idCarrito" />
@@ -220,7 +220,8 @@
             <End Role="tCarrito" EntitySet="tCarrito" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="proyectoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -243,6 +244,30 @@
           <Property Name="idCategoria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="tProducto" Relationship="Self.fk_idCategoria" FromRole="tCategoria" ToRole="tProducto" />
+        </EntityType>
+        <EntityType Name="tDetalle">
+          <Key>
+            <PropertyRef Name="idDetalle" />
+          </Key>
+          <Property Name="idDetalle" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idMaestro" Type="Int32" Nullable="false" />
+          <Property Name="idProducto" Type="Int32" Nullable="false" />
+          <Property Name="cantidades" Type="Int32" Nullable="false" />
+          <Property Name="PrecioUnitario" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="SubTotal" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Impuesto" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Total" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tMaestro">
+          <Key>
+            <PropertyRef Name="idMaestro" />
+          </Key>
+          <Property Name="idMaestro" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="FechaCompra" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="SubTotal" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Impuesto" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Total" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
         </EntityType>
         <EntityType Name="tProducto">
           <Key>
@@ -332,6 +357,8 @@
         <EntityContainer Name="proyectoEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="tCarrito" EntityType="Self.tCarrito" />
           <EntitySet Name="tCategoria" EntityType="Self.tCategoria" />
+          <EntitySet Name="tDetalle" EntityType="Self.tDetalle" />
+          <EntitySet Name="tMaestro" EntityType="Self.tMaestro" />
           <EntitySet Name="tProducto" EntityType="Self.tProducto" />
           <EntitySet Name="tRol" EntityType="Self.tRol" />
           <EntitySet Name="tUsuario" EntityType="Self.tUsuario" />
@@ -359,10 +386,10 @@
             <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="CambiarEstadoUsuario">
-          <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="ConsultarCarrrito" ReturnType="Collection(proyectoModel.ConsultarCarrrito_Result)">
-          <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="EditarCategoria">
             <Parameter Name="idCategoria" Mode="In" Type="Int32" />
@@ -377,20 +404,24 @@
             <Parameter Name="Imagen" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="EliminarCategoria">
-          <Parameter Name="idCategoria" Mode="In" Type="Int32" />
+            <Parameter Name="idCategoria" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="EliminarProducto">
-          <Parameter Name="idProducto" Mode="In" Type="Int32" />
+            <Parameter Name="idProducto" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="EliminarProductoCarrito">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="idProducto" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="IniciarSesion" ReturnType="Collection(proyectoModel.IniciarSesion_Result)">
             <Parameter Name="Correo" Mode="In" Type="String" />
             <Parameter Name="Contrasenna" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="NuevaCategoria">
-          <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="Nombre" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="PagarCarrito" ReturnType="Collection(String)">
-          <Parameter Name="id" Mode="In" Type="Int32" />
+          <FunctionImport Name="PagarCarrito">
+            <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="RegistrarCarrito">
             <Parameter Name="id" Mode="In" Type="Int32" />
@@ -410,17 +441,11 @@
             <Parameter Name="Correo" Mode="In" Type="String" />
             <Parameter Name="Contrasenna" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="ValidarUsuarioIdentificacion" ReturnType="Collection(proyectoModel.ValidarUsuarioIdentificacion_Result)">
-          <Parameter Name="Cedula" Mode="In" Type="String" />
-          </FunctionImport>
-          <EntitySet Name="tMaestro" EntityType="proyectoModel.tMaestro" />
-          <EntitySet Name="tDetalle" EntityType="proyectoModel.tDetalle" />
-          <FunctionImport Name="EliminarProductoCarrito">
-            <Parameter Name="id" Mode="In" Type="Int32" />
-            <Parameter Name="idProducto" Mode="In" Type="Int32" />
-          </FunctionImport>
           <FunctionImport Name="ValidarCantidadesProdcutos" ReturnType="Collection(proyectoModel.ValidarCantidadesProdcutos_Result)">
             <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ValidarUsuarioIdentificacion" ReturnType="Collection(proyectoModel.ValidarUsuarioIdentificacion_Result)">
+            <Parameter Name="Cedula" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="ConsultarCarrrito_Result">
@@ -444,40 +469,16 @@
           <Property Type="Boolean" Name="Estado" Nullable="false" />
           <Property Type="Int32" Name="IdRol" Nullable="false" />
         </ComplexType>
+        <ComplexType Name="ValidarCantidadesProdcutos_Result">
+          <Property Type="Int32" Name="idProducto" Nullable="false" />
+          <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="Cantidades" Nullable="false" />
+        </ComplexType>
         <ComplexType Name="ValidarUsuarioIdentificacion_Result">
           <Property Type="Int32" Name="id" Nullable="false" />
           <Property Type="String" Name="Cedula" Nullable="false" MaxLength="20" />
           <Property Type="String" Name="Nombre" Nullable="false" MaxLength="20" />
           <Property Type="String" Name="Correo" Nullable="false" MaxLength="100" />
-        </ComplexType>
-        <EntityType Name="tMaestro">
-          <Key>
-            <PropertyRef Name="idMaestro" />
-          </Key>
-          <Property Name="idMaestro" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="id" Type="Int32" Nullable="false" />
-          <Property Name="FechaCompra" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="SubTotal" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="Impuesto" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="Total" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-        </EntityType>
-        <EntityType Name="tDetalle">
-          <Key>
-            <PropertyRef Name="idDetalle" />
-          </Key>
-          <Property Name="idDetalle" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="idMaestro" Type="Int32" Nullable="false" />
-          <Property Name="idProducto" Type="Int32" Nullable="false" />
-          <Property Name="cantidades" Type="Int32" Nullable="false" />
-          <Property Name="PrecioUnitario" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="SubTotal" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="Impuesto" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="Total" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-        </EntityType>
-        <ComplexType Name="ValidarCantidadesProdcutos_Result">
-          <Property Type="Int32" Name="idProducto" Nullable="false" />
-          <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="100" />
-          <Property Type="Int32" Name="Cantidades" Nullable="false" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -501,6 +502,32 @@
               <MappingFragment StoreEntitySet="tCategoria">
                 <ScalarProperty Name="idCategoria" ColumnName="idCategoria" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tDetalle">
+            <EntityTypeMapping TypeName="proyectoModel.tDetalle">
+              <MappingFragment StoreEntitySet="tDetalle">
+                <ScalarProperty Name="idDetalle" ColumnName="idDetalle" />
+                <ScalarProperty Name="idMaestro" ColumnName="idMaestro" />
+                <ScalarProperty Name="idProducto" ColumnName="idProducto" />
+                <ScalarProperty Name="cantidades" ColumnName="cantidades" />
+                <ScalarProperty Name="PrecioUnitario" ColumnName="PrecioUnitario" />
+                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+                <ScalarProperty Name="Impuesto" ColumnName="Impuesto" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tMaestro">
+            <EntityTypeMapping TypeName="proyectoModel.tMaestro">
+              <MappingFragment StoreEntitySet="tMaestro">
+                <ScalarProperty Name="idMaestro" ColumnName="idMaestro" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="FechaCompra" ColumnName="FechaCompra" />
+                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+                <ScalarProperty Name="Impuesto" ColumnName="Impuesto" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -562,6 +589,7 @@
           <FunctionImportMapping FunctionImportName="EditarProducto" FunctionName="proyectoModel.Store.EditarProducto" />
           <FunctionImportMapping FunctionImportName="EliminarCategoria" FunctionName="proyectoModel.Store.EliminarCategoria" />
           <FunctionImportMapping FunctionImportName="EliminarProducto" FunctionName="proyectoModel.Store.EliminarProducto" />
+          <FunctionImportMapping FunctionImportName="EliminarProductoCarrito" FunctionName="proyectoModel.Store.EliminarProductoCarrito" />
           <FunctionImportMapping FunctionImportName="IniciarSesion" FunctionName="proyectoModel.Store.IniciarSesion">
             <ResultMapping>
               <ComplexTypeMapping TypeName="proyectoModel.IniciarSesion_Result">
@@ -579,6 +607,15 @@
           <FunctionImportMapping FunctionImportName="RegistrarCarrito" FunctionName="proyectoModel.Store.RegistrarCarrito" />
           <FunctionImportMapping FunctionImportName="RegistrarProducto" FunctionName="proyectoModel.Store.RegistrarProducto" />
           <FunctionImportMapping FunctionImportName="RegistrarUsuario" FunctionName="proyectoModel.Store.RegistrarUsuario" />
+          <FunctionImportMapping FunctionImportName="ValidarCantidadesProdcutos" FunctionName="proyectoModel.Store.ValidarCantidadesProdcutos">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="proyectoModel.ValidarCantidadesProdcutos_Result">
+                <ScalarProperty Name="idProducto" ColumnName="idProducto" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Cantidades" ColumnName="Cantidades" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="ValidarUsuarioIdentificacion" FunctionName="proyectoModel.Store.ValidarUsuarioIdentificacion">
             <ResultMapping>
               <ComplexTypeMapping TypeName="proyectoModel.ValidarUsuarioIdentificacion_Result">
@@ -586,42 +623,6 @@
                 <ScalarProperty Name="Cedula" ColumnName="Cedula" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="Correo" ColumnName="Correo" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <EntitySetMapping Name="tMaestro">
-            <EntityTypeMapping TypeName="proyectoModel.tMaestro">
-              <MappingFragment StoreEntitySet="tMaestro">
-                <ScalarProperty Name="Total" ColumnName="Total" />
-                <ScalarProperty Name="Impuesto" ColumnName="Impuesto" />
-                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
-                <ScalarProperty Name="FechaCompra" ColumnName="FechaCompra" />
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="idMaestro" ColumnName="idMaestro" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tDetalle">
-            <EntityTypeMapping TypeName="proyectoModel.tDetalle">
-              <MappingFragment StoreEntitySet="tDetalle">
-                <ScalarProperty Name="Total" ColumnName="Total" />
-                <ScalarProperty Name="Impuesto" ColumnName="Impuesto" />
-                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
-                <ScalarProperty Name="PrecioUnitario" ColumnName="PrecioUnitario" />
-                <ScalarProperty Name="cantidades" ColumnName="cantidades" />
-                <ScalarProperty Name="idProducto" ColumnName="idProducto" />
-                <ScalarProperty Name="idMaestro" ColumnName="idMaestro" />
-                <ScalarProperty Name="idDetalle" ColumnName="idDetalle" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="EliminarProductoCarrito" FunctionName="proyectoModel.Store.EliminarProductoCarrito" />
-          <FunctionImportMapping FunctionImportName="ValidarCantidadesProdcutos" FunctionName="proyectoModel.Store.ValidarCantidadesProdcutos">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="proyectoModel.ValidarCantidadesProdcutos_Result">
-                <ScalarProperty Name="idProducto" ColumnName="idProducto" />
-                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-                <ScalarProperty Name="Cantidades" ColumnName="Cantidades" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

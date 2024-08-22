@@ -35,18 +35,15 @@ namespace proyectoGrupo_1.Models
 
         public bool PagarCarrito()
         {
-            int rowsAffected = 0;
+            var rowsAffected = 0;
 
             using (var context = new proyectoEntities())
             {
                 int id = int.Parse(HttpContext.Current.Session["idUsuario"].ToString());
-
-                var parameter = new SqlParameter("@id", id);
-
-                rowsAffected = context.Database.ExecuteSqlCommand("EXEC PagarCarrito @id", parameter);
+                rowsAffected = context.PagarCarrito(id);
             }
 
-            return rowsAffected > 0;
+            return (rowsAffected > 0 ? true : false);
         }
 
         public bool EliminarProductoCarrito(int idProducto)
