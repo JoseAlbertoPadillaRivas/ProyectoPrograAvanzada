@@ -22,6 +22,16 @@
     <link rel="stylesheet" type="text/css" href="~/root/dist/css/responsive.css">
     <link rel="stylesheet" type="text/css" href="~/root/dist/css/colors/color1.css" id="colors">
     <link rel="stylesheet" type="text/css" href="~/root/dist/css/animate.css">
+    <style>
+        .main-sidebar {
+            width: 200px;
+        }
+
+        .main-sidebar .nav-sidebar .nav-item > .nav-link {
+            padding-left: 10px;
+        }
+
+    </style>
 </head>
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
@@ -63,7 +73,7 @@
                                     </a>
                                     <div class="dropdown-divider"></div>
                                     <a href="@Url.Action("CerrarSesion","Login")" class="dropdown-item">
-                                        <i class="fa fa-door-open mr-2"></i> Cerrar Sesión
+                                        <i></i> Cerrar Sesión
                                         <span class="float-right text-muted text-sm"></span>
                                     </a>
                                 </div>
@@ -94,10 +104,10 @@
                     <img src="~/root/dist/img/FotoPlusLogo.png"
                          alt="AdminLTE Logo"
                          class="brand-image elevation-3"
-                         style="opacity: .8">
+                         style="opacity: .8; width: 30px; height: 70px;">
                     <span class="brand-text font-weight-light">Foto Plus</span>
                 </a>
-                <div class="sidebar">
+                <div class="sidebar"> 
                     <nav class="mt-2">
                         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
@@ -161,3 +171,4 @@
 
 </body>
 </html>
+
