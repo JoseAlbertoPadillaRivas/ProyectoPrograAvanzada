@@ -102,12 +102,16 @@
             <div class="modal-body">
                 ¿Estás seguro de que deseas proceder con el pago de tu carrito?
             </div>
+            <div class="modal-body">
+                El monto a cancelar es de: ¢<b>@decimal.Parse(Session["Total"].ToString()).ToString("N2")</b>
+            </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                 @using (Html.BeginForm("PagarCarrito", "Carrito"))
                 {
                     <button type="submit" class="btn btn-success">Confirmar Pago</button>
                 }
+
             </div>
         </div>
     </div>

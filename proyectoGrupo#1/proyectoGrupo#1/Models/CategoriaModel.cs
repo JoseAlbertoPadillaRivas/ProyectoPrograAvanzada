@@ -11,7 +11,7 @@ namespace proyectoGrupo_1.Models
     {
         public List<tCategoria> ConsultarCategorias()
         {
-            using (var context = new proyectoEntities1())
+            using (var context = new proyectoEntities())
             {
                 return (from x in context.tCategoria
                         select x).ToList();
@@ -22,7 +22,7 @@ namespace proyectoGrupo_1.Models
         {
             var rowsAffected = 0;
 
-            using (var context = new proyectoEntities1())
+            using (var context = new proyectoEntities())
             {
                 rowsAffected = context.NuevaCategoria(cat.Nombre);
             }
@@ -32,7 +32,7 @@ namespace proyectoGrupo_1.Models
 
         public tCategoria ConsultarCategoria(int id)
         {
-            using (var context = new proyectoEntities1())
+            using (var context = new proyectoEntities())
             {
                 return (from x in context.tCategoria
                         where x.idCategoria == id
@@ -44,7 +44,7 @@ namespace proyectoGrupo_1.Models
         {
             var rowsAffected = 0;
 
-            using (var context = new proyectoEntities1())
+            using (var context = new proyectoEntities())
             {
                 rowsAffected = context.EditarCategoria(cat.idCategoria, cat.Nombre);
             }
@@ -56,7 +56,7 @@ namespace proyectoGrupo_1.Models
         {
             var rowsAffected = 0;
 
-            using (var context = new proyectoEntities1())
+            using (var context = new proyectoEntities())
             {
                 rowsAffected = context.EliminarCategoria(cat.idCategoria);
             }

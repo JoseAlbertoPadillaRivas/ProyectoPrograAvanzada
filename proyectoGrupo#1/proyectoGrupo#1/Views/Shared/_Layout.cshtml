@@ -22,16 +22,6 @@
     <link rel="stylesheet" type="text/css" href="~/root/dist/css/responsive.css">
     <link rel="stylesheet" type="text/css" href="~/root/dist/css/colors/color1.css" id="colors">
     <link rel="stylesheet" type="text/css" href="~/root/dist/css/animate.css">
-    <style>
-        .main-sidebar {
-            width: 200px;
-        }
-
-        .main-sidebar .nav-sidebar .nav-item > .nav-link {
-            padding-left: 10px;
-        }
-
-    </style>
 </head>
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
@@ -40,15 +30,11 @@
                 <div id="logo" class="logo">
                 </div>
                 <div class="nav-wrap">
-                    <div class="btn-menu open"></div>
                     <nav id="mainnav" class="mainnav">
                         <ul class="menu">
 
                             @if (Session["RolUsuario"].ToString() == "2")
                             {
-                                <li class="nav-item">
-                                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-                                </li>
                                 <li><a href="@Url.Action("VerProductos","Producto")">Productos</a></li>
                             }
                             <li><a href="@Url.Action("Home","Login")">Home</a></li>
@@ -88,22 +74,22 @@
                                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                                         <div class="dropdown-divider"></div>
                                         <a href="@Url.Action("ConsultarUsuarios", "Usuario")" class="dropdown-item">
-                                            <i class="fa fa-users mr-2"></i> CONSULTAR USUARIOS
+                                            <i class="fa fa-users mr-2"></i> Consultar Usuarios
                                             <span class="float-right text-muted text-sm"></span>
                                         </a>
                                         <div class="dropdown-divider"></div>
                                         <a href="@Url.Action("VerProductos", "Producto")" class="dropdown-item">
-                                            <i></i> CONSULTAR PRODUCTOS
+                                            <i></i> Consultar Productos
                                             <span class="float-right text-muted text-sm"></span>
                                         </a>
                                         <div class="dropdown-divider"></div>
                                         <a href="@Url.Action("ConsultarCategorias", "Categoria")" class="dropdown-item">
-                                            <i></i> CONSULTAR CATEGORIAS
+                                            <i></i> Consultar Categorias
                                             <span class="float-right text-muted text-sm"></span>
                                         </a>
                                         <div class="dropdown-divider"></div>
                                         <a href="@Url.Action("ConsultarSeguimientos", "Seguimiento")" class="dropdown-item">
-                                            <i></i> CONSULTAR SEGUIMIENTOS
+                                            <i></i> Consultar Seguimientos
                                             <span class="float-right text-muted text-sm"></span>
                                         </a>
                                     </div>
@@ -127,14 +113,10 @@
             </section>
         </div>
 
-            <footer class="main-footer">
-                <strong>Copyright &copy; @DateTime.Now.Year </strong> All rights reserved.
-            </footer>
+        <footer class="main-footer">
+            <strong>Copyright &copy; @DateTime.Now.Year </strong> All rights reserved.
+        </footer>
 
-            <aside class="control-sidebar control-sidebar-dark">
-            </aside>
-
-        }
     </div>
 
     <script src="~/root/plugins/jquery/jquery.min.js"></script>

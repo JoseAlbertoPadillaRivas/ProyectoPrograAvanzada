@@ -14,7 +14,7 @@ namespace proyectoGrupo_1.Models
         {
             var rowsAffected = 0;
 
-            using (var context = new proyectoEntities1())
+            using (var context = new proyectoEntities())
             {
                 int id = int.Parse(HttpContext.Current.Session["idUsuario"].ToString());
                 rowsAffected = context.RegistrarCarrito(id, idProducto, Cantidades);
@@ -25,7 +25,7 @@ namespace proyectoGrupo_1.Models
         
         public List<ConsultarCarrrito_Result> ConsultarCarrito()
         {
-            using (var context = new proyectoEntities1())
+            using (var context = new proyectoEntities())
             {
                 int id = int.Parse(HttpContext.Current.Session["idUsuario"].ToString());
                 return context.ConsultarCarrrito(id).ToList();
@@ -37,7 +37,7 @@ namespace proyectoGrupo_1.Models
         {
             var rowsAffected = 0;
 
-            using (var context = new proyectoEntities1())
+            using (var context = new proyectoEntities())
             {
                 int id = int.Parse(HttpContext.Current.Session["idUsuario"].ToString());
                 rowsAffected = context.PagarCarrito(id);
@@ -50,7 +50,7 @@ namespace proyectoGrupo_1.Models
         {
             var rowsAffected = 0;
 
-            using (var context = new proyectoEntities1())
+            using (var context = new proyectoEntities())
             {
                 int id = int.Parse(HttpContext.Current.Session["idUsuario"].ToString());
                 rowsAffected = context.EliminarProductoCarrito(id, idProducto);
@@ -61,7 +61,7 @@ namespace proyectoGrupo_1.Models
 
         public List<ValidarCantidadesProdcutos_Result> ValidarCantidadesProdcutos()
         {
-            using (var context = new proyectoEntities1())
+            using (var context = new proyectoEntities())
             {
                 int id = int.Parse(HttpContext.Current.Session["idUsuario"].ToString());
                 return context.ValidarCantidadesProdcutos(id).ToList();

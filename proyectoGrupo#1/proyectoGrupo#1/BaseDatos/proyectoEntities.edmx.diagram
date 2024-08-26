@@ -4,12 +4,11 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="9b8c0a3262e242ef9a4a621f63c52e4e" Name="Diagram1">
-        <EntityTypeShape EntityType="proyectoModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+      <Diagram DiagramId="6346fc8932754967a4da4ce4f15f05f0" Name="Diagram1" ZoomLevel="85">
         <EntityTypeShape EntityType="proyectoModel.tCarrito" Width="1.5" PointX="5.25" PointY="2.625" IsExpanded="true" />
         <EntityTypeShape EntityType="proyectoModel.tCategoria" Width="1.5" PointX="0.75" PointY="8" IsExpanded="true" />
-        <EntityTypeShape EntityType="proyectoModel.tDetalle" Width="1.5" PointX="7.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="proyectoModel.tMaestro" Width="1.5" PointX="7.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="proyectoModel.tDetalle" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="proyectoModel.tMaestro" Width="1.5" PointX="7.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="proyectoModel.tProducto" Width="1.5" PointX="3" PointY="7.5" IsExpanded="true" />
         <EntityTypeShape EntityType="proyectoModel.tRol" Width="1.5" PointX="0.75" PointY="3" IsExpanded="true" />
         <EntityTypeShape EntityType="proyectoModel.tSeguimiento" Width="1.5" PointX="5.25" PointY="5.75" IsExpanded="true" />

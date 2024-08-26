@@ -14,7 +14,7 @@ namespace proyectoGrupo_1.Models
         {
             var rowsAffected = 0;
 
-            using (var context = new proyectoEntities1())
+            using (var context = new proyectoEntities())
             {
                 rowsAffected = context.RegistrarUsuario(user.Cedula, user.Nombre, user.Correo, user.Contrasenna);
             }
@@ -24,7 +24,7 @@ namespace proyectoGrupo_1.Models
 
         public IniciarSesion_Result IniciarSesion(Usuario user)
         {
-            using (var context = new proyectoEntities1())
+            using (var context = new proyectoEntities())
             {
                 return context.IniciarSesion(user.Correo, user.Contrasenna).FirstOrDefault();
             }
@@ -32,7 +32,7 @@ namespace proyectoGrupo_1.Models
 
         public List<tUsuario> ConsultarUsuarios()
         {
-            using (var context = new proyectoEntities1())
+            using (var context = new proyectoEntities())
             {
                 int idSesion = int.Parse(HttpContext.Current.Session["idUsuario"].ToString());
 
@@ -44,7 +44,7 @@ namespace proyectoGrupo_1.Models
 
         public tUsuario ConsultarUsuario(int id)
         {
-            using (var context = new proyectoEntities1())
+            using (var context = new proyectoEntities())
             {
                 return (from x in context.tUsuario
                         where x.id == id
@@ -54,7 +54,7 @@ namespace proyectoGrupo_1.Models
 
         public ValidarUsuarioIdentificacion_Result ConsultarUsuarioCedula(string Cedula)
         {
-            using (var context = new proyectoEntities1())
+            using (var context = new proyectoEntities())
             {
                 return context.ValidarUsuarioIdentificacion(Cedula).FirstOrDefault();
             }
@@ -64,7 +64,7 @@ namespace proyectoGrupo_1.Models
         {
             var rowsAffected = 0;
 
-            using (var context = new proyectoEntities1())
+            using (var context = new proyectoEntities())
             {
                 rowsAffected = context.CambiarEstadoUsuario(user.id);
             }
@@ -76,7 +76,7 @@ namespace proyectoGrupo_1.Models
         {
             var rowsAffected = 0;
 
-            using (var context = new proyectoEntities1())
+            using (var context = new proyectoEntities())
             {
                 rowsAffected = context.ActualizarUsuario(user.Cedula, user.Nombre, user.Correo, user.idRol, user.id);
             }
@@ -88,7 +88,7 @@ namespace proyectoGrupo_1.Models
         {
             var rowsAffected = 0;
 
-            using (var context = new proyectoEntities1())
+            using (var context = new proyectoEntities())
             {
                 var datos = (from x in context.tUsuario
                              where x.id == id
