@@ -41,10 +41,11 @@
                             </span>
                         </td>
                         <td class="text-center">
-                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#ModalUsuarios"
+                            <button type="button" class="btn btn-info AbrirModal" data-toggle="modal" data-target="#ModalUsuarios"
                                     data-id="@item.id" data-name="@item.Nombre">
                                 <i class="fa fa-sync"></i>
                             </button>
+
                         </td>
                         <td class="text-center">
                             <a class="btn btn-primary" href="@Url.Action("ActualizarUsuario", "Usuario", new { id = item.id })">
@@ -70,8 +71,8 @@
                 @using (Html.BeginForm("CambiarEstadoUsuario", "Usuario", FormMethod.Post, new { @class = "needs-validation", novalidate = "novalidate" }))
                 {
                     <div class="modal-body">
-                        @Html.Hidden("id", "")
-                        ¿Está seguro de que desea cambiar el estado del usuario <strong id="Nombre"></strong>?
+                        @Html.Hidden("id", "", new { id = "idUsuario" })
+                        ¿Está seguro de que desea cambiar el estado del usuario <strong id="NombreUsuario"></strong>?
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
@@ -81,6 +82,8 @@
             </div>
         </div>
     </div>
+
+
 </div>
 
 <script src="~/root/plugins/jquery/jquery.min.js"></script>
@@ -98,8 +101,15 @@
         });
 
         $(document).on("click", ".AbrirModal", function () {
-            $("#id").val($(this).attr('data-id'));
-            $("#Nombre").text($(this).attr('data-name'));
+            var id = $(this).attr('data-id');
+            var name = $(this).attr('data-name');
+            console.log("ID: " + id);
+            console.log("Nombre: " + name);
+
+            $("#idUsuario").val(id);
+            $("#NombreUsuario").text(name);
         });
     });
+
+
 </script>

@@ -13,7 +13,7 @@ namespace proyectoGrupo_1.Models
         {
             var rowsAffected = 0;
 
-            using (var context = new proyectoEntities())
+            using (var context = new proyectoEntities1())
             {
                 rowsAffected = context.RegistrarSeguimiento(seguimiento.idUsuario, seguimiento.nombreProducto, seguimiento.fechaIngreso, seguimiento.fechaSalida);
             }
@@ -22,7 +22,7 @@ namespace proyectoGrupo_1.Models
         }
         public tSeguimiento ConsultarUnSeguimiento(int idSeguimiento)
         {
-            using (var context = new proyectoEntities())
+            using (var context = new proyectoEntities1())
             {
                 return (from x in context.tSeguimiento
                         where x.idSeguimiento == idSeguimiento
@@ -32,7 +32,7 @@ namespace proyectoGrupo_1.Models
 
         public List<ConsultarMiSeguimiento_Result> ConsultarMiSeguimiento()
         {
-            using (var context = new proyectoEntities())
+            using (var context = new proyectoEntities1())
             {
                 int id = int.Parse(HttpContext.Current.Session["idUsuario"].ToString());
                 return context.ConsultarMiSeguimiento(id).ToList();
@@ -43,7 +43,7 @@ namespace proyectoGrupo_1.Models
         {
             var rowsAffected = 0;
 
-            using (var context = new proyectoEntities())
+            using (var context = new proyectoEntities1())
             {
                 rowsAffected = context.CambiarEstadoSeguimiento(seguimiento.idSeguimiento);
             }
@@ -54,7 +54,7 @@ namespace proyectoGrupo_1.Models
         public bool ActualizarSeguimiento(Seguimiento seguimiento) { 
             var rowsAffected = 0;
 
-            using (var context = new proyectoEntities())
+            using (var context = new proyectoEntities1())
             {
                 rowsAffected = context.ActualizarSeguimiento(seguimiento.nombreProducto, seguimiento.fechaIngreso, seguimiento.fechaSalida, seguimiento.idSeguimiento);
             }
@@ -64,7 +64,7 @@ namespace proyectoGrupo_1.Models
 
         public List<tSeguimiento> VerSeguimientos()
         {
-            using (var context = new proyectoEntities())
+            using (var context = new proyectoEntities1())
             {
 
                 return (from x in context.tSeguimiento
@@ -75,7 +75,7 @@ namespace proyectoGrupo_1.Models
         {
             var rowsAffected = 0;
 
-            using (var context = new proyectoEntities())
+            using (var context = new proyectoEntities1())
             {
                 rowsAffected = context.EliminarSeguimiento(seguimiento.idSeguimiento);
             }

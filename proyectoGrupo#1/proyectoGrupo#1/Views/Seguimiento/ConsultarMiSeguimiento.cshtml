@@ -31,19 +31,14 @@
                         <td class="text-center">@item.nombreProducto</td>
                         <td class="text-center">@item.fechaIngreso</td>
                         <td class="text-center">@item.fechaSalida</td>
-                        @*<td class="text-center">@item.Estado</td>*@
-
-
-                        @*EN ESTA PARTE SALE EL ERROR DE QUE SIEMPRE ESTA EN FALSE, NO GENERA NADA MALO, SIMPLEMENTE SIEMPRE SALE EN FALSE*@
-
-                        @*@if (item.Estado == true)
+                        @if (item.Estado == true)
                         {
                             <td class="text-center">En proceso</td>
                         }
                         else
                         {
                             <td class="text-center">Terminado</td>
-                        }*@
+                        }
 
 
                     </tr>
