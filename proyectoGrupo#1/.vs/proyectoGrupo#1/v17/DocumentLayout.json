@@ -1,10 +1,18 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Progra Avanzada\\ProyectoPrograAvanzada\\proyectoGrupo#1\\",
+  "WorkspaceRootPath": "C:\\Users\\josep\\OneDrive\\Documentos\\GitHub\\ProyectoGrupo#2\\proyectoGrupo#1\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{692A7136-CCCF-40D3-A498-AB0F4F1E7036}|proyectoGrupo#1\\proyectoGrupo#1.csproj|c:\\progra avanzada\\proyectoprograavanzada\\proyectogrupo#1\\proyectogrupo#1\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{692A7136-CCCF-40D3-A498-AB0F4F1E7036}|proyectoGrupo#1\\proyectoGrupo#1.csproj|c:\\users\\josep\\onedrive\\documentos\\github\\proyectogrupo#2\\proyectogrupo#1\\proyectogrupo#1\\views\\seguimiento\\consultarseguimientos.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{692A7136-CCCF-40D3-A498-AB0F4F1E7036}|proyectoGrupo#1\\proyectoGrupo#1.csproj|solutionrelative:proyectogrupo#1\\views\\seguimiento\\consultarseguimientos.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{692A7136-CCCF-40D3-A498-AB0F4F1E7036}|proyectoGrupo#1\\proyectoGrupo#1.csproj|c:\\users\\josep\\onedrive\\documentos\\github\\proyectogrupo#2\\proyectogrupo#1\\proyectogrupo#1\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{692A7136-CCCF-40D3-A498-AB0F4F1E7036}|proyectoGrupo#1\\proyectoGrupo#1.csproj|solutionrelative:proyectogrupo#1\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{692A7136-CCCF-40D3-A498-AB0F4F1E7036}|proyectoGrupo#1\\proyectoGrupo#1.csproj|c:\\users\\josep\\onedrive\\documentos\\github\\proyectogrupo#2\\proyectogrupo#1\\proyectogrupo#1\\views\\seguimiento\\consultarmiseguimiento.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{692A7136-CCCF-40D3-A498-AB0F4F1E7036}|proyectoGrupo#1\\proyectoGrupo#1.csproj|solutionrelative:proyectogrupo#1\\views\\seguimiento\\consultarmiseguimiento.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,19 +22,45 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "_Layout.cshtml",
-              "DocumentMoniker": "C:\\Progra Avanzada\\ProyectoPrograAvanzada\\proyectoGrupo#1\\proyectoGrupo#1\\Views\\Shared\\_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\josep\\OneDrive\\Documentos\\GitHub\\ProyectoGrupo#2\\proyectoGrupo#1\\proyectoGrupo#1\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "proyectoGrupo#1\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "C:\\Progra Avanzada\\ProyectoPrograAvanzada\\proyectoGrupo#1\\proyectoGrupo#1\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\josep\\OneDrive\\Documentos\\GitHub\\ProyectoGrupo#2\\proyectoGrupo#1\\proyectoGrupo#1\\Views\\Shared\\_Layout.cshtml",
               "RelativeToolTip": "proyectoGrupo#1\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAABIAAAAAAAAAAAAYwCgAAAAWAAAAAAAAAA==",
+              "ViewState": "AQIAADcAAAAAAAAAAAAAAFIAAAAfAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-08-23T00:29:14.801Z",
+              "WhenOpened": "2024-08-26T01:48:07.721Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ConsultarSeguimientos.cshtml",
+              "DocumentMoniker": "C:\\Users\\josep\\OneDrive\\Documentos\\GitHub\\ProyectoGrupo#2\\proyectoGrupo#1\\proyectoGrupo#1\\Views\\Seguimiento\\ConsultarSeguimientos.cshtml",
+              "RelativeDocumentMoniker": "proyectoGrupo#1\\Views\\Seguimiento\\ConsultarSeguimientos.cshtml",
+              "ToolTip": "C:\\Users\\josep\\OneDrive\\Documentos\\GitHub\\ProyectoGrupo#2\\proyectoGrupo#1\\proyectoGrupo#1\\Views\\Seguimiento\\ConsultarSeguimientos.cshtml",
+              "RelativeToolTip": "proyectoGrupo#1\\Views\\Seguimiento\\ConsultarSeguimientos.cshtml",
+              "ViewState": "AQIAADMAAAAAAAAAAAAAAAkAAAA7AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-08-26T01:31:55.842Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ConsultarMiSeguimiento.cshtml",
+              "DocumentMoniker": "C:\\Users\\josep\\OneDrive\\Documentos\\GitHub\\ProyectoGrupo#2\\proyectoGrupo#1\\proyectoGrupo#1\\Views\\Seguimiento\\ConsultarMiSeguimiento.cshtml",
+              "RelativeDocumentMoniker": "proyectoGrupo#1\\Views\\Seguimiento\\ConsultarMiSeguimiento.cshtml",
+              "ToolTip": "C:\\Users\\josep\\OneDrive\\Documentos\\GitHub\\ProyectoGrupo#2\\proyectoGrupo#1\\proyectoGrupo#1\\Views\\Seguimiento\\ConsultarMiSeguimiento.cshtml",
+              "RelativeToolTip": "proyectoGrupo#1\\Views\\Seguimiento\\ConsultarMiSeguimiento.cshtml",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAAACYAAAAzAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-08-26T01:11:00.739Z",
               "EditorCaption": ""
             }
           ]

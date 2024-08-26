@@ -1,5 +1,27 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="proyectoModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+<Schema Namespace="proyectoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="tCarrito">
+    <Key>
+      <PropertyRef Name="idCarrito" />
+    </Key>
+    <Property Name="idCarrito" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="idProducto" Type="Int32" Nullable="false" />
+    <Property Name="Cantidades" Type="Int32" Nullable="false" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="tProducto" Relationship="Self.FK_tCarrito_tProducto" FromRole="tCarrito" ToRole="tProducto" />
+    <NavigationProperty Name="tUsuario" Relationship="Self.FK_tCarrito_tUsuario" FromRole="tCarrito" ToRole="tUsuario" />
+  </EntityType>
   <EntityType Name="tCategoria">
     <Key>
       <PropertyRef Name="idCategoria" />
@@ -8,16 +30,41 @@
     <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="tProducto" Relationship="Self.fk_idCategoria" FromRole="tCategoria" ToRole="tProducto" />
   </EntityType>
+  <EntityType Name="tDetalle">
+    <Key>
+      <PropertyRef Name="idDetalle" />
+    </Key>
+    <Property Name="idDetalle" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idMaestro" Type="Int32" Nullable="false" />
+    <Property Name="idProducto" Type="Int32" Nullable="false" />
+    <Property Name="cantidades" Type="Int32" Nullable="false" />
+    <Property Name="PrecioUnitario" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="SubTotal" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Impuesto" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Total" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tMaestro">
+    <Key>
+      <PropertyRef Name="idMaestro" />
+    </Key>
+    <Property Name="idMaestro" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="FechaCompra" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="SubTotal" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Impuesto" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Total" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+  </EntityType>
   <EntityType Name="tProducto">
     <Key>
-      <PropertyRef Name="id" />
+      <PropertyRef Name="idProducto" />
     </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="idProducto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Precio" Type="Int32" Nullable="false" />
     <Property Name="Cantidad" Type="Int32" Nullable="false" />
     <Property Name="idCategoria" Type="Int32" Nullable="false" />
     <Property Name="Imagen" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tCarrito" Relationship="Self.FK_tCarrito_tProducto" FromRole="tProducto" ToRole="tCarrito" />
     <NavigationProperty Name="tCategoria" Relationship="Self.fk_idCategoria" FromRole="tProducto" ToRole="tCategoria" />
   </EntityType>
   <EntityType Name="tRol">
@@ -27,6 +74,18 @@
     <Property Name="idRol" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="tUsuario" Relationship="Self.fk_idRol" FromRole="tRol" ToRole="tUsuario" />
+  </EntityType>
+  <EntityType Name="tSeguimiento">
+    <Key>
+      <PropertyRef Name="idSeguimiento" />
+    </Key>
+    <Property Name="idUsuario" Type="Int32" Nullable="false" />
+    <Property Name="idSeguimiento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombreProducto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Estado" Type="Boolean" />
+    <Property Name="fechaIngreso" Type="DateTime" Precision="0" />
+    <Property Name="fechaSalida" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="tUsuario" Relationship="Self.FK_idUsuario" FromRole="tSeguimiento" ToRole="tUsuario" />
   </EntityType>
   <EntityType Name="tUsuario">
     <Key>
@@ -39,8 +98,36 @@
     <Property Name="Contrasenna" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Estado" Type="Boolean" Nullable="false" />
     <Property Name="idRol" Type="Int32" Nullable="false" />
+    <Property Name="EsClaveTemporal" Type="Boolean" />
+    <Property Name="ClaveVencimiento" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="tCarrito" Relationship="Self.FK_tCarrito_tUsuario" FromRole="tUsuario" ToRole="tCarrito" />
     <NavigationProperty Name="tRol" Relationship="Self.fk_idRol" FromRole="tUsuario" ToRole="tRol" />
+    <NavigationProperty Name="tSeguimiento" Relationship="Self.FK_idUsuario" FromRole="tUsuario" ToRole="tSeguimiento" />
   </EntityType>
+  <Association Name="FK_tCarrito_tProducto">
+    <End Role="tProducto" Type="Self.tProducto" Multiplicity="1" />
+    <End Role="tCarrito" Type="Self.tCarrito" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tProducto">
+        <PropertyRef Name="idProducto" />
+      </Principal>
+      <Dependent Role="tCarrito">
+        <PropertyRef Name="idProducto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tCarrito_tUsuario">
+    <End Role="tUsuario" Type="Self.tUsuario" Multiplicity="1" />
+    <End Role="tCarrito" Type="Self.tCarrito" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tUsuario">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="tCarrito">
+        <PropertyRef Name="id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="fk_idCategoria">
     <End Role="tCategoria" Type="Self.tCategoria" Multiplicity="1" />
     <End Role="tProducto" Type="Self.tProducto" Multiplicity="*" />
@@ -65,11 +152,36 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="proyectoEntities" annotation:LazyLoadingEnabled="true">
+  <Association Name="FK_idUsuario">
+    <End Role="tUsuario" Type="Self.tUsuario" Multiplicity="1" />
+    <End Role="tSeguimiento" Type="Self.tSeguimiento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tUsuario">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="tSeguimiento">
+        <PropertyRef Name="idUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="proyectoEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="tCarrito" EntityType="Self.tCarrito" />
     <EntitySet Name="tCategoria" EntityType="Self.tCategoria" />
+    <EntitySet Name="tDetalle" EntityType="Self.tDetalle" />
+    <EntitySet Name="tMaestro" EntityType="Self.tMaestro" />
     <EntitySet Name="tProducto" EntityType="Self.tProducto" />
     <EntitySet Name="tRol" EntityType="Self.tRol" />
+    <EntitySet Name="tSeguimiento" EntityType="Self.tSeguimiento" />
     <EntitySet Name="tUsuario" EntityType="Self.tUsuario" />
+    <AssociationSet Name="FK_tCarrito_tProducto" Association="Self.FK_tCarrito_tProducto">
+      <End Role="tProducto" EntitySet="tProducto" />
+      <End Role="tCarrito" EntitySet="tCarrito" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tCarrito_tUsuario" Association="Self.FK_tCarrito_tUsuario">
+      <End Role="tUsuario" EntitySet="tUsuario" />
+      <End Role="tCarrito" EntitySet="tCarrito" />
+    </AssociationSet>
     <AssociationSet Name="fk_idCategoria" Association="Self.fk_idCategoria">
       <End Role="tCategoria" EntitySet="tCategoria" />
       <End Role="tProducto" EntitySet="tProducto" />
@@ -78,6 +190,16 @@
       <End Role="tRol" EntitySet="tRol" />
       <End Role="tUsuario" EntitySet="tUsuario" />
     </AssociationSet>
+    <AssociationSet Name="FK_idUsuario" Association="Self.FK_idUsuario">
+      <End Role="tUsuario" EntitySet="tUsuario" />
+      <End Role="tSeguimiento" EntitySet="tSeguimiento" />
+    </AssociationSet>
+    <FunctionImport Name="ActualizarSeguimiento">
+      <Parameter Name="nombreProducto" Mode="In" Type="String" />
+      <Parameter Name="fechaIngreso" Mode="In" Type="DateTime" />
+      <Parameter Name="fechaSalida" Mode="In" Type="DateTime" />
+      <Parameter Name="idSeguimiento" Mode="In" Type="Int32" />
+    </FunctionImport>
     <FunctionImport Name="ActualizarUsuario">
       <Parameter Name="Cedula" Mode="In" Type="String" />
       <Parameter Name="Nombre" Mode="In" Type="String" />
@@ -85,7 +207,13 @@
       <Parameter Name="idRol" Mode="In" Type="Int32" />
       <Parameter Name="id" Mode="In" Type="Int32" />
     </FunctionImport>
+    <FunctionImport Name="CambiarEstadoSeguimiento">
+      <Parameter Name="idSeguimiento" Mode="In" Type="Int32" />
+    </FunctionImport>
     <FunctionImport Name="CambiarEstadoUsuario">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ConsultarCarrrito" ReturnType="Collection(proyectoModel.ConsultarCarrrito_Result)">
       <Parameter Name="id" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="EditarCategoria">
@@ -94,7 +222,7 @@
     </FunctionImport>
     <FunctionImport Name="EditarProducto">
       <Parameter Name="idProducto" Mode="In" Type="Int32" />
-      <Parameter Name="Nombre" Mode="In" Type="String" />
+      <Parameter Name="Descripcion" Mode="In" Type="String" />
       <Parameter Name="Precio" Mode="In" Type="Int32" />
       <Parameter Name="Cantidad" Mode="In" Type="Int32" />
       <Parameter Name="Categoria" Mode="In" Type="Int32" />
@@ -106,19 +234,40 @@
     <FunctionImport Name="EliminarProducto">
       <Parameter Name="idProducto" Mode="In" Type="Int32" />
     </FunctionImport>
-    <FunctionImport Name="IniciarSesion" ReturnType="Collection(proyectoModel1.IniciarSesion_Result)">
+    <FunctionImport Name="EliminarProductoCarrito">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="idProducto" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="EliminarSeguimiento">
+      <Parameter Name="idSeguimiento" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="IniciarSesion" ReturnType="Collection(proyectoModel.IniciarSesion_Result)">
       <Parameter Name="Correo" Mode="In" Type="String" />
       <Parameter Name="Contrasenna" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="NuevaCategoria">
       <Parameter Name="Nombre" Mode="In" Type="String" />
     </FunctionImport>
+    <FunctionImport Name="PagarCarrito">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="RegistrarCarrito">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="idProducto" Mode="In" Type="Int32" />
+      <Parameter Name="Cantidades" Mode="In" Type="Int32" />
+    </FunctionImport>
     <FunctionImport Name="RegistrarProducto">
-      <Parameter Name="Nombre" Mode="In" Type="String" />
+      <Parameter Name="Descripcion" Mode="In" Type="String" />
       <Parameter Name="Precio" Mode="In" Type="Int32" />
       <Parameter Name="Cantidad" Mode="In" Type="Int32" />
       <Parameter Name="Categoria" Mode="In" Type="Int32" />
       <Parameter Name="Imagen" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="RegistrarSeguimiento">
+      <Parameter Name="idUsuario" Mode="In" Type="Int32" />
+      <Parameter Name="nombreProducto" Mode="In" Type="String" />
+      <Parameter Name="fechaIngreso" Mode="In" Type="DateTime" />
+      <Parameter Name="fechaSalida" Mode="In" Type="DateTime" />
     </FunctionImport>
     <FunctionImport Name="RegistrarUsuario">
       <Parameter Name="Cedula" Mode="In" Type="String" />
@@ -126,7 +275,59 @@
       <Parameter Name="Correo" Mode="In" Type="String" />
       <Parameter Name="Contrasenna" Mode="In" Type="String" />
     </FunctionImport>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(proyectoModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(proyectoModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+    <FunctionImport Name="ValidarCantidadesProdcutos" ReturnType="Collection(proyectoModel.ValidarCantidadesProdcutos_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ValidarUsuarioIdentificacion" ReturnType="Collection(proyectoModel.ValidarUsuarioIdentificacion_Result)">
+      <Parameter Name="Cedula" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ConsultarMiSeguimiento" ReturnType="Collection(proyectoModel.ConsultarMiSeguimiento_Result)">
+      <Parameter Name="idUsuario" Mode="In" Type="Int32" />
+    </FunctionImport>
   </EntityContainer>
+  <ComplexType Name="ConsultarCarrrito_Result">
+    <Property Type="Int32" Name="idCarrito" Nullable="false" />
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="20" />
+    <Property Type="Int32" Name="idProducto" Nullable="false" />
+    <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="100" />
+    <Property Type="Int32" Name="Precio" Nullable="false" />
+    <Property Type="Int32" Name="SubTotal" Nullable="true" />
+    <Property Type="Decimal" Name="Impuesto" Nullable="true" Precision="13" Scale="2" />
+    <Property Type="Decimal" Name="Total" Nullable="true" Precision="14" Scale="2" />
+    <Property Type="Int32" Name="Cantidades" Nullable="false" />
+    <Property Type="DateTime" Name="Fecha" Nullable="false" Precision="23" />
+  </ComplexType>
   <ComplexType Name="IniciarSesion_Result">
     <Property Type="Int32" Name="id" Nullable="false" />
     <Property Type="String" Name="Cedula" Nullable="false" MaxLength="20" />
@@ -134,5 +335,32 @@
     <Property Type="String" Name="Correo" Nullable="false" MaxLength="100" />
     <Property Type="Boolean" Name="Estado" Nullable="false" />
     <Property Type="Int32" Name="IdRol" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="ValidarCantidadesProdcutos_Result">
+    <Property Type="Int32" Name="idProducto" Nullable="false" />
+    <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="100" />
+    <Property Type="Int32" Name="Cantidades" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="ValidarUsuarioIdentificacion_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="Cedula" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="Correo" Nullable="false" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="ConsultarMiSeguimiento_Result">
+    <Property Type="String" Name="nombreProducto" Nullable="true" MaxLength="100" />
+    <Property Type="DateTime" Name="fechaIngreso" Nullable="true" />
+    <Property Type="DateTime" Name="fechaSalida" Nullable="true" />
   </ComplexType>
 </Schema>

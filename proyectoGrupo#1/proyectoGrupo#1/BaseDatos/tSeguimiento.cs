@@ -10,14 +10,17 @@
 namespace proyectoGrupo_1.BaseDatos
 {
     using System;
+    using System.Collections.Generic;
     
-    public partial class IniciarSesion_Result
+    public partial class tSeguimiento
     {
-        public int id { get; set; }
-        public string Cedula { get; set; }
-        public string Nombre { get; set; }
-        public string Correo { get; set; }
-        public bool Estado { get; set; }
-        public int IdRol { get; set; }
+        public int idUsuario { get; set; }
+        public int idSeguimiento { get; set; }
+        public string nombreProducto { get; set; }
+        public Nullable<bool> Estado { get; set; }
+        public Nullable<System.DateTime> fechaIngreso { get; set; }
+        public Nullable<System.DateTime> fechaSalida { get; set; }
+    
+        public virtual tUsuario tUsuario { get; set; }
     }
 }

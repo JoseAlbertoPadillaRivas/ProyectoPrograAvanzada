@@ -55,6 +55,7 @@
                             <li><a href="@Url.Action("VerCelulares","Producto")">Celulares</a></li>
                             <li><a href="@Url.Action("VerAccesorios","Producto")">Accesorios</a></li>
                             <li><a href="@Url.Action("VerComputadoras","Producto")">Computadoras</a></li>
+                            <li><a href="@Url.Action("ConsultarMiSeguimiento","Seguimiento")">Seguimiento de reparacion</a></li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link" data-toggle="dropdown" href="#">
                                     @Session["NombreUsuario"].ToString()
@@ -78,6 +79,36 @@
                                     </a>
                                 </div>
                             </li>
+                            @if (Session["RolUsuario"].ToString() == "2")
+                            {
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link" data-toggle="dropdown" href="#">
+                                        MANTENIMIENTOS
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                                        <div class="dropdown-divider"></div>
+                                        <a href="@Url.Action("ConsultarUsuarios", "Usuario")" class="dropdown-item">
+                                            <i class="fa fa-users mr-2"></i> CONSULTAR USUARIOS
+                                            <span class="float-right text-muted text-sm"></span>
+                                        </a>
+                                        <div class="dropdown-divider"></div>
+                                        <a href="@Url.Action("VerProductos", "Producto")" class="dropdown-item">
+                                            <i></i> CONSULTAR PRODUCTOS
+                                            <span class="float-right text-muted text-sm"></span>
+                                        </a>
+                                        <div class="dropdown-divider"></div>
+                                        <a href="@Url.Action("ConsultarCategorias", "Categoria")" class="dropdown-item">
+                                            <i></i> CONSULTAR CATEGORIAS
+                                            <span class="float-right text-muted text-sm"></span>
+                                        </a>
+                                        <div class="dropdown-divider"></div>
+                                        <a href="@Url.Action("ConsultarSeguimientos", "Seguimiento")" class="dropdown-item">
+                                            <i></i> CONSULTAR SEGUIMIENTOS
+                                            <span class="float-right text-muted text-sm"></span>
+                                        </a>
+                                    </div>
+                                </li>
+                            }
                             <li class="nav-item has-treeview">
                                 <a href="@Url.Action("ConsultarCarrito","Carrito")" class="nav-link">
                                     <i class="nav-icon fas fa-shopping-bag"></i>
@@ -95,60 +126,6 @@
 
             </section>
         </div>
-
-
-        @if (Session["RolUsuario"].ToString() == "2")
-        {
-            <aside class="main-sidebar sidebar-dark-primary elevation-4">
-                <a href="@Url.Action("Home", "Login")" class="brand-link">
-                    <img src="~/root/dist/img/FotoPlusLogo.png"
-                         alt="AdminLTE Logo"
-                         class="brand-image elevation-3"
-                         style="opacity: .8; width: 30px; height: 70px;">
-                    <span class="brand-text font-weight-light">Foto Plus</span>
-                </a>
-                <div class="sidebar"> 
-                    <nav class="mt-2">
-                        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-
-
-                            <li class="nav-item has-treeview">
-                                <a href="#" class="nav-link">
-                                    <i class="nav-icon fas fa-tachometer-alt"></i>
-                                    <p>
-                                        Mantenimientos
-                                        <i class="right fas fa-angle-left"></i>
-                                    </p>
-                                </a>
-                                <ul class="nav nav-treeview">
-                                    <li class="nav-item">
-                                        <a href="@Url.Action("ConsultarUsuarios", "Usuario")" class="nav-link">
-                                            <i class="far fa-users nav-icon"></i>
-                                            <p>Usuarios</p>
-                                        </a>
-                                    </li>
-
-                                    <li class="nav-item">
-                                        <a href="@Url.Action("VerProductos", "Producto")" class="nav-link">
-                                            <i class="far fa-users nav-icon"></i>
-                                            <p>Productos</p>
-                                        </a>
-                                    </li>
-
-                                    <li class="nav-item">
-                                        <a href="@Url.Action("ConsultarCategorias", "Categoria")" class="nav-link">
-                                            <i class="far fa-users nav-icon"></i>
-                                            <p>Categoria</p>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-
-                        </ul>
-                    </nav>
-                </div>
-
-            </aside>
 
             <footer class="main-footer">
                 <strong>Copyright &copy; @DateTime.Now.Year </strong> All rights reserved.

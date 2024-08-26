@@ -11,13 +11,9 @@ namespace proyectoGrupo_1.BaseDatos
 {
     using System;
     
-    public partial class IniciarSesion_Result
+    public partial class sp_helpdiagramdefinition_Result
     {
-        public int id { get; set; }
-        public string Cedula { get; set; }
-        public string Nombre { get; set; }
-        public string Correo { get; set; }
-        public bool Estado { get; set; }
-        public int IdRol { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

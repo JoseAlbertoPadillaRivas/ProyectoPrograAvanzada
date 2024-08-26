@@ -15,7 +15,7 @@ namespace proyectoGrupo_1.Models
         {
             var rowsAffected = 0;
 
-            using (var context = new proyectoEntities())
+            using (var context = new proyectoEntities1())
             {
                 rowsAffected = context.RegistrarProducto(prod.Descripcion, prod.Precio, prod.Cantidad, prod.idCategoria, prod.Imagen);
             }
@@ -25,7 +25,7 @@ namespace proyectoGrupo_1.Models
 
         public List<tProducto> VerProductos()
         {
-            using (var context = new proyectoEntities())
+            using (var context = new proyectoEntities1())
             {
 
                 return (from x in context.tProducto
@@ -35,7 +35,7 @@ namespace proyectoGrupo_1.Models
 
         public List<tProducto> VerCelulares()
         {
-            using (var context = new proyectoEntities())
+            using (var context = new proyectoEntities1())
             {               
 
                 return (from x in context.tProducto
@@ -45,7 +45,7 @@ namespace proyectoGrupo_1.Models
         }
         public List<tProducto> VerAccesorios()
         {
-            using (var context = new proyectoEntities())
+            using (var context = new proyectoEntities1())
             {
 
                 return (from x in context.tProducto
@@ -56,7 +56,7 @@ namespace proyectoGrupo_1.Models
 
         public List<tProducto> VerComputadoras()
         {
-            using (var context = new proyectoEntities())
+            using (var context = new proyectoEntities1())
             {
 
                 return (from x in context.tProducto
@@ -67,7 +67,7 @@ namespace proyectoGrupo_1.Models
 
         public tProducto ConsultarProducto(int idProducto)
         {
-            using (var context = new proyectoEntities())
+            using (var context = new proyectoEntities1())
             {
                 return (from x in context.tProducto
                         where x.idProducto == idProducto
@@ -79,7 +79,7 @@ namespace proyectoGrupo_1.Models
         {
             var rowsAffected = 0;
 
-            using (var context = new proyectoEntities())
+            using (var context = new proyectoEntities1())
             {
                 rowsAffected = context.EditarProducto(prod.idProducto, prod.Descripcion, prod.Precio, prod.Cantidad, prod.idCategoria,prod.Imagen);
             }
@@ -91,7 +91,7 @@ namespace proyectoGrupo_1.Models
         {
             var rowsAffected = 0;
 
-            using (var context = new proyectoEntities())
+            using (var context = new proyectoEntities1())
             {
                 rowsAffected = context.EliminarProducto(prod.idProducto);
             }

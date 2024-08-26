@@ -1,0 +1,41 @@
+﻿@model proyectoGrupo_1.BaseDatos.tSeguimiento
+@{
+    ViewBag.Title = "Editar seguimiento";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-4">
+    <h2 class="text-center mb-4">Editar seguimiento de reparacion</h2>
+
+    @if (ViewBag.msj != null)
+    {
+        <div class="alert alert-info text-center" role="alert">
+            @ViewBag.msj
+        </div>
+    }
+
+    @using (Html.BeginForm("ActualizarSeguimiento", "Seguimiento", FormMethod.Post))
+    {
+        @Html.HiddenFor(m => m.idSeguimiento)
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.nombreProducto, htmlAttributes: new { @class = "form-label" })
+            @Html.TextBoxFor(m => m.nombreProducto, new { @class = "form-control", @placeholder = "Nombre del producto" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.fechaIngreso, htmlAttributes: new { @class = "form-label" })
+            @Html.TextBoxFor(m => m.fechaIngreso, new { @class = "form-control", @placeholder = "Fecha de ingreso", @type = "date"})
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.fechaSalida, htmlAttributes: new { @class = "form-label" })
+            @Html.TextBoxFor(m => m.fechaSalida, new { @class = "form-control", @placeholder = "Fecha de salida", @type = "date" })
+        </div>
+
+        <div class="form-group text-center mt-4">
+            <button type="submit" class="btn btn-primary btn-xs">Actualizar Seguimiento</button>
+        </div>
+    }
+</div>
+

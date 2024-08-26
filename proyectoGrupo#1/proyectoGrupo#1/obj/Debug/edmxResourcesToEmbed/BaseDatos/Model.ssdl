@@ -1,5 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="proyectoModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="proyectoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="tCarrito">
+    <Key>
+      <PropertyRef Name="idCarrito" />
+    </Key>
+    <Property Name="idCarrito" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="idProducto" Type="int" Nullable="false" />
+    <Property Name="Cantidades" Type="int" Nullable="false" />
+    <Property Name="Fecha" Type="datetime" Nullable="false" />
+  </EntityType>
   <EntityType Name="tCategoria">
     <Key>
       <PropertyRef Name="idCategoria" />
@@ -7,12 +27,36 @@
     <Property Name="idCategoria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
   </EntityType>
+  <EntityType Name="tDetalle">
+    <Key>
+      <PropertyRef Name="idDetalle" />
+    </Key>
+    <Property Name="idDetalle" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idMaestro" Type="int" Nullable="false" />
+    <Property Name="idProducto" Type="int" Nullable="false" />
+    <Property Name="cantidades" Type="int" Nullable="false" />
+    <Property Name="PrecioUnitario" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="SubTotal" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Impuesto" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Total" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tMaestro">
+    <Key>
+      <PropertyRef Name="idMaestro" />
+    </Key>
+    <Property Name="idMaestro" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="FechaCompra" Type="datetime" Nullable="false" />
+    <Property Name="SubTotal" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Impuesto" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Total" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+  </EntityType>
   <EntityType Name="tProducto">
     <Key>
-      <PropertyRef Name="id" />
+      <PropertyRef Name="idProducto" />
     </Key>
-    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="idProducto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="100" Nullable="false" />
     <Property Name="Precio" Type="int" Nullable="false" />
     <Property Name="Cantidad" Type="int" Nullable="false" />
     <Property Name="idCategoria" Type="int" Nullable="false" />
@@ -25,6 +69,17 @@
     <Property Name="idRol" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
   </EntityType>
+  <EntityType Name="tSeguimiento">
+    <Key>
+      <PropertyRef Name="idSeguimiento" />
+    </Key>
+    <Property Name="idUsuario" Type="int" Nullable="false" />
+    <Property Name="idSeguimiento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombreProducto" Type="varchar" MaxLength="100" />
+    <Property Name="Estado" Type="bit" />
+    <Property Name="fechaIngreso" Type="date" />
+    <Property Name="fechaSalida" Type="date" />
+  </EntityType>
   <EntityType Name="tUsuario">
     <Key>
       <PropertyRef Name="id" />
@@ -36,6 +91,8 @@
     <Property Name="Contrasenna" Type="varchar" MaxLength="100" Nullable="false" />
     <Property Name="Estado" Type="bit" Nullable="false" />
     <Property Name="idRol" Type="int" Nullable="false" />
+    <Property Name="EsClaveTemporal" Type="bit" />
+    <Property Name="ClaveVencimiento" Type="datetime" />
   </EntityType>
   <Association Name="fk_idCategoria">
     <End Role="tCategoria" Type="Self.tCategoria" Multiplicity="1" />
@@ -61,6 +118,48 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_idUsuario">
+    <End Role="tUsuario" Type="Self.tUsuario" Multiplicity="1" />
+    <End Role="tSeguimiento" Type="Self.tSeguimiento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tUsuario">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="tSeguimiento">
+        <PropertyRef Name="idUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tCarrito_tProducto">
+    <End Role="tProducto" Type="Self.tProducto" Multiplicity="1" />
+    <End Role="tCarrito" Type="Self.tCarrito" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tProducto">
+        <PropertyRef Name="idProducto" />
+      </Principal>
+      <Dependent Role="tCarrito">
+        <PropertyRef Name="idProducto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tCarrito_tUsuario">
+    <End Role="tUsuario" Type="Self.tUsuario" Multiplicity="1" />
+    <End Role="tCarrito" Type="Self.tCarrito" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tUsuario">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="tCarrito">
+        <PropertyRef Name="id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="ActualizarSeguimiento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="nombreProducto" Type="varchar" Mode="In" />
+    <Parameter Name="fechaIngreso" Type="date" Mode="In" />
+    <Parameter Name="fechaSalida" Type="date" Mode="In" />
+    <Parameter Name="idSeguimiento" Type="int" Mode="In" />
+  </Function>
   <Function Name="ActualizarUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Cedula" Type="varchar" Mode="In" />
     <Parameter Name="Nombre" Type="varchar" Mode="In" />
@@ -68,8 +167,17 @@
     <Parameter Name="idRol" Type="int" Mode="In" />
     <Parameter Name="id" Type="int" Mode="In" />
   </Function>
+  <Function Name="CambiarEstadoSeguimiento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idSeguimiento" Type="int" Mode="In" />
+  </Function>
   <Function Name="CambiarEstadoUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ConsultarCarrrito" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ConsultarMiSeguimiento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idUsuario" Type="int" Mode="In" />
   </Function>
   <Function Name="EditarCategoria" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="idCategoria" Type="int" Mode="In" />
@@ -77,7 +185,7 @@
   </Function>
   <Function Name="EditarProducto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="idProducto" Type="int" Mode="In" />
-    <Parameter Name="Nombre" Type="varchar" Mode="In" />
+    <Parameter Name="Descripcion" Type="varchar" Mode="In" />
     <Parameter Name="Precio" Type="int" Mode="In" />
     <Parameter Name="Cantidad" Type="int" Mode="In" />
     <Parameter Name="Categoria" Type="int" Mode="In" />
@@ -89,6 +197,14 @@
   <Function Name="EliminarProducto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="idProducto" Type="int" Mode="In" />
   </Function>
+  <Function Name="EliminarProductoCarrito" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="idProducto" Type="int" Mode="In" />
+  </Function>
+  <Function Name="EliminarSeguimiento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idSeguimiento" Type="int" Mode="In" />
+  </Function>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
   <Function Name="IniciarSesion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Correo" Type="varchar" Mode="In" />
     <Parameter Name="Contrasenna" Type="varchar" Mode="In" />
@@ -96,12 +212,26 @@
   <Function Name="NuevaCategoria" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Nombre" Type="varchar" Mode="In" />
   </Function>
+  <Function Name="PagarCarrito" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="RegistrarCarrito" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="idProducto" Type="int" Mode="In" />
+    <Parameter Name="Cantidades" Type="int" Mode="In" />
+  </Function>
   <Function Name="RegistrarProducto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="Nombre" Type="varchar" Mode="In" />
+    <Parameter Name="Descripcion" Type="varchar" Mode="In" />
     <Parameter Name="Precio" Type="int" Mode="In" />
     <Parameter Name="Cantidad" Type="int" Mode="In" />
     <Parameter Name="Categoria" Type="int" Mode="In" />
     <Parameter Name="Imagen" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="RegistrarSeguimiento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idUsuario" Type="int" Mode="In" />
+    <Parameter Name="nombreProducto" Type="varchar" Mode="In" />
+    <Parameter Name="fechaIngreso" Type="date" Mode="In" />
+    <Parameter Name="fechaSalida" Type="date" Mode="In" />
   </Function>
   <Function Name="RegistrarUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Cedula" Type="varchar" Mode="In" />
@@ -109,10 +239,51 @@
     <Parameter Name="Correo" Type="varchar" Mode="In" />
     <Parameter Name="Contrasenna" Type="varchar" Mode="In" />
   </Function>
-  <EntityContainer Name="proyectoModel1StoreContainer">
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="ValidarCantidadesProdcutos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ValidarUsuarioIdentificacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Cedula" Type="varchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="proyectoModelStoreContainer">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tCarrito" EntityType="Self.tCarrito" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tCategoria" EntityType="Self.tCategoria" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tDetalle" EntityType="Self.tDetalle" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tMaestro" EntityType="Self.tMaestro" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tProducto" EntityType="Self.tProducto" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tRol" EntityType="Self.tRol" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tSeguimiento" EntityType="Self.tSeguimiento" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tUsuario" EntityType="Self.tUsuario" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="fk_idCategoria" Association="Self.fk_idCategoria">
       <End Role="tCategoria" EntitySet="tCategoria" />
@@ -121,6 +292,18 @@
     <AssociationSet Name="fk_idRol" Association="Self.fk_idRol">
       <End Role="tRol" EntitySet="tRol" />
       <End Role="tUsuario" EntitySet="tUsuario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_idUsuario" Association="Self.FK_idUsuario">
+      <End Role="tUsuario" EntitySet="tUsuario" />
+      <End Role="tSeguimiento" EntitySet="tSeguimiento" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tCarrito_tProducto" Association="Self.FK_tCarrito_tProducto">
+      <End Role="tProducto" EntitySet="tProducto" />
+      <End Role="tCarrito" EntitySet="tCarrito" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tCarrito_tUsuario" Association="Self.FK_tCarrito_tUsuario">
+      <End Role="tUsuario" EntitySet="tUsuario" />
+      <End Role="tCarrito" EntitySet="tCarrito" />
     </AssociationSet>
   </EntityContainer>
 </Schema>
