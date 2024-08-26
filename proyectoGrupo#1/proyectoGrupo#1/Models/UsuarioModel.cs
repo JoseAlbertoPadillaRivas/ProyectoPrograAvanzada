@@ -12,6 +12,7 @@ namespace proyectoGrupo_1.Models
 
         public bool RegistrarUsuario(Usuario user)
         {
+            try { 
             var rowsAffected = 0;
 
             using (var context = new proyectoEntities1())
@@ -20,6 +21,7 @@ namespace proyectoGrupo_1.Models
             }
 
             return (rowsAffected > 0 ? true : false);
+            } catch { return false; }
         }
 
         public IniciarSesion_Result IniciarSesion(Usuario user)
@@ -62,7 +64,9 @@ namespace proyectoGrupo_1.Models
 
         public bool CambiarEstadoUsuario(Usuario user)
         {
-            var rowsAffected = 0;
+            try
+            {
+                var rowsAffected = 0;
 
             using (var context = new proyectoEntities1())
             {
@@ -70,11 +74,14 @@ namespace proyectoGrupo_1.Models
             }
 
             return (rowsAffected > 0 ? true : false);
+            } catch { return false; }
         }
 
         public bool ActualizarUsuario(Usuario user)
         {
-            var rowsAffected = 0;
+            try
+            {
+                var rowsAffected = 0;
 
             using (var context = new proyectoEntities1())
             {
@@ -82,11 +89,14 @@ namespace proyectoGrupo_1.Models
             }
 
             return (rowsAffected > 0 ? true : false);
+            } catch { return false; }
         }
 
         public bool CambiarContrasennaUsuario(int id, string contrasennaTemporal, bool EsClaveTemporal, DateTime ClaveVencimiento)
         {
-            var rowsAffected = 0;
+            try
+            {
+                var rowsAffected = 0;
 
             using (var context = new proyectoEntities1())
             {
@@ -101,6 +111,7 @@ namespace proyectoGrupo_1.Models
             }
 
             return (rowsAffected > 0 ? true : false);
+            } catch { return false; }
         }
     }
 }

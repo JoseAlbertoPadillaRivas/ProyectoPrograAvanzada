@@ -11,6 +11,7 @@ namespace proyectoGrupo_1.Models
     {
         public bool RegistrarSeguimiento(Seguimiento seguimiento)
         {
+            try { 
             var rowsAffected = 0;
 
             using (var context = new proyectoEntities1())
@@ -19,6 +20,8 @@ namespace proyectoGrupo_1.Models
             }
 
             return (rowsAffected > 0 ? true : false);
+            }
+            catch { return false; }
         }
         public tSeguimiento ConsultarUnSeguimiento(int idSeguimiento)
         {
@@ -41,7 +44,9 @@ namespace proyectoGrupo_1.Models
 
         public bool CambiarEstadoSeguimiento(Seguimiento seguimiento)
         {
-            var rowsAffected = 0;
+            try
+            {
+                var rowsAffected = 0;
 
             using (var context = new proyectoEntities1())
             {
@@ -49,10 +54,14 @@ namespace proyectoGrupo_1.Models
             }
 
             return (rowsAffected > 0 ? true : false);
+            }
+            catch { return false; }
         }
 
-        public bool ActualizarSeguimiento(Seguimiento seguimiento) { 
-            var rowsAffected = 0;
+        public bool ActualizarSeguimiento(Seguimiento seguimiento) {
+            try
+            {
+                var rowsAffected = 0;
 
             using (var context = new proyectoEntities1())
             {
@@ -60,6 +69,8 @@ namespace proyectoGrupo_1.Models
             }
 
             return (rowsAffected > 0 ? true : false);
+            }
+            catch { return false; }
         }
 
         public List<tSeguimiento> VerSeguimientos()
@@ -73,7 +84,9 @@ namespace proyectoGrupo_1.Models
         }
         public bool EliminarSeguimiento(Seguimiento seguimiento)
         {
-            var rowsAffected = 0;
+            try
+            {
+                var rowsAffected = 0;
 
             using (var context = new proyectoEntities1())
             {
@@ -81,6 +94,8 @@ namespace proyectoGrupo_1.Models
             }
 
             return (rowsAffected > 0 ? true : false);
+            }
+            catch { return false; }
         }
     }
 }

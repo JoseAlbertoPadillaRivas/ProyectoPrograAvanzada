@@ -13,6 +13,7 @@ namespace proyectoGrupo_1.Models
 
         public bool RegistrarProducto(Producto prod)
         {
+            try { 
             var rowsAffected = 0;
 
             using (var context = new proyectoEntities1())
@@ -21,6 +22,7 @@ namespace proyectoGrupo_1.Models
             }
 
             return (rowsAffected > 0 ? true : false);
+        } catch { return false; }
         }
 
         public List<tProducto> VerProductos()
@@ -77,6 +79,7 @@ namespace proyectoGrupo_1.Models
 
         public bool EditarProducto(Producto prod)
         {
+            try { 
             var rowsAffected = 0;
 
             using (var context = new proyectoEntities1())
@@ -85,11 +88,14 @@ namespace proyectoGrupo_1.Models
             }
 
             return (rowsAffected > 0 ? true : false);
+            } catch { return false; }
         }
 
         public bool EliminarProducto(Producto prod)
         {
-            var rowsAffected = 0;
+            try
+            {
+                var rowsAffected = 0;
 
             using (var context = new proyectoEntities1())
             {
@@ -97,6 +103,8 @@ namespace proyectoGrupo_1.Models
             }
 
             return (rowsAffected > 0 ? true : false);
+            }
+            catch { return false; }
         }
 
     }

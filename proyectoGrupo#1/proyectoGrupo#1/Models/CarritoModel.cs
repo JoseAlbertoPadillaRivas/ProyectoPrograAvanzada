@@ -12,6 +12,7 @@ namespace proyectoGrupo_1.Models
     {
         public bool RegistrarCarrito(int idProducto, int Cantidades)
         {
+            try { 
             var rowsAffected = 0;
 
             using (var context = new proyectoEntities1())
@@ -21,21 +22,27 @@ namespace proyectoGrupo_1.Models
             }
 
             return (rowsAffected > 0 ? true : false);
+            }
+            catch { return false; }   
         }
         
         public List<ConsultarCarrrito_Result> ConsultarCarrito()
         {
-            using (var context = new proyectoEntities1())
+
+                using (var context = new proyectoEntities1())
             {
                 int id = int.Parse(HttpContext.Current.Session["idUsuario"].ToString());
                 return context.ConsultarCarrrito(id).ToList();
             }
 
+
         }
 
         public bool PagarCarrito()
         {
-            var rowsAffected = 0;
+            try
+            {
+                var rowsAffected = 0;
 
             using (var context = new proyectoEntities1())
             {
@@ -44,11 +51,15 @@ namespace proyectoGrupo_1.Models
             }
 
             return (rowsAffected > 0 ? true : false);
+            }
+            catch { return false; }
         }
 
         public bool EliminarProductoCarrito(int idProducto)
         {
-            var rowsAffected = 0;
+            try
+            {
+                var rowsAffected = 0;
 
             using (var context = new proyectoEntities1())
             {
@@ -57,6 +68,8 @@ namespace proyectoGrupo_1.Models
             }
 
             return (rowsAffected > 0 ? true : false);
+            }
+            catch { return false; }
         }
 
         public List<ValidarCantidadesProdcutos_Result> ValidarCantidadesProdcutos()

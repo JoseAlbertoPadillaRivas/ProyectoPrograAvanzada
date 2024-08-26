@@ -20,6 +20,7 @@ namespace proyectoGrupo_1.Models
 
         public bool RegistrarCategoria(Categoria cat)
         {
+            try { 
             var rowsAffected = 0;
 
             using (var context = new proyectoEntities1())
@@ -28,6 +29,8 @@ namespace proyectoGrupo_1.Models
             }
 
             return (rowsAffected > 0 ? true : false);
+            }
+            catch {return false; }
         }
 
         public tCategoria ConsultarCategoria(int id)
@@ -42,7 +45,9 @@ namespace proyectoGrupo_1.Models
 
         public bool EditarCategoria(Categoria cat)
         {
-            var rowsAffected = 0;
+            try
+            {
+                var rowsAffected = 0;
 
             using (var context = new proyectoEntities1())
             {
@@ -50,11 +55,15 @@ namespace proyectoGrupo_1.Models
             }
 
             return (rowsAffected > 0 ? true : false);
+            }
+            catch { return false; }
         }
 
         public bool EliminarCategoria(Categoria cat)
         {
-            var rowsAffected = 0;
+            try
+            {
+                var rowsAffected = 0;
 
             using (var context = new proyectoEntities1())
             {
@@ -62,6 +71,8 @@ namespace proyectoGrupo_1.Models
             }
 
             return (rowsAffected > 0 ? true : false);
+            }
+            catch { return false; }
         }
 
     }
